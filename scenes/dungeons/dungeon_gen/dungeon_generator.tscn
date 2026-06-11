@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://drgjxqead28hd"]
+
+[ext_resource type="Script" uid="uid://mwblbltnb3dx" path="res://scenes/dungeons/dungeon_gen/dungeon_generator.gd" id="1_qm07g"]
+[ext_resource type="PackedScene" uid="uid://deus7vd1p0qx7" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room2x2.tscn" id="3_1kvfj"]
+[ext_resource type="PackedScene" uid="uid://cxo6i6ei2rt80" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room_3x_2.tscn" id="4_vb1sr"]
+[ext_resource type="PackedScene" uid="uid://eod5pe487e2d" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room_3x_3.tscn" id="5_3vo58"]
+[ext_resource type="PackedScene" uid="uid://ehc4l15v6d7v" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/wall_cap.tscn" id="6_1kvfj"]
+[ext_resource type="PackedScene" uid="uid://c4vuu1jejoww0" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/corridor_straight.tscn" id="6_rpopy"]
+[ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="7_1kvfj"]
+[ext_resource type="PackedScene" uid="uid://ceth081n7pftt" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/seal_room.tscn" id="7_vb1sr"]
+[ext_resource type="PackedScene" uid="uid://b1crfmcaqd1bn" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/vault.tscn" id="8_3vo58"]
+
+[node name="DungeonGenerator" type="Node3D" unique_id=2147111523 node_paths=PackedStringArray("root_socket", "room_container")]
+script = ExtResource("1_qm07g")
+root_socket = NodePath("RootSocket")
+room_container = NodePath("RoomContainer")
+room_scenes = Array[PackedScene]([ExtResource("3_1kvfj"), ExtResource("4_vb1sr"), ExtResource("5_3vo58")])
+corridor_scenes = Array[PackedScene]([ExtResource("6_rpopy")])
+wall_cap_scenes = Array[PackedScene]([ExtResource("6_1kvfj")])
+seal_room_scenes = Array[PackedScene]([ExtResource("7_vb1sr")])
+vault_room_scenes = Array[PackedScene]([ExtResource("8_3vo58")])
+max_depth = 25
+
+[node name="RoomContainer" type="Node3D" parent="." unique_id=1796141938]
+top_level = true
+
+[node name="RootSocket" type="Marker3D" parent="." unique_id=1083407266]
+gizmo_extents = 2.0
+script = ExtResource("7_1kvfj")
+possible_connections = Array[int]([2])

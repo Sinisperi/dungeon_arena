@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b8nxwxq3yj1o1"]
+
+[ext_resource type="Script" uid="uid://bgiwhw0oxe65w" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_spawner.gd" id="1_ynw1h"]
+
+[node name="EnemySpawner" type="Area3D" unique_id=1346557282]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_ynw1h")

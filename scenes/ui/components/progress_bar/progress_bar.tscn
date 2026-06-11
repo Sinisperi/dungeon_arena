@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b0potvvdu5p3v"]
+
+[ext_resource type="Script" uid="uid://dispn5g6gkjsw" path="res://scenes/ui/components/progress_bar/progress_bar.gd" id="1_v1g5j"]
+
+[sub_resource type="Gradient" id="Gradient_lvxji"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.36113068, 0.36113068, 0.36113068, 0.6862745)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j3kmc"]
+gradient = SubResource("Gradient_lvxji")
+
+[sub_resource type="Gradient" id="Gradient_75vfm"]
+colors = PackedColorArray(0.9999015, 0.4437795, 0.3751994, 1, 0.8635577, 0.65221673, 0.58098644, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v1g5j"]
+gradient = SubResource("Gradient_75vfm")
+
+[sub_resource type="Gradient" id="Gradient_qek5x"]
+colors = PackedColorArray(0.30588236, 0, 0, 1, 0.90398574, 0, 0.088951476, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r8wkc"]
+gradient = SubResource("Gradient_qek5x")
+
+[node name="Control" type="Control" unique_id=1546026761]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_v1g5j")
+
+[node name="DifferenceBar" type="TextureProgressBar" parent="." unique_id=1751225788]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -8.0
+offset_right = 100.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_j3kmc")
+texture_progress = SubResource("GradientTexture1D_v1g5j")
+
+[node name="ActualBar" type="TextureProgressBar" parent="." unique_id=1848366418]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -8.0
+offset_right = 100.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 83.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_r8wkc")

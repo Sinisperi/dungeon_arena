@@ -1,0 +1,24 @@
+class_name StartMenu extends Control
+
+@export_category("Buttons")
+@export var start_button: Button
+@export var invite_button: Button
+@export var quit_button: Button
+
+@export_category("Pop-ups")
+@export var multiplayer_pop_up: MultiplayerPopUp
+
+
+func _ready() -> void:
+	if quit_button:
+		quit_button.pressed.connect(_on_quit_button_pressed)
+	if invite_button:
+		invite_button.pressed.connect(_on_invite_button_pressed)
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_invite_button_pressed() -> void:
+	multiplayer_pop_up.show()

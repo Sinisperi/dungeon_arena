@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bda1xy3kvgf5k"]
+
+[ext_resource type="Script" uid="uid://dup3oqijpr81k" path="res://scenes/ui/start_menu/start_menu.gd" id="1_7sxov"]
+[ext_resource type="Texture2D" uid="uid://bs71sidn45dc2" path="res://icon.svg" id="1_axahc"]
+[ext_resource type="PackedScene" uid="uid://bbrfmlp3yp6km" path="res://scenes/ui/start_menu/multiplayer_pop_up.tscn" id="3_hctk7"]
+
+[node name="StarMenu" type="Control" unique_id=1067452214 node_paths=PackedStringArray("start_button", "invite_button", "quit_button", "multiplayer_pop_up")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7sxov")
+start_button = NodePath("VBoxContainer/StartButton")
+invite_button = NodePath("PanelContainer/HBoxContainer2/OpenMultiplayerSetupPopUp")
+quit_button = NodePath("VBoxContainer/QuitButton")
+multiplayer_pop_up = NodePath("MultiplayerPopUp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=537300801]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer" unique_id=1053587446]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="OpenMultiplayerSetupPopUp" type="Button" parent="PanelContainer/HBoxContainer2" unique_id=69181632]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer2" unique_id=196920523]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="SteamIcon" type="TextureRect" parent="PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1440955482]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_axahc")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1909356583]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 97.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=875348821]
+layout_mode = 2
+text = "New game"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=854196657]
+layout_mode = 2
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=283381054]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=857710851]
+layout_mode = 2
+text = "Quit"
+
+[node name="MultiplayerPopUp" parent="." unique_id=1651207794 instance=ExtResource("3_hctk7")]
+visible = false
+layout_mode = 1

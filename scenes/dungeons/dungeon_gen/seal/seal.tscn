@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dy65c7od18v5e"]
+
+[ext_resource type="Script" uid="uid://dmf6e3yarrj31" path="res://scenes/dungeons/dungeon_gen/seal/seal.gd" id="1_8wpko"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nqwaf"]
+height = 0.7307129
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8wpko"]
+height = 100.0
+radial_segments = 5
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80hmm"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.6626904, 0, 0.10095864, 1)
+emission_energy_multiplier = 6.05
+
+[node name="Seal" type="Area3D" unique_id=2005908388]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_8wpko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1216159136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34924316, 0)
+shape = SubResource("CylinderShape3D_nqwaf")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1558580527]
+mesh = SubResource("CylinderMesh_8wpko")
+material = SubResource("StandardMaterial3D_80hmm")

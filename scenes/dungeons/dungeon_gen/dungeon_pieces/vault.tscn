@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b1crfmcaqd1bn"]
+
+[ext_resource type="Script" uid="uid://ctx4t5nqfa6so" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room.gd" id="1_1sho3"]
+[ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="1_p2ty3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sho3"]
+albedo_color = Color(0.75, 0.7345, 0.285, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0txk"]
+size = Vector3(15.75, 8.25, 15.5)
+
+[node name="Vault" type="Node3D" unique_id=993495530 node_paths=PackedStringArray("sockets", "room_boundary")]
+script = ExtResource("1_1sho3")
+sockets = [NodePath("Marker3D2")]
+room_boundary = NodePath("RoomBoundary")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=517877147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 8)
+use_collision = true
+size = Vector3(16, 1, 16)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=989053430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 8)
+use_collision = true
+size = Vector3(16, 1, 16)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=471950369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.25, 15.875)
+use_collision = true
+size = Vector3(11, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=1174340057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3.25, 15.875)
+use_collision = true
+size = Vector3(6, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="." unique_id=892119162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.375, 15.875)
+use_collision = true
+size = Vector3(4.75, 2.25, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=173027912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.25, 0.125)
+use_collision = true
+size = Vector3(13, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=1319601628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.875, 3.25, 0.125)
+use_collision = true
+size = Vector3(4.25, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1936606158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 6.375, 0.125)
+use_collision = true
+size = Vector3(4.5, 2.25, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=763290250]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16, 3.25, 8)
+use_collision = true
+size = Vector3(15.75, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1012002226]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 3.25, 3.25)
+use_collision = true
+size = Vector3(6.75, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=973523520]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 3.25, 12.875)
+use_collision = true
+size = Vector3(6, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=1048565815]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 6.25, 8.375)
+use_collision = true
+size = Vector3(6, 2.5, 0.25)
+material = SubResource("StandardMaterial3D_1sho3")
+
+[node name="Marker3D2" type="Marker3D" parent="." unique_id=1184327956]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 8.25)
+gizmo_extents = 1.0
+script = ExtResource("1_p2ty3")
+possible_connections = Array[int]([2])
+
+[node name="RoomBoundary" type="Area3D" parent="." unique_id=884105750]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomBoundary" unique_id=1676046967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.125, 3.5, 8)
+shape = SubResource("BoxShape3D_b0txk")
+debug_color = Color(0.975298, 0, 0.42395055, 0.41960785)

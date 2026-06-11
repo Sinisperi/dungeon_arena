@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c26lpy6ahumob"]
+
+[ext_resource type="Script" uid="uid://re5pegrrqug4" path="res://scenes/ui/start_menu/local_server_list_item.gd" id="1_65d3h"]
+
+[node name="LocalServerListItem" type="VBoxContainer" unique_id=642972717 node_paths=PackedStringArray("server_name_label", "server_port_label")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_65d3h")
+server_name_label = NodePath("ServerName")
+server_port_label = NodePath("ServerPort")
+
+[node name="ServerName" type="Label" parent="." unique_id=2004873148]
+layout_mode = 2
+
+[node name="ServerPort" type="Label" parent="." unique_id=2001178968]
+layout_mode = 2

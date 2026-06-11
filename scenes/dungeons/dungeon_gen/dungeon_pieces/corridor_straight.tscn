@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c4vuu1jejoww0"]
+
+[ext_resource type="Script" uid="uid://ctx4t5nqfa6so" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room.gd" id="1_hxupy"]
+[ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="2_7wy7u"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hxupy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70ts2"]
+albedo_color = Color(0.45, 0.45, 0.45, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxupy"]
+size = Vector3(15.5, 6.5, 8)
+
+[node name="CorridorStraight" type="Node3D" unique_id=1524571036 node_paths=PackedStringArray("sockets", "room_boundary")]
+script = ExtResource("1_hxupy")
+sockets = [NodePath("NavigationRegion3D/Marker3D"), NodePath("NavigationRegion3D/Marker3D2")]
+room_boundary = NodePath("NavigationRegion3D/RoomBoundary")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1902174129]
+navigation_mesh = SubResource("NavigationMesh_hxupy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1058800543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 0.125)
+use_collision = true
+size = Vector3(16, 6.75, 0.25)
+material = SubResource("StandardMaterial3D_70ts2")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=164010476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 7.875)
+use_collision = true
+size = Vector3(16, 6.75, 0.25)
+material = SubResource("StandardMaterial3D_70ts2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=735979986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 4)
+use_collision = true
+size = Vector3(16, 1, 8)
+material = SubResource("StandardMaterial3D_70ts2")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1069292599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.875, 4)
+use_collision = true
+size = Vector3(16, 0.25, 8)
+material = SubResource("StandardMaterial3D_70ts2")
+
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D" unique_id=606607861]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 4)
+gizmo_extents = 1.55
+script = ExtResource("2_7wy7u")
+possible_connections = Array[int]([1, 1, 1, 2])
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D" unique_id=2023311556]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16, 0, 4)
+gizmo_extents = 1.55
+script = ExtResource("2_7wy7u")
+possible_connections = Array[int]([1, 1, 1, 2])
+
+[node name="RoomBoundary" type="Area3D" parent="NavigationRegion3D" unique_id=1606815009]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/RoomBoundary" unique_id=545968342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.625, 4)
+shape = SubResource("BoxShape3D_hxupy")
+debug_color = Color(0.975298, 0, 0.42395055, 0.41960785)

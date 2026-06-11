@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://bbrfmlp3yp6km"]
+
+[ext_resource type="Script" uid="uid://cdfapykwu5l41" path="res://scenes/ui/start_menu/multiplayer_pop_up.gd" id="1_5qfut"]
+[ext_resource type="PackedScene" uid="uid://bnosddeinn57u" path="res://scenes/ui/start_menu/local_game_panel.tscn" id="2_axex8"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5qfut"]
+
+[node name="MultiplayerPopUp" type="Control" unique_id=1651207794 node_paths=PackedStringArray("close_button", "create_server_tab_button", "create_server_tab", "steam_game_check_box", "local_game_check_box", "host_server_button", "lobby_code_input", "join_server_tab", "join_server_tab_button", "join_lobby_code_input", "join_steam_lobby_button", "local_game_panel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qfut")
+close_button = NodePath("PanelContainer/PanelContainer/VBoxContainer2/CloseButton")
+create_server_tab_button = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabButtons/CreateServerTabButton")
+create_server_tab = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab")
+steam_game_check_box = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2/SteamGameCheckBox")
+local_game_check_box = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/LocalGameCheckBox")
+host_server_button = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer2/HostServerButton")
+lobby_code_input = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer2/LobbyCodeInput")
+join_server_tab = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab")
+join_server_tab_button = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabButtons/JoinServerTabButton")
+join_lobby_code_input = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer/VBoxContainer/LobbyCodeInput")
+join_steam_lobby_button = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer/VBoxContainer/JoinSeamLobbyButton")
+local_game_panel = NodePath("PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer/LocalGamePanel")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=796449560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=1206465682]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/PanelContainer" unique_id=792049860]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="PanelContainer/PanelContainer/VBoxContainer2" unique_id=1590319685]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2" unique_id=1887330434]
+layout_mode = 2
+
+[node name="TabButtons" type="HBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer" unique_id=1410170348]
+layout_mode = 2
+
+[node name="CreateServerTabButton" type="Button" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabButtons" unique_id=916747235]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Create server"
+
+[node name="JoinServerTabButton" type="Button" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabButtons" unique_id=964773329]
+layout_mode = 2
+text = "Join server"
+
+[node name="TabsContainer" type="PanelContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer" unique_id=1872726010]
+layout_mode = 2
+
+[node name="CreateServerTab" type="PanelContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer" unique_id=460680981]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab" unique_id=1343303796]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer" unique_id=872494599]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer" unique_id=72917069]
+layout_mode = 2
+text = "Create Server"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer" unique_id=1123097694]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1687022151]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=49612365]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=1832925107]
+layout_mode = 2
+text = "Steam"
+
+[node name="SteamGameCheckBox" type="CheckBox" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=681216964]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_5qfut")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1108339246]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=924837116]
+layout_mode = 2
+text = "Local"
+
+[node name="LocalGameCheckBox" type="CheckBox" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1962832043]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_5qfut")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer" unique_id=2118391381]
+layout_mode = 2
+
+[node name="HostServerButton" type="Button" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1108946889]
+layout_mode = 2
+text = "Host"
+
+[node name="LobbyCodeInput" type="TextEdit" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/CreateServerTab/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1412507695]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="JoinServerTab" type="PanelContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer" unique_id=229037252]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab" unique_id=1713594406]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer" unique_id=675762323]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer" unique_id=389436462]
+layout_mode = 2
+text = "Join Server"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer" unique_id=928324635]
+layout_mode = 2
+
+[node name="LobbyCodeInput" type="TextEdit" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1113476814]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="JoinSeamLobbyButton" type="Button" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1383282899]
+layout_mode = 2
+text = "Join Lobby"
+
+[node name="LocalGamePanel" parent="PanelContainer/PanelContainer/VBoxContainer2/VBoxContainer/TabsContainer/JoinServerTab/MarginContainer/VBoxContainer" unique_id=378220362 instance=ExtResource("2_axex8")]
+layout_mode = 2

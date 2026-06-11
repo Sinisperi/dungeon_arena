@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://dsslq058jskbn"]
+
+[ext_resource type="Script" uid="uid://bm8ttysxp6235" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://resources/stats/stats.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://bwywc56fpmk7v" path="res://scenes/player/hud/hud.gd" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://b0potvvdu5p3v" path="res://scenes/ui/components/progress_bar/progress_bar.tscn" id="4_lvxji"]
+
+[sub_resource type="Resource" id="Resource_gmlin"]
+script = ExtResource("2_dovo2")
+health = 100.0
+damage = 15.0
+metadata/_custom_type_script = "uid://btpolbdqnteo7"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
+radius = 0.6689453
+height = 2.1235352
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
+radius = 1.0377772
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dovo2"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x7p2l"]
+material = SubResource("StandardMaterial3D_dovo2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8afob"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dovo2"]
+material = SubResource("StandardMaterial3D_8afob")
+radius = 0.14
+height = 0.81
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
+radius = 0.33642578
+height = 2.098877
+
+[sub_resource type="Animation" id="Animation_lvxji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/WeaponHolder/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.31813908, -0.04101932, 0.051394522)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/WeaponHolder/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.34147707, 1.9939532, -2.0704927)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/WeaponHolder/Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/WeaponHolder/Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/WeaponHolder/Weapon/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p47bc"]
+resource_name = "attack"
+length = 0.50000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/WeaponHolder/Weapon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.26666665, 0.3333333, 0.36666667, 0.40000004, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.31813908, -0.04101932, 0.051394522), Vector3(-0.31813908, -0.24088871, -0.46619457), Vector3(-0.5880487, -0.13261467, -0.71921426), Vector3(-1.2640572, -0.13261467, -0.71921426), Vector3(-1.7611266, 0.17498875, -0.43509537), Vector3(-1.7611266, 0.17498875, -0.9544634), Vector3(-1.3404438, 0.17498875, -1.0364442), Vector3(-0.5764149, 0.17498875, -1.0395503), Vector3(-0.31813908, -0.04101932, 0.051394522)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/WeaponHolder/Weapon:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.26666665, 0.3333333, 0.36666667, 0.40000004, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.34147707, 1.9939532, -2.0704927), Vector3(-0.5362132, 1.5367374, -1.0724788), Vector3(-0.54219353, 1.7971109, -0.31729883), Vector3(-0.919857, 2.295632, -0.4590934), Vector3(-0.91985685, 3.044221, -0.4590934), Vector3(-1.0827057, 1.7847091, -0.5169309), Vector3(-1.4398416, 1.6262121, -1.1900609), Vector3(-1.4329867, 2.3511372, -2.7278094), Vector3(-0.34147707, 1.9939532, -2.0704927)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/WeaponHolder/Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/WeaponHolder/Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/WeaponHolder/Weapon/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75vfm"]
+_data = {
+&"RESET": SubResource("Animation_lvxji"),
+&"attack": SubResource("Animation_p47bc")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("weapon")]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_8afob")
+weapon = NodePath("Visuals/WeaponHolder/Weapon")
+stats = SubResource("Resource_gmlin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1065164579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0617676, 0)
+shape = SubResource("CapsuleShape3D_8afob")
+
+[node name="DamageDetector" type="Area3D" parent="." unique_id=1627515446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageDetector" unique_id=1921868173]
+shape = SubResource("CapsuleShape3D_dovo2")
+debug_color = Color(0.9244165, 4.8997106e-05, 0.6820252, 0.41960785)
+
+[node name="Visuals" type="Node3D" parent="." unique_id=2019204038]
+unique_name_in_owner = true
+
+[node name="InteractionArea" type="Area3D" parent="Visuals" unique_id=457598464]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/InteractionArea" unique_id=2048776852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1222305, -0.8313511)
+shape = SubResource("SphereShape3D_lvxji")
+debug_color = Color(0.64931464, 0.5206126, 3.85046e-07, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=639045771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_x7p2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals/MeshInstance3D" unique_id=650761731]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.6015179, -0.5268117)
+mesh = SubResource("CapsuleMesh_dovo2")
+
+[node name="WeaponHolder" type="Node3D" parent="Visuals" unique_id=1209560710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1754317, 0.9363816, -0.22794658)
+
+[node name="Weapon" type="Area3D" parent="Visuals/WeaponHolder" unique_id=1687461796]
+transform = Transform3D(0.46476966, -0.21412374, 0.859151, -0.82704914, -0.451493, 0.33487928, 0.3161951, -0.86620164, -0.38693103, -0.31813908, -0.04101932, 0.051394522)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/WeaponHolder/Weapon" unique_id=1726507668]
+transform = Transform3D(1, -5.9604645e-08, 2.9802322e-08, 0, 1, -2.9802322e-08, -2.9802322e-08, 0, 1, 2.9802322e-08, 0.5877686, 1.1920929e-07)
+shape = SubResource("CapsuleShape3D_gmlin")
+disabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/WeaponHolder/Weapon" unique_id=1964884570]
+transform = Transform3D(0.92725116, -0.37432992, -0.00906992, 0.0014585853, 0.027833432, -0.9996115, 0.37443665, 0.9268776, 0.02635461, 0, 0, 0)
+size = Vector3(0.6425781, 0.10437012, 0.118896484)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/WeaponHolder/Weapon/CSGBox3D" unique_id=235637823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01493907, -0.0034617782, -0.5697967)
+size = Vector3(0.13305664, 0.055541992, 1.8115234)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1537020140]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 1.8917537, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig" unique_id=908682193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10346246, 0)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D" unique_id=1103746284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2798946, 3.7527425)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508820323]
+libraries/ = SubResource("AnimationLibrary_75vfm")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1559447224 node_paths=PackedStringArray("fps_label")]
+unique_name_in_owner = true
+script = ExtResource("3_gmlin")
+fps_label = NodePath("Control/FPSLabel")
+
+[node name="Control" type="Control" parent="HUD" unique_id=1486726995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control" unique_id=657174030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HealthBar" parent="HUD/Control/MarginContainer" unique_id=1546026761 instance=ExtResource("4_lvxji")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 14.41)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Control/MarginContainer" unique_id=1323933433]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="InteractLabel" type="Label" parent="HUD/Control/MarginContainer/VBoxContainer" unique_id=2089769752]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "E to interact"
+
+[node name="Control" type="Control" parent="HUD/Control/MarginContainer/VBoxContainer" unique_id=541663746]
+custom_minimum_size = Vector2(0, 79.27)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Control/MarginContainer" unique_id=1250305904]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="HUD/Control/MarginContainer/HBoxContainer" unique_id=2134258473]
+layout_mode = 2
+text = "Time Essence"
+
+[node name="TimeEssenceLabel" type="Label" parent="HUD/Control/MarginContainer/HBoxContainer" unique_id=873513672]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FPSLabel" type="Label" parent="HUD/Control" unique_id=1160153883]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 18.0
+offset_right = 595.0
+offset_bottom = 41.0

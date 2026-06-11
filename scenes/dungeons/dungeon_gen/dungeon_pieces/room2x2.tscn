@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://deus7vd1p0qx7"]
+
+[ext_resource type="Script" uid="uid://ctx4t5nqfa6so" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room.gd" id="1_8fs5l"]
+[ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="2_58ryt"]
+[ext_resource type="PackedScene" uid="uid://b8nxwxq3yj1o1" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_spawner.tscn" id="3_23xao"]
+[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="4_sqahs"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_23xao"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5rg8"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58ryt"]
+size = Vector3(15.75, 8.25, 15.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5ptme"]
+height = 0.626
+radius = 5.511
+
+[node name="Room2x2" type="Node3D" unique_id=147006648 node_paths=PackedStringArray("sockets", "room_boundary")]
+script = ExtResource("1_8fs5l")
+sockets = [NodePath("NavigationRegion3D/Marker3D"), NodePath("NavigationRegion3D/Marker3D2"), NodePath("NavigationRegion3D/Marker3D3")]
+room_boundary = NodePath("NavigationRegion3D/RoomBoundary")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=243847104]
+navigation_mesh = SubResource("NavigationMesh_23xao")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1519926938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 8)
+use_collision = true
+size = Vector3(16, 1, 16)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D" unique_id=847409696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 8, 8)
+use_collision = true
+size = Vector3(16, 1, 16)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1018322772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 3.25, 15.875)
+use_collision = true
+size = Vector3(8.25, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D" unique_id=974980124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.875, 3.25, 15.875)
+use_collision = true
+size = Vector3(4.25, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1652638677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.625, 6.375, 15.875)
+use_collision = true
+size = Vector3(4.75, 2.25, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1091716391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.125, 3.25, 0.125)
+use_collision = true
+size = Vector3(8.25, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D" unique_id=100225316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.875, 3.25, 0.125)
+use_collision = true
+size = Vector3(4.25, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1794367590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 6.375, 0.125)
+use_collision = true
+size = Vector3(4.5, 2.25, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1072498223]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16, 3.25, 8)
+use_collision = true
+size = Vector3(15.75, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D" unique_id=717311370]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 3.25, 3.25)
+use_collision = true
+size = Vector3(6.75, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1374751650]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 3.25, 12.875)
+use_collision = true
+size = Vector3(6, 8.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D" unique_id=870303702]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25000024, 6.25, 8.375)
+use_collision = true
+size = Vector3(6, 2.5, 0.25)
+material = SubResource("StandardMaterial3D_c5rg8")
+
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D" unique_id=1251377209]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 10, 0, 0)
+gizmo_extents = 1.0
+script = ExtResource("2_58ryt")
+possible_connections = Array[int]([2])
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D" unique_id=551301689]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 8.25)
+gizmo_extents = 1.0
+script = ExtResource("2_58ryt")
+possible_connections = Array[int]([2])
+
+[node name="Marker3D3" type="Marker3D" parent="NavigationRegion3D" unique_id=1756055268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 16)
+script = ExtResource("2_58ryt")
+possible_connections = Array[int]([2])
+
+[node name="RoomBoundary" type="Area3D" parent="NavigationRegion3D" unique_id=313337471]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/RoomBoundary" unique_id=1195953723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.125, 3.5, 8)
+shape = SubResource("BoxShape3D_58ryt")
+debug_color = Color(0.975298, 0, 0.42395055, 0.41960785)
+
+[node name="EnemySpawner" parent="NavigationRegion3D" unique_id=1346557282 node_paths=PackedStringArray("spawn_area") instance=ExtResource("3_23xao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0.5, 11.75)
+enemy_scenes = Array[PackedScene]([ExtResource("4_sqahs")])
+spawn_area = NodePath("CollisionShape3D")
+amount = 5
+enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/EnemySpawner" unique_id=1636316971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.125, -1.5)
+shape = SubResource("CylinderShape3D_5ptme")

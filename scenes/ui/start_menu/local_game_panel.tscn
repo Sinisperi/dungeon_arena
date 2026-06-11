@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bnosddeinn57u"]
+
+[ext_resource type="Script" uid="uid://830uk1i5rayp" path="res://scenes/ui/start_menu/local_game_panel.gd" id="1_wxf7c"]
+[ext_resource type="PackedScene" uid="uid://c26lpy6ahumob" path="res://scenes/ui/start_menu/local_server_list_item.tscn" id="2_c1m6j"]
+
+[node name="LocalGamePanel" type="VBoxContainer" unique_id=378220362 node_paths=PackedStringArray("local_server_list", "refresh_local_server_list_button", "join_server_button")]
+script = ExtResource("1_wxf7c")
+local_server_list = NodePath("ScrollContainer/LocalServerList")
+refresh_local_server_list_button = NodePath("HBoxContainer/RefreshLocalServerListButton")
+join_server_button = NodePath("HBoxContainer/JoinLocalServerButton")
+local_server_list_item_scene = ExtResource("2_c1m6j")
+
+[node name="Label" type="Label" parent="." unique_id=623088913]
+layout_mode = 2
+text = "Local Game"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1149868886]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="LocalServerList" type="VBoxContainer" parent="ScrollContainer" unique_id=501912425]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=898211681]
+layout_mode = 2
+
+[node name="RefreshLocalServerListButton" type="Button" parent="HBoxContainer" unique_id=13791667]
+layout_mode = 2
+text = "Refresh Server List"
+
+[node name="JoinLocalServerButton" type="Button" parent="HBoxContainer" unique_id=1450602051]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Join Selected Server"

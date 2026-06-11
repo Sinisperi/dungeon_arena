@@ -67,6 +67,11 @@ func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
 
 func _on_steam_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
+		if lobby_id == current_lobby_id:
+			SignalBus.ui.notification_pop_up_requested.emit(
+				"Info", "Already joined this lobby, you dum dum"
+			)
+			return
 		var host_id: int = Steam.getLobbyOwner(lobby_id)
 		var user_id: int = Steam.getSteamID()
 		if host_id != user_id:

@@ -31,6 +31,7 @@ func _ready() -> void:
 	join_steam_lobby_button.pressed.connect(_on_join_steam_lobby_button_pressed)
 
 	SteamManager.lobby_created.connect(_on_steam_lobby_created)
+	SteamManager.lobby_joined.connect(_on_steam_lobby_joined)
 
 	NetworkManager.local_host_created.connect(_on_local_host_created)
 
@@ -85,10 +86,15 @@ func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
 
 
 func _on_join_steam_lobby_button_pressed() -> void:
-	print_rich("[color=orange]Not implemented, test locally for now[/color]")
+	SteamManager.join_lobby(str(join_lobby_code_input.text))
+	#print_rich("[color=orange]Not implemented, test locally for now[/color]")
 
 
 func _on_local_host_created(port: int) -> void:
 	SignalBus.ui.notification_pop_up_requested.emit(
 		"Success!", "Created local host on port: " + str(port)
 	)
+
+
+func _on_steam_lobby_joined() -> void:
+	SignalBus.ui.notification_pop_up_requested.emit("Success!", "Joined lobby")

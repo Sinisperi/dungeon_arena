@@ -16,7 +16,6 @@ func _ready() -> void:
 		invite_button.pressed.connect(_on_invite_button_pressed)
 	NetworkManager.connected_to_server.connect(_on_connected_to_server)
 	NetworkManager.peer_connected.connect(_on_peer_connected)
-	SteamManager.lobby_joined.connect(_on_steam_lobby_joined)
 
 
 func _on_quit_button_pressed() -> void:
@@ -33,8 +32,4 @@ func _on_connected_to_server() -> void:
 
 func _on_peer_connected(peer_id: int) -> void:
 	print("peer connected ", peer_id)
-	pass
-
-
-func _on_steam_lobby_joined() -> void:
 	pass

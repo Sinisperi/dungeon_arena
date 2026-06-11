@@ -86,6 +86,7 @@ func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
 
 
 func _on_join_steam_lobby_button_pressed() -> void:
+	NetworkManager.switch_connection_type(NetworkManager.ConnectionType.MULTIPLAYER_CLIENT)
 	SteamManager.join_lobby(str(join_lobby_code_input.text))
 	#print_rich("[color=orange]Not implemented, test locally for now[/color]")
 

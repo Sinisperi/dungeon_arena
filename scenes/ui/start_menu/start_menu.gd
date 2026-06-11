@@ -30,6 +30,6 @@ func _on_connected_to_server() -> void:
 	pass
 
 
-func _on_peer_connected(peer_id: int) -> void:
-	print("peer connected ", peer_id)
+func _on_peer_connected(peer_id: int, player_id: int) -> void:
+	print("peer connected ", peer_id, "steam id ", player_id)
 	pass

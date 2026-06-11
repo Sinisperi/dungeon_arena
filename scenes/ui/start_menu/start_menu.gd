@@ -30,6 +30,7 @@ func _on_connected_to_server() -> void:
 	pass
 
 
-func _on_peer_connected(peer_id: int, player_id: int) -> void:
-	print("peer connected ", peer_id, "steam id ", player_id)
-	pass
+func _on_peer_connected(peer_id: int, _player_id: int) -> void:
+	SignalBus.ui.notification_pop_up_requested.emit(
+		SteamManager.get_peer_steam_username(peer_id) + " has joined!", "Rejoice!"
+	)

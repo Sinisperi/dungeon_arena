@@ -67,14 +67,14 @@ func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
 
 func _on_steam_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
-		if lobby_id == current_lobby_id:
-			SignalBus.ui.notification_pop_up_requested.emit(
-				"Info", "Already joined this lobby, you dum dum"
-			)
-			return
 		var host_id: int = Steam.getLobbyOwner(lobby_id)
 		var user_id: int = Steam.getSteamID()
 		if host_id != user_id:
+			if lobby_id == current_lobby_id:
+				SignalBus.ui.notification_pop_up_requested.emit(
+					"Info", "Already joined this lobby, you dum dum"
+				)
+				return
 			NetworkManager.peer.create_client(host_id)
 			multiplayer.set_multiplayer_peer(NetworkManager.peer)
 			current_lobby_id = lobby_id
@@ -87,7 +87,6 @@ func _on_steam_lobby_chat_update(
 	var username: String = Steam.getFriendPersonaName(changed_id)
 	if chat_state == 1:
 		user_joined.emit(changed_id, username)
-		SignalBus.ui.notification_pop_up_requested.emit(username + " has joined!", "Rejoice!")
 
 	elif chat_state == 2:
 		SignalBus.ui.notification_pop_up_requested.emit(username + " has left!", "It's fine!")

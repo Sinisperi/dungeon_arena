@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="5_6fasc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y2fgm"]
+geometry_parsed_geometry_type = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2fgm"]
 albedo_color = Color(0.1148968, 0.11489681, 0.1148968, 1)

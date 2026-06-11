@@ -14,4 +14,4 @@ class DungeonSignals:
 
 
 class UISignals:
-	signal toast_popup_requested(message)
+	signal notification_pop_up_requested(title: String, body: String)

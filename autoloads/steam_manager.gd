@@ -82,10 +82,10 @@ func _on_steam_lobby_chat_update(
 	var username: String = Steam.getFriendPersonaName(changed_id)
 	if chat_state == 1:
 		user_joined.emit(changed_id, username)
-		SignalBus.ui.toast_popup_requested.emit(username + " has joined!", false, "Rejoice!")
+		SignalBus.ui.notification_pop_up_requested.emit(username + " has joined!", "Rejoice!")
 
 	elif chat_state == 2:
-		SignalBus.ui.toast_popup_requested.emit(username + " has left!", false, "It's fine!")
+		SignalBus.ui.notification_pop_up_requested.emit(username + " has left!", "It's fine!")
 		user_left.emit(changed_id, username)
 
 

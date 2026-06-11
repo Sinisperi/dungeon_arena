@@ -32,6 +32,8 @@ func _ready() -> void:
 
 	SteamManager.lobby_created.connect(_on_steam_lobby_created)
 
+	NetworkManager.local_host_created.connect(_on_local_host_created)
+
 
 func _on_create_server_tab_button_pressed() -> void:
 	create_server_tab.show()
@@ -73,9 +75,20 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
-	lobby_code_input.text = str(lobby_id)
-	print("Lobby created ", response)
+	if response == 1:
+		SignalBus.ui.notification_pop_up_requested.emit("Success!", "Lobby created, very good")
+		lobby_code_input.text = str(lobby_id)
+	else:
+		SignalBus.ui.notification_pop_up_requested.emit(
+			"Fail", "Something went wrong, while trying to create steam lobby"
+		)
 
 
 func _on_join_steam_lobby_button_pressed() -> void:
 	print_rich("[color=orange]Not implemented, test locally for now[/color]")
+
+
+func _on_local_host_created(port: int) -> void:
+	SignalBus.ui.notification_pop_up_requested.emit(
+		"Success!", "Created local host on port: " + str(port)
+	)

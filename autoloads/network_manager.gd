@@ -5,7 +5,7 @@ signal peer_connected(peer_id: int, player_id: int)
 signal peer_disconnected(peer_id: int, player_id: int)
 signal host_disconnected
 signal connection_type_changed(connection_type: ConnectionType)
-signal local_host_created
+signal local_host_created(p: int)
 signal connected_to_server
 
 var peer: MultiplayerPeer = null
@@ -44,7 +44,7 @@ func _enable_local_host() -> Error:
 	var response: Error = peer.create_server(_find_available_port())
 	if response == OK:
 		multiplayer.multiplayer_peer = peer
-		local_host_created.emit()
+		local_host_created.emit(port)
 	else:
 		print("Was not able to create local host")
 
@@ -124,7 +124,10 @@ func switch_connection_type(connection_type: ConnectionType) -> Error:
 			var result: Dictionary = enable_multiplayer()
 			if result.status != 0:
 				switch_connection_type(ConnectionType.LOCAL_HOST)
-				print("Failed to create multiplayer host, falling back to local host")
+				SignalBus.ui.notification_pop_up_requested.emit(
+					"Epic fail!",
+					"Failed to create multiplayer host, falling back to local host instead..."
+				)
 				error = FAILED
 				return error
 			error = SteamManager.create_host()

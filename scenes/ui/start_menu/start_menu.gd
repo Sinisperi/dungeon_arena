@@ -21,6 +21,12 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	if multiplayer.is_server():
+		_load_peers_to_game.rpc()
+
+
+@rpc("any_peer", "call_local")
+func _load_peers_to_game() -> void:
 	SceneLoader.load_scene(multiplayer.get_unique_id(), SceneLoader.MAIN_SCENE)
 
 

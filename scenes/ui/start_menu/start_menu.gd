@@ -14,8 +14,14 @@ func _ready() -> void:
 		quit_button.pressed.connect(_on_quit_button_pressed)
 	if invite_button:
 		invite_button.pressed.connect(_on_invite_button_pressed)
+	if start_button:
+		start_button.pressed.connect(_on_start_button_pressed)
 	NetworkManager.connected_to_server.connect(_on_connected_to_server)
 	NetworkManager.peer_connected.connect(_on_peer_connected)
+
+
+func _on_start_button_pressed() -> void:
+	SceneLoader.load_scene(multiplayer.get_unique_id(), SceneLoader.MAIN_SCENE)
 
 
 func _on_quit_button_pressed() -> void:

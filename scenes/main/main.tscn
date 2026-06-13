@@ -1,40 +1,26 @@
 [gd_scene format=3 uid="uid://qlcf1huk4gio"]
 
-[ext_resource type="PackedScene" uid="uid://dsslq058jskbn" path="res://scenes/player/player.tscn" id="2_iuonh"]
-[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="3_k2fmo"]
-[ext_resource type="PackedScene" uid="uid://cjo82n66lneur" path="res://scenes/dungeons/first_dungeon/first_dungeon.tscn" id="4_l3cfh"]
-[ext_resource type="PackedScene" uid="uid://dy65c7od18v5e" path="res://scenes/dungeons/dungeon_gen/seal/seal.tscn" id="5_6q06x"]
+[ext_resource type="PackedScene" uid="uid://cow431hkuap3u" path="res://scenes/multiplayer_player_spawner/multiplayer_player_spawner.tscn" id="1_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://cnm707e5nasri" path="res://scenes/hub/hub.tscn" id="3_k2fmo"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iuonh"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iuonh"]
+radius = 4.0
 
-[sub_resource type="Sky" id="Sky_k2fmo"]
-sky_material = SubResource("ProceduralSkyMaterial_iuonh")
+[node name="Main" type="Node" unique_id=864719559]
 
-[sub_resource type="Environment" id="Environment_l3cfh"]
-background_mode = 2
-sky = SubResource("Sky_k2fmo")
-tonemap_mode = 2
-glow_enabled = true
+[node name="MultiplayerPlayerSpawner" parent="." unique_id=259476372 node_paths=PackedStringArray("players_container", "character_spawn_area") instance=ExtResource("1_l3cfh")]
+players_container = NodePath("../PlayersContainer")
+character_spawn_area = NodePath("../Hub/CharacterSpawnArea/CollisionShape3D")
 
-[node name="Main" type="Node3D" unique_id=188288059]
+[node name="PlayersContainer" type="Node" parent="." unique_id=1504898544]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=713891199]
-environment = SubResource("Environment_l3cfh")
+[node name="Hub" parent="." unique_id=850433143 instance=ExtResource("3_k2fmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -221.75, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2034627039]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
+[node name="CharacterSpawnArea" type="Area3D" parent="Hub" unique_id=1396088229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1, 6.25)
 
-[node name="Player" parent="." unique_id=1487335681 instance=ExtResource("2_iuonh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3482864, 0.47830796, 7.7149744)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hub/CharacterSpawnArea" unique_id=99850846]
+shape = SubResource("CylinderShape3D_iuonh")
 
-[node name="Enemy" parent="." unique_id=1544341509 instance=ExtResource("3_k2fmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.134346, -0.13704705, -1.840198)
-
-[node name="Seal" parent="." unique_id=2005908388 instance=ExtResource("5_6q06x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.545389, 1.7509475, -4.345933)
-
-[node name="FirstDungeon" parent="." unique_id=1666560759 instance=ExtResource("4_l3cfh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+[node name="LevelContainer" type="Node" parent="." unique_id=1573117365]

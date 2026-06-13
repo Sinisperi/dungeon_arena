@@ -105,7 +105,6 @@ func get_player_id(peer_id: int) -> int:
 		return 0
 
 
-## TODO add error as a return type to this and to every state switching thing here
 func switch_connection_type(connection_type: ConnectionType) -> Error:
 	var error: Error = OK
 	if connection_type == current_connection_type:

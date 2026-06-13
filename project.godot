@@ -21,6 +21,8 @@ SignalBus="*uid://b4xu4uv6s3376"
 Globals="*uid://uff0co11nuu0"
 NetworkManager="*uid://dq0ihyt4fsfif"
 SteamManager="*uid://vab35jgbhmkt"
+SceneLoader="*uid://bwv3bfvtedn0w"
+PlayerManager="*uid://ce3aaefserfbh"
 
 [editor_plugins]
 

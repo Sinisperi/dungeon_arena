@@ -9,10 +9,16 @@ class_name Player extends CharacterBody3D
 @export var weapon: Area3D
 @export var stats: Stats
 
+@export_category("Multiplayer")
+@export var multiplayer_synchronizer: MultiplayerSynchronizer
+
 var current_interactible: Area3D = null
 
 
 func _ready() -> void:
+	if is_multiplayer_authority():
+		Globals.player = self
+
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if weapon:
 		weapon.area_entered.connect(_on_weapon_enemy_hit)

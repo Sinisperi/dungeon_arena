@@ -88,6 +88,9 @@ func _on_steam_lobby_created(response: int, lobby_id: int) -> void:
 func _on_join_steam_lobby_button_pressed() -> void:
 	await NetworkManager.switch_connection_type(NetworkManager.ConnectionType.MULTIPLAYER_CLIENT)
 	SteamManager.join_lobby(str(join_lobby_code_input.text))
+	print_debug(
+		"When client joins lobby while already in other lobby and that host created new lobby and client tries to join it, it errors ERR_ALREADY_IN_USE. which means client still exists after passing to join lobby, which is cause by switch_connection_type function not doing anything if connection_type == current_connection_type"
+	)
 
 
 func _on_local_host_created(port: int) -> void:

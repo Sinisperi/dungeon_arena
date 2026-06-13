@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cow431hkuap3u"]
+
+[ext_resource type="Script" uid="uid://455w0qjqylly" path="res://scenes/multiplayer_player_spawner/multiplayer_player_spawner.gd" id="1_fler3"]
+[ext_resource type="PackedScene" uid="uid://dsslq058jskbn" path="res://scenes/player/player.tscn" id="2_nuh08"]
+
+[node name="MultiplayerPlayerSpawner" type="Node" unique_id=259476372]
+script = ExtResource("1_fler3")
+player_scene = ExtResource("2_nuh08")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1010142872]

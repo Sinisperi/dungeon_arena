@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://re5pegrrqug4" path="res://scenes/ui/start_menu/local_server_list_item.gd" id="1_65d3h"]
 
-[node name="LocalServerListItem" type="VBoxContainer" unique_id=642972717 node_paths=PackedStringArray("server_name_label", "server_port_label")]
+[node name="LocalServerListItem" type="VBoxContainer" unique_id=642972717 node_paths=PackedStringArray("server_name_label", "server_port_label", "server_ip_label")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 50.0
@@ -11,6 +11,7 @@ size_flags_horizontal = 3
 script = ExtResource("1_65d3h")
 server_name_label = NodePath("ServerName")
 server_port_label = NodePath("HBoxContainer/ServerPort")
+server_ip_label = NodePath("HBoxContainer/ServerIp")
 
 [node name="ServerName" type="Label" parent="." unique_id=2004873148]
 layout_mode = 2

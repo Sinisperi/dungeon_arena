@@ -41,7 +41,7 @@ func _update_server_list() -> void:
 	for s in server_list:
 		var list_item: LocalServerListItem = local_server_list_item_scene.instantiate()
 		list_item.server_ip = s
-		list_item.server_port = server_list[s].ip
+		list_item.server_port = server_list[s].port
 		list_item.server_name = server_list[s].name
 		local_server_list.add_child(list_item)
 		list_item.selected.connect(_on_server_list_item_selected)

@@ -10,10 +10,24 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 script = ExtResource("1_65d3h")
 server_name_label = NodePath("ServerName")
-server_port_label = NodePath("ServerPort")
+server_port_label = NodePath("HBoxContainer/ServerPort")
 
 [node name="ServerName" type="Label" parent="." unique_id=2004873148]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "asdfasdf"
 
-[node name="ServerPort" type="Label" parent="." unique_id=2001178968]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=236988726]
 layout_mode = 2
+
+[node name="ServerIp" type="Label" parent="HBoxContainer" unique_id=987912709]
+layout_mode = 2
+text = "128.2.3.2"
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=316503268]
+layout_mode = 2
+text = ":"
+
+[node name="ServerPort" type="Label" parent="HBoxContainer" unique_id=2001178968]
+layout_mode = 2
+text = "3233"

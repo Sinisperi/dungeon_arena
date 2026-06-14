@@ -54,7 +54,6 @@ func _enable_local_host() -> Error:
 
 
 func _get_local_ip_address() -> void:
-	#var local_ips: Array = IP.get_local_addresses()
 	var local_interfaces: Array = IP.get_local_interfaces()
 	for adapter in local_interfaces:
 		var adapter_name: String = adapter.get("name", "").to_lower()
@@ -74,7 +73,7 @@ func _get_local_ip_address() -> void:
 				continue
 			if i == "127.0.0.1":
 				continue
-			if i.begins_with("192.168") or i.begins_with("10.") or i.begins_with("172."):
+			if i.begins_with("192.168") || i.begins_with("10.") || i.begins_with("172."):
 				ip = i
 				break
 
@@ -186,7 +185,7 @@ func _send_broadcast_packet() -> void:
 	if since_last_broadcast >= broadcast_interval:
 		since_last_broadcast = 0.0
 		broadcast_peer.put_packet(
-			JSON.stringify({"port": port, "server_name": "Local Server"}).to_utf8_buffer()
+			JSON.stringify({"ip": ip, "port": port, "server_name": "Local Server"}).to_utf8_buffer()
 		)
 	since_last_broadcast += 0.01666666666
 
@@ -211,7 +210,7 @@ func get_local_servers() -> Dictionary:
 			while listener.get_available_packet_count() > 0:
 				var bytes: PackedByteArray = listener.get_packet()
 				var data: Variant = JSON.parse_string(bytes.get_string_from_utf8())
-				res[int(data.port)] = data.server_name
+				res[data.ip] = {"port": int(data.port), "name": data.server_name}
 			await get_tree().process_frame
 		listener.close()
 	return res
@@ -230,8 +229,9 @@ func _find_available_port() -> int:
 	return res
 
 
-func set_local_client_port(value: int) -> void:
-	local_client_port = value
+func set_local_client_server(server: Dictionary) -> void:
+	ip = server.ip
+	local_client_port = server.port
 
 
 func _on_connected_to_server() -> void:

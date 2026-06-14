@@ -8,7 +8,7 @@ class_name LocalGamePanel extends Control
 
 var server_list: Dictionary = {}
 
-var current_selected_port: int = -1
+var current_selected_server: Dictionary = {"ip": "127.0.0.0", "port": -1}
 
 
 func _ready() -> void:
@@ -22,13 +22,13 @@ func _on_refresh_local_server_list_button_pressed() -> void:
 
 
 func _on_join_server_button_pressed() -> void:
-	if current_selected_port > 0:
-		NetworkManager.set_local_client_port(current_selected_port)
+	if current_selected_server.port > 0:
+		NetworkManager.set_local_client_server(current_selected_server)
 		var err: Error = await NetworkManager.switch_connection_type(
 			NetworkManager.ConnectionType.LOCAL_CLIENT
 		)
 		if err == OK:
-			print("Created local client on port: ", current_selected_port)
+			print("Created local client on port: ", current_selected_server)
 
 
 func _update_server_list() -> void:
@@ -40,11 +40,12 @@ func _update_server_list() -> void:
 
 	for s in server_list:
 		var list_item: LocalServerListItem = local_server_list_item_scene.instantiate()
-		list_item.server_port = s
-		list_item.server_name = server_list[s]
+		list_item.server_ip = s
+		list_item.server_port = server_list[s].ip
+		list_item.server_name = server_list[s].name
 		local_server_list.add_child(list_item)
 		list_item.selected.connect(_on_server_list_item_selected)
 
 
-func _on_server_list_item_selected(port: int) -> void:
-	current_selected_port = port
+func _on_server_list_item_selected(ip: String, port: int) -> void:
+	current_selected_server = {"ip": ip, "port": port}

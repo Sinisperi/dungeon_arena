@@ -22,10 +22,10 @@ func _request_player_spawn(peer_id: int) -> void:
 	player.multiplayer_synchronizer.set_visibility_for(1, true)
 	PlayerManager.add_player_to_active(peer_id, player)
 
-	if player.is_node_ready():
+	if !player.is_node_ready():
 		await player.ready
 
-	if peer_id >= 0:
+	if peer_id > 1:
 		var players_data: Dictionary = {}
 		for peer in PlayerManager.active_players.keys():
 			var p: Player = PlayerManager.active_players[peer].player_ref
@@ -33,17 +33,18 @@ func _request_player_spawn(peer_id: int) -> void:
 				"position":
 				{"x": p.global_position.x, "y": p.global_position.y, "z": p.global_position.z}
 			}
-		var data: Dictionary = {
-			"players_data": players_data, "active_peers": multiplayer.get_peers()
-		}
+		print("player data", players_data)
+		var data: Dictionary = {"players_data": players_data}
 		_send_spawn_response_to_peer.rpc_id(peer_id, data)
 
 
 # on the client
 @rpc("any_peer", "call_local")
 func _send_spawn_response_to_peer(data: Dictionary) -> void:
-	var player: Player = _create_player(multiplayer.get_unique_id(), data)
-	for peer in data.active_peers:
+	var player: Player = _create_player(
+		multiplayer.get_unique_id(), data.players_data[multiplayer.get_unique_id()]
+	)
+	for peer in data.players_data:
 		if peer != multiplayer.get_unique_id():
 			var new_peer_player: Player = _create_player(peer, data.players_data[peer])
 			new_peer_player.multiplayer_synchronizer.set_visibility_for(peer, true)

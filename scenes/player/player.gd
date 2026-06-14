@@ -1,6 +1,5 @@
 class_name Player extends CharacterBody3D
 
-@onready var camera_rig: Node3D = %CameraRig
 @onready var visuals: Node3D = %Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hud: HUD = %HUD
@@ -8,6 +7,7 @@ class_name Player extends CharacterBody3D
 
 @export var weapon: Area3D
 @export var stats: Stats
+@export var camera_rig: CameraRig
 
 @export_category("Multiplayer")
 @export var multiplayer_synchronizer: MultiplayerSynchronizer
@@ -18,6 +18,12 @@ var current_interactible: Area3D = null
 func _ready() -> void:
 	if is_multiplayer_authority():
 		Globals.player = self
+		camera_rig.current = true
+	else:
+		set_physics_process(false)
+		set_process_input(false)
+		set_process_unhandled_input(false)
+		set_process_unhandled_key_input(false)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if weapon:

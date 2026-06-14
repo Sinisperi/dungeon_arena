@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bm8ttysxp6235" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://resources/stats/stats.gd" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://0mg04ktwnetm" path="res://scenes/player/camera_rig/camera_rig.tscn" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://bwywc56fpmk7v" path="res://scenes/player/hud/hud.gd" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://b0potvvdu5p3v" path="res://scenes/ui/components/progress_bar/progress_bar.tscn" id="4_lvxji"]
 
-[sub_resource type="Resource" id="Resource_gmlin"]
+[sub_resource type="Resource" id="Resource_p47bc"]
 script = ExtResource("2_dovo2")
-health = 100.0
-damage = 15.0
+health = 1000.0
+damage = 12.0
 metadata/_custom_type_script = "uid://btpolbdqnteo7"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
@@ -179,13 +180,17 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("weapon", "multiplayer_synchronizer")]
+[node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("weapon", "camera_rig", "multiplayer_synchronizer")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_8afob")
 weapon = NodePath("Visuals/WeaponHolder/Weapon")
-stats = SubResource("Resource_gmlin")
+stats = SubResource("Resource_p47bc")
+camera_rig = NodePath("CameraRig")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
+
+[node name="CameraRig" parent="." unique_id=792375586 instance=ExtResource("2_lvxji")]
+transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 1.6651385, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1065164579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0617676, 0)
@@ -244,17 +249,6 @@ size = Vector3(0.6425781, 0.10437012, 0.118896484)
 [node name="CSGBox3D" type="CSGBox3D" parent="Visuals/WeaponHolder/Weapon/CSGBox3D" unique_id=235637823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01493907, -0.0034617782, -0.5697967)
 size = Vector3(0.13305664, 0.055541992, 1.8115234)
-
-[node name="CameraRig" type="Node3D" parent="." unique_id=1537020140]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 1.8917537, 0)
-
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig" unique_id=908682193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10346246, 0)
-spring_length = 5.0
-
-[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D" unique_id=1103746284]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2798946, 3.7527425)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508820323]
 libraries/ = SubResource("AnimationLibrary_75vfm")

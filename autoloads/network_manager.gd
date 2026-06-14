@@ -43,6 +43,7 @@ func _enable_local_host() -> Error:
 	peer = ENetMultiplayerPeer.new()
 	var response: Error = peer.create_server(_find_available_port())
 	if response == OK:
+		_get_local_ip_address()
 		multiplayer.multiplayer_peer = peer
 		local_host_created.emit(port)
 	else:
@@ -50,6 +51,25 @@ func _enable_local_host() -> Error:
 
 		_reset_peer()
 	return response
+
+
+func _get_local_ip_address() -> void:
+	#var local_ips: Array = IP.get_local_addresses()
+	var local_interfaces: Array = IP.get_local_interfaces()
+	for adapter in local_interfaces:
+		var adapter_name: String = adapter.get("name", "").to_lower()
+		var friendly_name: String = adapter.get("friendly", "").to_lower()
+		var addresses: Array = adapter.get("addresses", [])
+
+		if "loopback" in friendly_name:
+			continue
+	#for i: String in local_ips:
+	#	if i.contains(":"):
+	#		continue
+	#	if i.begins_with("127.0."):
+	#		continue
+
+	print("local_ips", local_interfaces)
 
 
 func _create_local_client() -> Error:
@@ -83,6 +103,7 @@ func enable_multiplayer() -> Dictionary:
 
 
 func _on_peer_connected(peer_id: int) -> void:
+	print("peer connected ", peer_id)
 	peer_connected.emit(peer_id, get_player_id(peer_id))
 
 

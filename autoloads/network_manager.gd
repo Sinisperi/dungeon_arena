@@ -63,13 +63,22 @@ func _get_local_ip_address() -> void:
 
 		if "loopback" in friendly_name:
 			continue
-	#for i: String in local_ips:
-	#	if i.contains(":"):
-	#		continue
-	#	if i.begins_with("127.0."):
-	#		continue
+		if adapter_name == "lo" || friendly_name == "lo":
+			continue
+		if "docker" in adapter_name || "docker" in friendly_name:
+			continue
+		if adapter_name.begins_with("br-") || "vbox" in adapter_name || "vbox" in friendly_name:
+			continue
+		for i: String in addresses:
+			if ":" in i:
+				continue
+			if i == "127.0.0.1":
+				continue
+			if i.begins_with("192.168") or i.begins_with("10.") or i.begins_with("172."):
+				ip = i
+				break
 
-	print("local_ips", local_interfaces)
+	prints("local_ips", local_interfaces, ip)
 
 
 func _create_local_client() -> Error:

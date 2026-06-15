@@ -2,7 +2,7 @@ class_name MultiplayerPlayerSpawner extends Node
 
 @export var players_container: Node
 @export var player_scene: PackedScene
-@export var character_spawn_area: CollisionShape3D
+@export var player_spawn_area: EntitySpawnArea
 
 
 func _ready() -> void:
@@ -82,20 +82,20 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 	if !data.is_empty():
 		player.global_position = Vector3(data.position.x, data.position.y, data.position.z)
 	else:
-		player.global_position = character_spawn_area.global_position + pick_random_point()
+		#player.global_position = character_spawn_area.global_position + pick_random_point()
+		player.global_position = player_spawn_area.get_spawn_position()
 
 	return player
 
-
-func pick_random_point() -> Vector3:
-	var radius: float = character_spawn_area.shape.radius
-
-	var r: float = radius * sqrt(randf())
-	var theta: float = randf() * TAU  # TAU is exactly 2 * PI (a full 360-degree rotation)
-
-	# 2. Convert polar coordinates (radius, angle) back into local 3D X and Z floor planes
-	var local_x: float = r * cos(theta)
-	var local_z: float = r * sin(theta)
-
-	# 3. Give it a tiny local vertical boost (Y = 0.5) so they drop cleanly onto the floor
-	return Vector3(local_x, 0.5, local_z)
+#func pick_random_point() -> Vector3:
+#	var radius: float = character_spawn_area.shape.radius
+#
+#	var r: float = radius * sqrt(randf())
+#	var theta: float = randf() * TAU  # TAU is exactly 2 * PI (a full 360-degree rotation)
+#
+#	# 2. Convert polar coordinates (radius, angle) back into local 3D X and Z floor planes
+#	var local_x: float = r * cos(theta)
+#	var local_z: float = r * sin(theta)
+#
+#	# 3. Give it a tiny local vertical boost (Y = 0.5) so they drop cleanly onto the floor
+#	return Vector3(local_x, 0.5, local_z)

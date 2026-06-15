@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://n6cu3d4rllvm"]
+
+[ext_resource type="Script" uid="uid://cmcdkneef7b4n" path="res://scenes/entity_spawn_area/entity_spawn_area.gd" id="1_i5i37"]
+
+[node name="EntitySpawnArea" type="Area3D" unique_id=1151548269]
+script = ExtResource("1_i5i37")

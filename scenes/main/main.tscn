@@ -2,25 +2,30 @@
 
 [ext_resource type="PackedScene" uid="uid://cow431hkuap3u" path="res://scenes/multiplayer_player_spawner/multiplayer_player_spawner.tscn" id="1_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://cnm707e5nasri" path="res://scenes/hub/hub.tscn" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://cmcdkneef7b4n" path="res://scenes/entity_spawn_area/entity_spawn_area.gd" id="3_l3cfh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_iuonh"]
 radius = 4.0
 
 [node name="Main" type="Node" unique_id=864719559]
 
-[node name="MultiplayerPlayerSpawner" parent="." unique_id=259476372 node_paths=PackedStringArray("players_container", "character_spawn_area") instance=ExtResource("1_l3cfh")]
+[node name="MultiplayerPlayerSpawner" parent="." unique_id=259476372 node_paths=PackedStringArray("players_container", "player_spawn_area") instance=ExtResource("1_l3cfh")]
 players_container = NodePath("../PlayersContainer")
-character_spawn_area = NodePath("../Hub/CharacterSpawnArea/CollisionShape3D")
+player_spawn_area = NodePath("../Hub/EntitySpawnArea")
 
 [node name="PlayersContainer" type="Node" parent="." unique_id=1504898544]
 
 [node name="Hub" parent="." unique_id=850433143 instance=ExtResource("3_k2fmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -221.75, 0)
 
-[node name="CharacterSpawnArea" type="Area3D" parent="Hub" unique_id=1396088229]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1, 6.25)
+[node name="EntitySpawnArea" type="Area3D" parent="Hub" unique_id=2005133413 node_paths=PackedStringArray("spawn_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 6)
+script = ExtResource("3_l3cfh")
+spawn_area = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://cmcdkneef7b4n"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hub/CharacterSpawnArea" unique_id=99850846]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hub/EntitySpawnArea" unique_id=99850846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_iuonh")
 
-[node name="LevelContainer" type="Node" parent="." unique_id=1573117365]
+[node name="LevelLoader" type="Node" parent="." unique_id=1573117365]

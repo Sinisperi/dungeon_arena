@@ -23,6 +23,12 @@ NetworkManager="*uid://dq0ihyt4fsfif"
 SteamManager="*uid://vab35jgbhmkt"
 SceneLoader="*uid://bwv3bfvtedn0w"
 PlayerManager="*uid://ce3aaefserfbh"
+DungeonLoader="*uid://d02vsykunmd6"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_signal=0
 
 [editor_plugins]
 

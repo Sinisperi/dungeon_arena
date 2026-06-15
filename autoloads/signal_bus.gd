@@ -2,6 +2,7 @@ extends Node
 
 var dungeon = DungeonSignals.new()
 var ui = UISignals.new()
+var game = GameSignals.new()
 
 signal crash_game
 signal enemy_spawned
@@ -15,3 +16,7 @@ class DungeonSignals:
 
 class UISignals:
 	signal notification_pop_up_requested(title: String, body: String)
+
+
+class GameSignals:
+	signal dungeon_loaded(player_spawn_position)

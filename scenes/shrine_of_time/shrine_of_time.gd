@@ -14,6 +14,10 @@ var time_essence_held: int = 500
 # when 4 pillars are lit, you go to the center to perform a ritual and summon the final boss or get teleported to the boss arena
 # ritual will take time so you have to somehow defend
 
+# NOTE you should activate the shrine of time for the doors to the sub-dungons to
+# open, otherwise the time will start before everyone is there and before  any
+# player is there
+
 var essence_value: float = 0.6
 var since_last_update: float = essence_value
 

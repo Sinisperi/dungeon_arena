@@ -1,9 +1,20 @@
 @tool
+
+
+# NOTE there should be something that lets you to deposit money you collect
+# but with a -30% if you know you won't get out because you will loose everything
+# if you die in the dungeon
+
+
 class_name Dungeon extends Node3D
+
+signal dungeon_loading_complete
 
 @export var sub_dungeons: Array[DungeonGenerator] = []
 @export var navigaion_region: NavigationRegion3D
 @export var enemy_container: Node3D
+@export var player_spawn_area: EntitySpawnArea
+
 @export_tool_button("Generate", "") var gen = generate
 @export_tool_button("Crash Editor", "") var gen_crash = func() -> void:
 	for i in range(11):
@@ -25,6 +36,7 @@ func _ready() -> void:
 	await navigaion_region.bake_finished
 	print("bake finished")
 	SignalBus.dungeon.navigation_bake_finished.emit()
+	dungeon_loading_complete.emit()
 	
 
 func generate() -> void:
@@ -68,3 +80,7 @@ func attempt_generation() -> bool:
 			push_error("Dungeon went into infinite loop! ", i)
 			return false
 	return true
+
+
+func get_player_spawn_position() -> Vector3:
+	return player_spawn_area.get_spawn_position()

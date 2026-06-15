@@ -7,6 +7,7 @@ class_name MultiplayerPlayerSpawner extends Node
 
 func _ready() -> void:
 	SceneLoader.scene_loaded_for_peer.connect(_on_scene_loaded)
+	NetworkManager.peer_disconnected.connect(_on_peer_disconnected)
 
 
 # everywhere
@@ -87,15 +88,9 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 
 	return player
 
-#func pick_random_point() -> Vector3:
-#	var radius: float = character_spawn_area.shape.radius
-#
-#	var r: float = radius * sqrt(randf())
-#	var theta: float = randf() * TAU  # TAU is exactly 2 * PI (a full 360-degree rotation)
-#
-#	# 2. Convert polar coordinates (radius, angle) back into local 3D X and Z floor planes
-#	var local_x: float = r * cos(theta)
-#	var local_z: float = r * sin(theta)
-#
-#	# 3. Give it a tiny local vertical boost (Y = 0.5) so they drop cleanly onto the floor
-#	return Vector3(local_x, 0.5, local_z)
+
+func _on_peer_disconnected(peer_id: int) -> void:
+	if multiplayer.is_server():
+		var player: Player = PlayerManager.remove_player_from_active(peer_id)
+		players_container.remove_child(player)
+		player.queue_free()

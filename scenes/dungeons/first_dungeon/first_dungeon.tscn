@@ -107,7 +107,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.5, 19.25)
 enemy_scenes = Array[PackedScene]([ExtResource("5_6fasc")])
 spawn_area = NodePath("CollisionShape3D")
 amount = 5
-enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawner" unique_id=1388623981]
 shape = SubResource("CylinderShape3D_n3upp")

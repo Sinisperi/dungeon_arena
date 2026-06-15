@@ -100,12 +100,12 @@ func take_damage(amount: float) -> void:
 		print_rich("[color=red][b]GAME OVER[/b][/color]")
 
 
-func _on_interaction_area_entered(area: Area3D) -> void:
+func _on_interaction_area_entered(area: Interactible) -> void:
 	#area.interact()
-	hud.show_interact_label()
+	hud.show_interact_label(area.interaction_text)
 	current_interactible = area
 
 
-func _on_interaction_area_exited(_area: Area3D) -> void:
+func _on_interaction_area_exited(_area: Interactible) -> void:
 	hud.hide_interact_label()
 	current_interactible = null

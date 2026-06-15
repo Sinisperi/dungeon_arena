@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ba4bx6bgfsnqj"]
+
+[ext_resource type="Script" uid="uid://bbv13ovy16uwh" path="res://scenes/hub/teleportation_shrine.gd" id="1_sfq7o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82d10"]
+albedo_color = Color(0.43608862, 0.73876745, 0.5723285, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_sfq7o"]
+left_to_right = 0.0
+size = Vector3(3, 1, 1.737)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qilmp"]
+height = 1.7407227
+radius = 1.1616211
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_82d10"]
+height = 1.055542
+radius = 3.0488281
+
+[node name="TeleportationSrine" type="Area3D" unique_id=695341064 node_paths=PackedStringArray("player_counter_area")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_sfq7o")
+player_counter_area = NodePath("PlayerCounter")
+interaction_text = "commence teleportation ritual"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=242123965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+radius = 4.0
+height = 1.0
+sides = 14
+material = SubResource("StandardMaterial3D_82d10")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCylinder3D" unique_id=2098357396]
+transform = Transform3D(0.9659569, 0.11002272, 0.23414113, -0.113168515, 0.99357575, 0, -0.23263694, -0.026497403, 0.9722026, 0, 0.448025, 0)
+inner_radius = 3.8681984
+outer_radius = 3.0959275
+sides = 19
+material = SubResource("StandardMaterial3D_82d10")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCylinder3D" unique_id=1294347119]
+transform = Transform3D(0.9747611, 0, 0.22325009, 0, 1, 0, -0.22325009, 0, 0.9747611, 5.262798, 0, -1.1974409)
+mesh = SubResource("PrismMesh_sfq7o")
+material = SubResource("StandardMaterial3D_82d10")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=1637242486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4954834, 0)
+radius = 1.090332
+height = 1.5861816
+sides = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1883970694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94311523, 0)
+shape = SubResource("CylinderShape3D_qilmp")
+
+[node name="PlayerCounter" type="Area3D" parent="." unique_id=2008799502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.021266, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCounter" unique_id=440898605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472229, 0)
+shape = SubResource("CylinderShape3D_82d10")
+debug_color = Color(0.9900703, 0, 0.28846112, 0.41960785)

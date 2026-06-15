@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drgjxqead28hd" path="res://scenes/dungeons/dungeon_gen/dungeon_generator.tscn" id="2_18m4l"]
 [ext_resource type="PackedScene" uid="uid://b8nxwxq3yj1o1" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_spawner.tscn" id="4_or50v"]
 [ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="5_6fasc"]
+[ext_resource type="PackedScene" uid="uid://dsslq058jskbn" path="res://scenes/player/player.tscn" id="6_6fasc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_y2fgm"]
 geometry_parsed_geometry_type = 1
@@ -107,3 +108,6 @@ enabled = true
 shape = SubResource("CylinderShape3D_n3upp")
 
 [node name="EnemyContainer" type="Node3D" parent="." unique_id=506878449]
+
+[node name="Player" parent="." unique_id=1487335681 instance=ExtResource("6_6fasc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.5, -5.75)

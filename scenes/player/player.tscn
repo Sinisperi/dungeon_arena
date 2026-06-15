@@ -259,10 +259,11 @@ size = Vector3(0.13305664, 0.055541992, 1.8115234)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508820323]
 libraries/ = SubResource("AnimationLibrary_75vfm")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1559447224 node_paths=PackedStringArray("fps_label")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1559447224 node_paths=PackedStringArray("fps_label", "interaction_display")]
 unique_name_in_owner = true
 script = ExtResource("3_gmlin")
 fps_label = NodePath("Control/FPSLabel")
+interaction_display = NodePath("Control/MarginContainer/VBoxContainer/InteractionDisplay")
 
 [node name="Control" type="Control" parent="HUD" unique_id=1486726995]
 layout_mode = 3
@@ -299,12 +300,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="InteractLabel" type="Label" parent="HUD/Control/MarginContainer/VBoxContainer" unique_id=2089769752]
-unique_name_in_owner = true
+[node name="InteractionDisplay" type="HBoxContainer" parent="HUD/Control/MarginContainer/VBoxContainer" unique_id=1044875115]
 visible = false
 layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Control/MarginContainer/VBoxContainer/InteractionDisplay" unique_id=571202461]
+layout_mode = 2
+text = "Press E to"
+
+[node name="InteractLabel" type="Label" parent="HUD/Control/MarginContainer/VBoxContainer/InteractionDisplay" unique_id=2089769752]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_vertical = 8
-text = "E to interact"
 
 [node name="Control" type="Control" parent="HUD/Control/MarginContainer/VBoxContainer" unique_id=541663746]
 custom_minimum_size = Vector2(0, 79.27)

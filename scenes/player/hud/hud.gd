@@ -2,12 +2,16 @@ class_name HUD extends CanvasLayer
 
 @onready var health_bar: PBar = %HealthBar
 @onready var interact_label: Label = %InteractLabel
+
 @onready var time_essence_label: Label = %TimeEssenceLabel
 @export var fps_label: Label
 
+@export var interaction_display: Control
 
-func show_interact_label() -> void:
-	interact_label.show()
+
+func show_interact_label(text: String) -> void:
+	interaction_display.show()
+	interact_label.text = text
 
 
 func _input(event: InputEvent) -> void:
@@ -22,7 +26,7 @@ func _process(delta: float) -> void:
 
 
 func hide_interact_label() -> void:
-	interact_label.hide()
+	interaction_display.hide()
 
 
 func update_time_essence_label(value: int) -> void:

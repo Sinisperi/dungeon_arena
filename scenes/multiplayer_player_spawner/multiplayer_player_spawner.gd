@@ -83,7 +83,6 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 	if !data.is_empty():
 		player.global_position = Vector3(data.position.x, data.position.y, data.position.z)
 	else:
-		#player.global_position = character_spawn_area.global_position + pick_random_point()
 		player.global_position = player_spawn_area.get_spawn_position()
 
 	return player

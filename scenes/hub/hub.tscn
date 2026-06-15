@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cnm707e5nasri"]
 
+[ext_resource type="PackedScene" uid="uid://ba4bx6bgfsnqj" path="res://scenes/hub/teleportation_srine.tscn" id="1_abcyb"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abcyb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -76,3 +78,6 @@ material = SubResource("StandardMaterial3D_ajtfx")
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1293177915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.5)
+
+[node name="TeleportationSrine" parent="." unique_id=695341064 instance=ExtResource("1_abcyb")]
+transform = Transform3D(0.7660445, 0, 0.64278764, 0, 1, 0, -0.64278764, 0, 0.7660445, -12.75, 1, 13.5)

@@ -1,4 +1,4 @@
-class_name ShrineOfTime extends Area3D
+class_name ShrineOfTime extends Interactible
 
 var time_essence_held: int = 500
 

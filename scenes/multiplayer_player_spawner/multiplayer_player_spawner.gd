@@ -89,8 +89,13 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 	return player
 
 
-func _on_peer_disconnected(peer_id: int) -> void:
+func _on_peer_disconnected(peer_id: int, _player_id: int) -> void:
 	if multiplayer.is_server():
 		var player: Player = PlayerManager.remove_player_from_active(peer_id)
 		players_container.remove_child(player)
 		player.queue_free()
+	else:
+		var player: Player = players_container.get_node_or_null("./" + str(peer_id))
+		if player:
+			players_container.remove_child(player)
+			player.queue_free()

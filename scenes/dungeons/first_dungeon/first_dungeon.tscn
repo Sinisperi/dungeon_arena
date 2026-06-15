@@ -21,12 +21,17 @@ radius = 5.0
 height = 1.25
 radius = 7.75
 
-[node name="FirstDungeon" type="Node3D" unique_id=1666560759 node_paths=PackedStringArray("sub_dungeons", "navigaion_region", "enemy_container", "player_spawn_area")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fasc"]
+albedo_color = Color(0.37500668, 0.30428818, 4.813075e-08, 1)
+
+[node name="FirstDungeon" type="Node3D" unique_id=1666560759 node_paths=PackedStringArray("doors_pivot", "sub_dungeons", "navigaion_region", "enemy_container", "player_spawn_area", "shrine_of_time")]
 script = ExtResource("1_im2cp")
+doors_pivot = NodePath("Node3D")
 sub_dungeons = [NodePath("NavigationRegion3D/DungeonGenerator"), NodePath("NavigationRegion3D/DungeonGenerator2"), NodePath("NavigationRegion3D/DungeonGenerator3"), NodePath("NavigationRegion3D/DungeonGenerator4")]
 navigaion_region = NodePath("NavigationRegion3D")
 enemy_container = NodePath("EnemyContainer")
 player_spawn_area = NodePath("EntitySpawnArea")
+shrine_of_time = NodePath("NavigationRegion3D/ShrineOfTime")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1092795569]
 navigation_mesh = SubResource("NavigationMesh_y2fgm")
@@ -123,3 +128,25 @@ metadata/_custom_type_script = "uid://cmcdkneef7b4n"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_eh4et")
 debug_color = Color(0.7305033, 0.23528033, 0.9999998, 0.41960785)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=939463457]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=1637755963]
+transform = Transform3D(0.809017, 0, 0.58778524, 0, 1, 0, -0.58778524, 0, 0.809017, 29.013996, 3.5, -20.461868)
+size = Vector3(1, 8, 5.5)
+material = SubResource("StandardMaterial3D_6fasc")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D" unique_id=278177622]
+transform = Transform3D(0.2923717, 0, 0.9563048, 0, 1, 0, -0.9563048, 0, 0.2923717, -10.542408, 3.5, 33.271175)
+size = Vector3(1, 8, 5.5)
+material = SubResource("StandardMaterial3D_6fasc")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D" unique_id=1083388171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.95193, 3.5, -0.3958397)
+size = Vector3(1, 8, 5.5)
+material = SubResource("StandardMaterial3D_6fasc")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D" unique_id=276781123]
+transform = Transform3D(0.809017, 0, -0.5877853, 0, 1, 0, 0.5877853, 0, 0.809017, 28.130177, 3.5, 20.470509)
+size = Vector3(1, 8, 5.5)
+material = SubResource("StandardMaterial3D_6fasc")

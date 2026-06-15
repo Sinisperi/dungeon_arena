@@ -10,10 +10,15 @@ class_name Dungeon extends Node3D
 
 signal dungeon_loading_complete
 
+# NOTE temp, later will make doors and animate them and stuff
+@export var doors_pivot: Node3D
+
 @export var sub_dungeons: Array[DungeonGenerator] = []
 @export var navigaion_region: NavigationRegion3D
 @export var enemy_container: Node3D
 @export var player_spawn_area: EntitySpawnArea
+
+@export var shrine_of_time: ShrineOfTime
 
 @export_tool_button("Generate", "") var gen = generate
 @export_tool_button("Crash Editor", "") var gen_crash = func() -> void:
@@ -37,6 +42,7 @@ func _ready() -> void:
 	print("bake finished")
 	SignalBus.dungeon.navigation_bake_finished.emit()
 	dungeon_loading_complete.emit()
+	shrine_of_time.activated.connect(_on_shrine_of_time_activated)
 	
 
 func generate() -> void:
@@ -84,3 +90,24 @@ func attempt_generation() -> bool:
 
 func get_player_spawn_position() -> Vector3:
 	return player_spawn_area.get_spawn_position()
+
+
+var door_tween: Tween = null
+func open_doors() -> Signal:
+	if door_tween:
+		door_tween.kill()
+	door_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+	door_tween.tween_property(doors_pivot, "position:y", 8.0, 3.0)
+	return door_tween.finished
+
+func close_doors() -> void:
+	if door_tween:
+		door_tween.kill()
+	door_tween = create_tween().set_ease(Tween.EASE_IN)
+	door_tween.tween_property(doors_pivot, "position:y", 0.0, 0.4)
+
+
+
+func _on_shrine_of_time_activated() -> void:
+	await open_doors()
+	shrine_of_time.start_count_down()

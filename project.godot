@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DungeonArena"
-run/main_scene="uid://qlcf1huk4gio"
+run/main_scene="uid://bda1xy3kvgf5k"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

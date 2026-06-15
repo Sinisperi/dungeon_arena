@@ -1,6 +1,8 @@
 class_name ShrineOfTime extends Interactible
+signal activated
 
 var time_essence_held: int = 500
+var is_activated: bool = false
 
 # it will be on the wall of the central room
 
@@ -22,13 +24,29 @@ var essence_value: float = 0.6
 var since_last_update: float = essence_value
 
 
+func _ready() -> void:
+	if !is_activated:
+		interaction_text = "to activate The Shrine Of time"
+
+
 func interact(player_ref: Player) -> void:
+	if !is_activated:
+		if multiplayer.is_server():
+			activate.rpc()
+			interaction_text = "to use essence of time"
+			return
+		else:
+			print_rich("[color=red]You hold no power to being the ritual[/color]")
+			return
+
 	time_essence_held += player_ref.stats.time_essence
 	player_ref.change_time_essence_by(-player_ref.stats.time_essence)
 	player_ref.stats.time_essence = 0
 
 
 func _process(delta: float) -> void:
+	if !is_activated:
+		return
 	if since_last_update <= 0.0:
 		since_last_update = essence_value
 		time_essence_held -= 1
@@ -37,3 +55,12 @@ func _process(delta: float) -> void:
 	since_last_update -= delta
 	if time_essence_held == 0.0:
 		print("HAHAHA YOU LOOSE YOU FUCKERS")
+
+
+func start_count_down() -> void:
+	is_activated = true
+
+
+@rpc("any_peer", "call_local")
+func activate() -> void:
+	activated.emit()

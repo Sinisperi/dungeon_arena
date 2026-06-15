@@ -182,6 +182,9 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Visuals:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath("AnimationPlayer:current_animation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("weapon", "camera_rig", "multiplayer_synchronizer")]
 collision_layer = 2

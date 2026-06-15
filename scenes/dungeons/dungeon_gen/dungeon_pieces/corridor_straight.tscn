@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="2_7wy7u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hxupy"]
+vertices = PackedVector3Array(0.5, 6.5, 0.5, 0.5, 6.5, 7.5, 15.5, 6.5, 7.5, 15.5, 6.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 7.25, 15.5, 0.5, 7.25, 15.5, 0.5, 1)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70ts2"]
 albedo_color = Color(0.45, 0.45, 0.45, 1)

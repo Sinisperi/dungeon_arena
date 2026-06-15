@@ -241,7 +241,9 @@ material = SubResource("StandardMaterial3D_tjssy")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1655449100]
 process_mode = 4
+path_desired_distance = 2.0
 target_desired_distance = 3.0
+avoidance_enabled = true
 avoidance_layers = 4
 avoidance_mask = 4
 debug_enabled = true

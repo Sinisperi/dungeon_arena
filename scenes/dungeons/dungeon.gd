@@ -37,8 +37,8 @@ func _ready() -> void:
 	SignalBus.crash_game.connect(func() -> void:
 			print(SignalBus.enemies))
 	await get_tree().process_frame
-	navigaion_region.bake_navigation_mesh(true)
-	await navigaion_region.bake_finished
+	#navigaion_region.bake_navigation_mesh(true)
+	#await navigaion_region.bake_finished
 	print("bake finished")
 	SignalBus.dungeon.navigation_bake_finished.emit()
 	dungeon_loading_complete.emit()

@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="4_0r16r"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gblxx"]
+vertices = PackedVector3Array(0.5, 9, 15.625, 23.75, 9, 15.625, 23.5, 9, 0.375, 0.5, 9, 0.375, 22.5, 0.5, 9.875, 23.5, 0.5, 9.625, 23.5, 0.5, 7.625, 22.5, 0.5, 7.375, 22.5, 0.5, 14.375, 15.5, 0.5, 1.625, 1, 0.5, 1.625, 7.75, 0.5, 14.375, 18.5, 0.5, 1.625, 18.25, 0.5, 0.375, 15.75, 0.5, 0.375, 1, 0.5, 14.375, 3.75, 0.5, 14.375, 4, 0.5, 15.625, 7.5, 0.5, 15.625, 22.5, 0.5, 1.625)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(4, 8, 9), PackedInt32Array(9, 8, 11), PackedInt32Array(9, 11, 10), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 9), PackedInt32Array(16, 15, 10), PackedInt32Array(18, 17, 16), PackedInt32Array(18, 16, 11), PackedInt32Array(11, 16, 10), PackedInt32Array(12, 19, 7), PackedInt32Array(7, 4, 12), PackedInt32Array(12, 4, 9)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8km7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -41,21 +43,21 @@ size = Vector3(24, 1, 16)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=36571912]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.25, 15.875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.25, 15.5)
 use_collision = true
-size = Vector3(16, 8.5, 0.25)
+size = Vector3(16, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=898809399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.25, 0.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.25, 0.5)
 use_collision = true
-size = Vector3(15, 8.5, 0.25)
+size = Vector3(15, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D" unique_id=558751599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.375, 3.25, 0.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.375, 3.25, 0.5)
 use_collision = true
-size = Vector3(5.25, 8.5, 0.25)
+size = Vector3(5.25, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1842755000]
@@ -65,9 +67,9 @@ size = Vector3(5.25, 2.25, 0.25)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=273975712]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 3.25, 13)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.625, 3.25, 13)
 use_collision = true
-size = Vector3(5.75, 8.5, 0.25)
+size = Vector3(5.75, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2023434736]
@@ -77,9 +79,9 @@ size = Vector3(5.75, 1.5, 0.25)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D" unique_id=859315706]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 24, 3.25, 3.625)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.625, 3.25, 3.625)
 use_collision = true
-size = Vector3(6.5, 8.5, 0.25)
+size = Vector3(6.5, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D" unique_id=231518309]
@@ -89,9 +91,9 @@ size = Vector3(16, 8.5, 0.25)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2043103468]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500002, 3.25, 15.875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500002, 3.25, 15.5)
 use_collision = true
-size = Vector3(3, 8.5, 0.25)
+size = Vector3(3, 8.5, 1)
 material = SubResource("StandardMaterial3D_bfbog")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2039144659]

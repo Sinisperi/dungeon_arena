@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b6x6y7532qro" path="res://scenes/player/camera_rig/camera_rig.gd" id="1_873is"]
 
-[node name="CameraRig" type="Node3D" unique_id=792375586 node_paths=PackedStringArray("camera", "arm")]
+[node name="CameraRig" type="Node3D" unique_id=792375586 node_paths=PackedStringArray("camera", "arm", "interaction_ray")]
 transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 0, 0)
 script = ExtResource("1_873is")
 camera = NodePath("SpringArm3D/Camera3D")
 arm = NodePath("SpringArm3D")
+interaction_ray = NodePath("SpringArm3D/Camera3D/InteractionRay")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1460593307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10346246, 0)
@@ -14,3 +15,7 @@ spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1207173037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2798946, 3.7527425)
+
+[node name="InteractionRay" type="RayCast3D" parent="SpringArm3D/Camera3D" unique_id=568673776]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -10, 0)

@@ -79,7 +79,7 @@ ui_down={
 
 [navigation]
 
-3d/default_edge_connection_margin=1.5
+3d/default_edge_connection_margin=1.0
 
 [physics]
 

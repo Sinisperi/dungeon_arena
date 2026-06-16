@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhqvhfpaypypf"]
+
+[ext_resource type="Texture2D" uid="uid://bs71sidn45dc2" path="res://icon.svg" id="1_ybdmi"]
+
+[node name="PathMark" type="Decal" unique_id=2003858018]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+texture_albedo = ExtResource("1_ybdmi")
+cull_mask = 2

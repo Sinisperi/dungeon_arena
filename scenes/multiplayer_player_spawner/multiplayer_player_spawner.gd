@@ -12,6 +12,7 @@ func _ready() -> void:
 
 # everywhere
 func _on_scene_loaded(peer_id: int, _current_scene: Node) -> void:
+	await get_tree().process_frame
 	_request_player_spawn.rpc_id(1, peer_id)
 
 

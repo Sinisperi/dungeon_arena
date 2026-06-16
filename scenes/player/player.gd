@@ -53,6 +53,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_E && event.is_pressed():
 			if current_interactible:
 				current_interactible.interact(self)
+		if event.keycode == KEY_G && event.is_pressed():
+			place_path_mark()
 
 
 func _physics_process(delta: float) -> void:
@@ -109,3 +111,17 @@ func _on_interaction_area_entered(area: Interactible) -> void:
 func _on_interaction_area_exited(_area: Interactible) -> void:
 	hud.hide_interact_label()
 	current_interactible = null
+
+
+func place_path_mark() -> void:
+	# position of ray hitting the thing
+	# normal of that surface
+	# texture of the mark
+	var position_data: Dictionary = camera_rig.get_interaction_ray_hit()
+	print(position_data)
+	_request_path_mark_placement.rpc(position_data, 0)
+
+
+@rpc("any_peer", "call_local")
+func _request_path_mark_placement(position_data: Dictionary, tex_id: int) -> void:
+	SignalBus.dungeon.path_mark_placed.emit(position_data, tex_id)

@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="4_ycaxi"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p8jgl"]
-vertices = PackedVector3Array(0.5, 9, 0.375, 0.5, 9, 23.375, 23.5, 9, 23.375, 23.5, 9, 0.375, 22.25, 0.5, 11.875, 23.5, 0.5, 11.625, 23.5, 0.5, 8.875, 22.25, 0.5, 8.625, 7.75, 0.5, 22.375, 22.25, 0.5, 22.375, 17.25, 0.5, 1.625, 17, 0.5, 0.375, 14.25, 0.5, 0.375, 14, 0.5, 1.625, 1, 0.5, 1.625, 3.75, 0.5, 22.375, 4, 0.5, 23.625, 7.5, 0.5, 23.625, 1, 0.5, 22.375, 22.25, 0.5, 1.625)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(4, 9, 8), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(7, 4, 13), PackedInt32Array(13, 4, 14), PackedInt32Array(14, 4, 8), PackedInt32Array(14, 8, 15), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 8), PackedInt32Array(15, 18, 14), PackedInt32Array(10, 19, 7), PackedInt32Array(13, 10, 7)]
+vertices = PackedVector3Array(0, 9, -0.125, 0, 9, 23.875, 24, 9, 23.875, 24, 9, -0.125, 22.75, 0.5, 12.125, 24, 0.5, 12.125, 24, 0.5, 8.375, 22.75, 0.5, 8.375, 8, 0.5, 22.875, 22.75, 0.5, 22.875, 17.5, 0.5, 1.125, 17.5, 0.5, -0.125, 13.75, 0.5, -0.125, 13.75, 0.5, 1.125, 0.5, 0.5, 1.125, 3.5, 0.5, 22.875, 3.5, 0.5, 24.125, 8, 0.5, 24.125, 0.5, 0.5, 22.875, 22.75, 0.5, 1.125, 0.5, 0.5, 0.125, 0.5, 0.5, 0.875, 13.5, 0.5, 0.875, 13.5, 0.5, 0.125, 17.75, 0.5, 0.125, 17.75, 0.5, 0.875, 22.75, 0.5, 0.875, 22.75, 0.5, 0.125, 23, 0.5, 0.375, 23, 0.5, 0.875, 23.75, 0.5, 0.875, 23.75, 0.5, 0.375, 23, 0.5, 1.125, 23, 0.5, 8.125, 23.75, 0.5, 8.125, 23.75, 0.5, 1.125, 23, 0.5, 12.375, 23, 0.5, 22.875, 23.75, 0.5, 22.875, 23.75, 0.5, 12.375, 0.5, 0.5, 23.125, 0.5, 0.5, 23.875, 3.25, 0.5, 23.875, 3.25, 0.5, 23.125, 8.25, 0.5, 23.125, 8.25, 0.5, 23.875, 22.75, 0.5, 23.875, 22.75, 0.5, 23.125, 23, 0.5, 23.125, 23, 0.5, 23.875, 23.75, 0.5, 23.875, 23.75, 0.5, 23.125)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 9, 8), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(7, 4, 13), PackedInt32Array(13, 4, 14), PackedInt32Array(14, 4, 8), PackedInt32Array(14, 8, 15), PackedInt32Array(8, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(15, 18, 14), PackedInt32Array(10, 19, 7), PackedInt32Array(13, 10, 7), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49)]
+agent_radius = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1acot"]
 albedo_color = Color(0, 0, 0, 1)
@@ -35,78 +36,91 @@ navigation_mesh = SubResource("NavigationMesh_p8jgl")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=820239592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 12)
+layers = 3
 use_collision = true
 size = Vector3(24, 1, 24)
 material = SubResource("StandardMaterial3D_1acot")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1567038239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 8)
+layers = 3
 use_collision = true
 size = Vector3(24, 1, 16)
 material = SubResource("StandardMaterial3D_v13p5")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D" unique_id=177503387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 11.875)
+layers = 3
 use_collision = true
 size = Vector3(24, 1, 23.75)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1404892045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.25, 23.5)
+layers = 3
 use_collision = true
 size = Vector3(16, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=466878073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 3.25, 0.5)
+layers = 3
 use_collision = true
 size = Vector3(13.5, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D" unique_id=860232470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.625, 3.25, 0.5)
+layers = 3
 use_collision = true
 size = Vector3(6.25, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D" unique_id=878644492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.375, 6.625, 0.125)
+layers = 3
 use_collision = true
 size = Vector3(6.75, 1.75, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1612701537]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.375, 3.25, 18)
+layers = 3
 use_collision = true
 size = Vector3(11.75, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D" unique_id=712513723]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.375, 3.25, 4.125)
+layers = 3
 use_collision = true
 size = Vector3(8, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1905812748]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.75, 6.375, 10.375)
+layers = 3
 use_collision = true
 size = Vector3(8, 2.25, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1045170627]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.24999987, 3.25, 11.875)
+layers = 3
 use_collision = true
 size = Vector3(24, 8.5, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1993268768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500002, 3.25, 23.5)
+layers = 3
 use_collision = true
 size = Vector3(3, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1824063264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 6.25, 23.875)
+layers = 3
 use_collision = true
 size = Vector3(6, 2.5, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")

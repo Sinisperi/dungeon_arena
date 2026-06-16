@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="2_7wy7u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hxupy"]
-vertices = PackedVector3Array(0.5, 6.5, 0.5, 0.5, 6.5, 7.5, 15.5, 6.5, 7.5, 15.5, 6.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 7.25, 15.5, 0.5, 7.25, 15.5, 0.5, 1)
+vertices = PackedVector3Array(0, 6.5, 0, 0, 6.5, 8, 16, 6.5, 8, 16, 6.5, 0, 0, 0.5, 0.5, 0, 0.5, 7.75, 16, 0.5, 7.75, 16, 0.5, 0.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+agent_radius = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70ts2"]
 albedo_color = Color(0.45, 0.45, 0.45, 1)
@@ -23,24 +24,28 @@ navigation_mesh = SubResource("NavigationMesh_hxupy")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1058800543]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 0.125)
+layers = 3
 use_collision = true
 size = Vector3(16, 6.75, 0.25)
 material = SubResource("StandardMaterial3D_70ts2")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D" unique_id=164010476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 7.875)
+layers = 3
 use_collision = true
 size = Vector3(16, 6.75, 0.25)
 material = SubResource("StandardMaterial3D_70ts2")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=735979986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 4)
+layers = 3
 use_collision = true
 size = Vector3(16, 1, 8)
 material = SubResource("StandardMaterial3D_70ts2")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1069292599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.875, 4)
+layers = 3
 use_collision = true
 size = Vector3(16, 0.25, 8)
 material = SubResource("StandardMaterial3D_70ts2")

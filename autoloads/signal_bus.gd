@@ -12,6 +12,7 @@ var enemies: int = 0
 class DungeonSignals:
 	signal seal_activated(player_ref: Player)
 	signal navigation_bake_finished
+	signal path_mark_placed(position_data: Dictionary, tex_id: int)
 
 
 class UISignals:

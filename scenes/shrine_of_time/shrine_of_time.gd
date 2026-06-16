@@ -1,6 +1,8 @@
 class_name ShrineOfTime extends Interactible
 signal activated
 
+@export var beam: CSGCylinder3D
+
 var time_essence_held: int = 500
 var is_activated: bool = false
 
@@ -63,4 +65,20 @@ func start_count_down() -> void:
 
 @rpc("any_peer", "call_local")
 func activate() -> void:
+	await show_beam()
 	activated.emit()
+
+
+func show_beam() -> void:
+	var material: StandardMaterial3D = beam.material
+	if !material:
+		print("no material on cylynyr")
+		return
+	material = material.duplicate()
+	beam.material = material
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+	var tween: Tween = create_tween()
+	tween.tween_property(material, "albedo_color:a", 0.3, 3.0).set_ease(Tween.EASE_OUT).set_trans(
+		Tween.TRANS_EXPO
+	)
+	await tween.finished

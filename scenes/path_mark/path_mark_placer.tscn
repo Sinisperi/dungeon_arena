@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c0u1wrcdolv2e"]
+
+[ext_resource type="Script" uid="uid://dnrqfhgcew543" path="res://scenes/path_mark/path_mark_placer.gd" id="1_vdhhn"]
+[ext_resource type="PackedScene" uid="uid://dhqvhfpaypypf" path="res://scenes/path_mark/path_mark.tscn" id="2_jjf4v"]
+
+[node name="PathMarkPlacer" type="Node3D" unique_id=1693785030]
+script = ExtResource("1_vdhhn")
+path_mark_scene = ExtResource("2_jjf4v")

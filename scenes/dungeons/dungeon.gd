@@ -15,10 +15,11 @@ signal dungeon_loading_complete
 
 @export var sub_dungeons: Array[DungeonGenerator] = []
 @export var navigaion_region: NavigationRegion3D
-@export var enemy_container: Node3D
 @export var player_spawn_area: EntitySpawnArea
 
 @export var shrine_of_time: ShrineOfTime
+
+@export var enemy_container: Node3D
 
 @export_tool_button("Generate", "") var gen = generate
 @export_tool_button("Crash Editor", "") var gen_crash = func() -> void:
@@ -41,6 +42,7 @@ func _ready() -> void:
 	#await navigaion_region.bake_finished
 	print("bake finished")
 	SignalBus.dungeon.navigation_bake_finished.emit()
+
 	dungeon_loading_complete.emit()
 	shrine_of_time.activated.connect(_on_shrine_of_time_activated)
 	

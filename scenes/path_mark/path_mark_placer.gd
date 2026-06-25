@@ -8,19 +8,20 @@ func _ready() -> void:
 
 
 func _on_path_mark_placed(position_data: Dictionary, tex_id: int) -> void:
-	if !position_data.position.length() && !position_data.normal.length():
+	if position_data.is_empty():
 		return
 	var mark: Decal = path_mark_scene.instantiate()
 	add_child(mark)
 	mark.global_position = position_data.position
 	var norm: Vector3 = position_data.normal
 	var pos: Vector3 = position_data.position
+	var up: Vector3 = position_data.up
 	if norm.is_equal_approx(Vector3.UP):
-		mark.global_transform.basis = Basis.looking_at(Vector3.DOWN, Vector3.FORWARD)
+		mark.global_transform.basis = Basis.looking_at(Vector3.DOWN, up)
 	elif norm.is_equal_approx(Vector3.DOWN):
-		mark.global_transform.basis = Basis.looking_at(Vector3.UP, Vector3.FORWARD)
+		mark.global_transform.basis = Basis.looking_at(Vector3.UP, up)
 	else:
-		mark.global_transform.basis = Basis.looking_at(norm, Vector3.UP)
+		mark.global_transform.basis = Basis.looking_at(norm, up)
 	mark.transform = mark.transform.rotated_local(Vector3.RIGHT, deg_to_rad(90))
 	#if (
 	#	position_data.normal.is_equal_approx(Vector3.UP)

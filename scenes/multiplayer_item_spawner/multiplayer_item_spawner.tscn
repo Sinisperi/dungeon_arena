@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ctue6pekutqk7"]
+
+[ext_resource type="Script" uid="uid://b4g7burgns6ot" path="res://scenes/multiplayer_item_spawner/multiplayer_item_spawner.gd" id="1_bhham"]
+[ext_resource type="PackedScene" uid="uid://besuple7ahgpa" path="res://scenes/ground_item/ground_item.tscn" id="2_ac6op"]
+
+[node name="MultiplayerItemSpawner" type="Node" unique_id=319653467]
+script = ExtResource("1_bhham")
+ground_item_scene = ExtResource("2_ac6op")

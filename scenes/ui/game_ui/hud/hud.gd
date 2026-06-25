@@ -1,4 +1,4 @@
-class_name HUD extends CanvasLayer
+class_name HUD extends Control
 
 @onready var health_bar: PBar = %HealthBar
 @onready var interact_label: Label = %InteractLabel

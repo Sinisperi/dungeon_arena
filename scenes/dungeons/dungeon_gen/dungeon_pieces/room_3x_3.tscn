@@ -38,6 +38,7 @@ navigation_mesh = SubResource("NavigationMesh_p8jgl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 12)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(24, 1, 24)
 material = SubResource("StandardMaterial3D_1acot")
 
@@ -45,6 +46,7 @@ material = SubResource("StandardMaterial3D_1acot")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 8)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(24, 1, 16)
 material = SubResource("StandardMaterial3D_v13p5")
 
@@ -52,6 +54,7 @@ material = SubResource("StandardMaterial3D_v13p5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 11.875)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(24, 1, 23.75)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -59,6 +62,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.25, 23.5)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(16, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -66,6 +70,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 3.25, 0.5)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(13.5, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -73,6 +78,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.625, 3.25, 0.5)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(6.25, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -80,6 +86,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.375, 6.625, 0.125)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(6.75, 1.75, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -87,6 +94,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.375, 3.25, 18)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(11.75, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -94,6 +102,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.375, 3.25, 4.125)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(8, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -101,6 +110,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.75, 6.375, 10.375)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(8, 2.25, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -108,6 +118,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.24999987, 3.25, 11.875)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(24, 8.5, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -115,6 +126,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500002, 3.25, 23.5)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(3, 8.5, 1)
 material = SubResource("StandardMaterial3D_1jbb6")
 
@@ -122,6 +134,7 @@ material = SubResource("StandardMaterial3D_1jbb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 6.25, 23.875)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(6, 2.5, 0.25)
 material = SubResource("StandardMaterial3D_1jbb6")
 

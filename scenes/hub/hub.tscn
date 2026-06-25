@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnm707e5nasri"]
 
 [ext_resource type="PackedScene" uid="uid://ba4bx6bgfsnqj" path="res://scenes/hub/teleportation_srine.tscn" id="1_abcyb"]
+[ext_resource type="Script" uid="uid://c67bwj2uofqwr" path="res://scenes/hub/hub.gd" id="1_bocl7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_abcyb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,6 +32,7 @@ albedo_color = Color(0.3553134, 0.35531363, 0.3553135, 1)
 albedo_color = Color(0.6547616, 0.7835189, 0.9768726, 1)
 
 [node name="Hub" type="Node3D" unique_id=850433143]
+script = ExtResource("1_bocl7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1654157866]
 environment = SubResource("Environment_koree")

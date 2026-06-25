@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bhepw82ifw6e7"]
+
+[ext_resource type="Script" uid="uid://dbscdb26emoly" path="res://scenes/dungeons/dungeon_gen/boss_spawner/boss_spawner.gd" id="1_yudw5"]
+[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="2_o2p31"]
+
+[node name="BossSpawner" type="Node3D" unique_id=320809170]
+script = ExtResource("1_yudw5")
+boss_scene = ExtResource("2_o2p31")

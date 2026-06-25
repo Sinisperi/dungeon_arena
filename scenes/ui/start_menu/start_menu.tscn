@@ -77,7 +77,7 @@ layout_mode = 1
 
 [node name="NotificationPopUp" parent="." unique_id=2017905623 instance=ExtResource("4_3074c")]
 layout_mode = 0
-offset_left = 952.0
-offset_top = 650.0
-offset_right = 952.0
-offset_bottom = 650.0
+offset_left = 1720.0
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 1180.0

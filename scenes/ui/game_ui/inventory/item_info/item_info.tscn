@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ble0pbix5ivf1"]
+
+[ext_resource type="Script" uid="uid://7nymt4n6x67w" path="res://scenes/ui/game_ui/inventory/item_info/item_info.gd" id="1_a61u8"]
+
+[node name="ItemInfo" type="PanelContainer" unique_id=1636414058 node_paths=PackedStringArray("item_icon", "item_name_label", "item_description_label")]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 464.0
+offset_bottom = 160.0
+script = ExtResource("1_a61u8")
+item_icon = NodePath("MarginContainer/HBoxContainer/ItemIcon")
+item_name_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/ItemNameLabel")
+item_description_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/ItemDescriptionLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=28345224]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1305976032]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=495980452]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1636476689]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=3949714]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Item Name"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=125384486]
+layout_mode = 2
+
+[node name="ItemDescriptionLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1967526635]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Item description or maybe some stats"
+autowrap_mode = 2

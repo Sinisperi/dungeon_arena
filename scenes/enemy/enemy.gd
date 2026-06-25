@@ -1,5 +1,6 @@
 class_name Enemy extends CharacterBody3D
 
+signal died
 @onready var visuals: Node3D = $Visuals
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -9,8 +10,8 @@ class_name Enemy extends CharacterBody3D
 @onready var health_bar: PBar = %HealthBar
 @export var weapon: Area3D
 
-@export var base_stats: Stats
-var stats: Stats
+@export var base_stats: CharacterStats
+var stats: CharacterStats
 var player_ref: Player = null
 
 var target_nav_position: Vector3 = Vector3.ZERO
@@ -28,6 +29,12 @@ var current_state: State = State.IDLE
 func _ready() -> void:
 	stats = base_stats.duplicate()
 	health_bar.init(stats.health, stats.health)
+	if !multiplayer.is_server():
+		set_process(false)
+		set_physics_process(false)
+		player_detector.monitoring = false
+		player_detector.monitorable = false
+		return
 	player_detector.area_entered.connect(_on_player_detected)
 	player_detector.area_exited.connect(_on_player_exited)
 
@@ -46,7 +53,6 @@ func _ready() -> void:
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 	#==========================
-	SignalBus.dungeon.seal_activated.connect(_on_seal_activated)
 	SignalBus.enemies += 1
 
 
@@ -68,6 +74,8 @@ func _on_velocity_computed(target_velocity: Vector3) -> void:
 
 
 func _on_player_detected(area: Area3D) -> void:
+	if !multiplayer.is_server():
+		return
 	nav_agent.process_mode = Node.PROCESS_MODE_INHERIT
 	chase_timer.stop()
 	player_ref = area.get_parent()
@@ -80,6 +88,8 @@ func _on_player_detected(area: Area3D) -> void:
 
 
 func _on_player_exited(area: Area3D) -> void:
+	if !multiplayer.is_server():
+		return
 	if current_state == State.DEAD:
 		print("aaaaaaaaa")
 		return
@@ -168,28 +178,29 @@ func _on_attack_timer_timeout() -> void:
 func take_damage(amount: float, from_whomst: Node = null) -> void:
 	stats.health -= amount
 	health_bar.update(stats.health)
+	if !multiplayer.is_server():
+		return
 
-	print("took ", amount, " of damage; hp ", stats.health)
+	print("ENEMY took ", amount, " of damage; hp ", stats.health)
 	if stats.health <= 0:
-		current_state = State.DEAD
-		queue_free()
+		_die.rpc()
+
 		if from_whomst is Player:
 			from_whomst.change_time_essence_by(stats.time_essence)
 	pass
 
 
+@rpc("any_peer", "call_local")
+func _die() -> void:
+	current_state = State.DEAD
+	died.emit()
+	call_deferred("queue_free")
+
+
 func _on_weapon_enemy_hit(area: Area3D) -> void:
+	if !multiplayer.is_server():
+		return
 	var enemy: Node = area.get_parent()
 	if enemy:
 		print("asdfasdfasdf")
 		enemy.take_damage(stats.damage)
-
-
-func _on_seal_activated(player: Player) -> void:
-	if is_instance_valid(player):
-		if player.global_position.distance_to(global_position) < 32.0:
-			player_ref = player
-			current_state = State.CHASING
-			nav_agent.target_position = player_ref.global_position
-			print("player left, starting chase")
-			chase_timer.start()

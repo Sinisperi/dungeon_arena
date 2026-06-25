@@ -2,11 +2,11 @@ class_name Player extends CharacterBody3D
 
 @onready var visuals: Node3D = %Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var hud: HUD = %HUD
+#@onready var hud: HUD = %HUD
 @onready var interaction_area: Area3D = %InteractionArea
 
 @export var weapon: Area3D
-@export var stats: Stats
+@export var data: PlayerData
 @export var camera_rig: CameraRig
 
 @export_category("Multiplayer")
@@ -17,23 +17,11 @@ var current_interactible: Area3D = null
 
 func _ready() -> void:
 	if is_multiplayer_authority():
-		Globals.player = self
-		camera_rig.current = true
+		_enable()
 	else:
-		set_physics_process(false)
-		set_process_input(false)
-		set_process_unhandled_input(false)
-		set_process_unhandled_key_input(false)
+		_disable()
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if weapon:
-		weapon.area_entered.connect(_on_weapon_enemy_hit)
-	if stats:
-		hud.health_bar.init(stats.health, stats.health)
-		hud.update_time_essence_label(stats.time_essence)
-
-	interaction_area.area_entered.connect(_on_interaction_area_entered)
-	interaction_area.area_exited.connect(_on_interaction_area_exited)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -66,8 +54,8 @@ func _physics_process(delta: float) -> void:
 	var facing_dir: Vector3 = horizontal_dir.rotated(Vector3.UP, camera_rig.rotation.y).normalized()
 
 	if horizontal_dir.length():
-		velocity.x = facing_dir.x * 6.0
-		velocity.z = facing_dir.z * 6.0
+		velocity.x = facing_dir.x * 16.0
+		velocity.z = facing_dir.z * 16.0
 		var target_angle: float = atan2(-velocity.x, -velocity.z)
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, target_angle, 15.0 * delta)
 	else:
@@ -79,13 +67,13 @@ func _physics_process(delta: float) -> void:
 func _on_weapon_enemy_hit(area: Area3D) -> void:
 	print_rich("[color=yellow]hit an enemy[/color]")
 	var enemy: Enemy = area.get_parent()
-	enemy.take_damage(stats.damage, self)
+	enemy.take_damage(data.stats.damage, self)
 	print("hit the guy")
 
 
 func change_time_essence_by(amount: int) -> void:
-	stats.time_essence += amount
-	hud.update_time_essence_label(stats.time_essence)
+	data.stats.time_essence += amount
+	Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)
 
 
 func attack() -> void:
@@ -94,22 +82,21 @@ func attack() -> void:
 
 
 func take_damage(amount: float) -> void:
-	stats.health -= amount
-	hud.health_bar.update(stats.health)
-	print("Player took ", amount, " of damage; hp ", stats.health)
-	if stats.health <= 0:
+	data.stats.health -= amount
+	Globals.game_ui.hud.health_bar.update(data.stats.health)
+	print("Player took ", amount, " of damage; hp ", data.stats.health)
+	if data.stats.health <= 0:
 		queue_free()
 		print_rich("[color=red][b]GAME OVER[/b][/color]")
 
 
 func _on_interaction_area_entered(area: Interactible) -> void:
 	#area.interact()
-	hud.show_interact_label(area.interaction_text)
 	current_interactible = area
 
 
 func _on_interaction_area_exited(_area: Interactible) -> void:
-	hud.hide_interact_label()
+	#Globals.game_ui.hud.hide_interact_label()
 	current_interactible = null
 
 
@@ -125,3 +112,26 @@ func place_path_mark() -> void:
 @rpc("any_peer", "call_local")
 func _request_path_mark_placement(position_data: Dictionary, tex_id: int) -> void:
 	SignalBus.dungeon.path_mark_placed.emit(position_data, tex_id)
+
+
+func _disable() -> void:
+	interaction_area.monitoring = false
+	interaction_area.monitorable = false
+	set_physics_process(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
+	set_process_unhandled_key_input(false)
+
+
+func _enable() -> void:
+	Globals.player = self
+	camera_rig.current = true
+	if weapon:
+		weapon.area_entered.connect(_on_weapon_enemy_hit)
+	if data.stats:
+		Globals.game_ui.hud.health_bar.init(data.stats.health, data.stats.health)
+		Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)
+		Globals.game_ui.inventory.init()
+
+	interaction_area.area_entered.connect(_on_interaction_area_entered)
+	interaction_area.area_exited.connect(_on_interaction_area_exited)

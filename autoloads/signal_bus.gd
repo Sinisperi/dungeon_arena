@@ -10,9 +10,11 @@ var enemies: int = 0
 
 
 class DungeonSignals:
-	signal seal_activated(player_ref: Player)
+	signal seal_activated(index: int)
 	signal navigation_bake_finished
 	signal path_mark_placed(position_data: Dictionary, tex_id: int)
+	signal boss_spawned
+	signal boss_defeated
 
 
 class UISignals:
@@ -21,3 +23,5 @@ class UISignals:
 
 class GameSignals:
 	signal dungeon_loaded(player_spawn_position)
+	signal item_dropped(item_data: ItemData)
+	signal item_picked_up(item_uuid: String)

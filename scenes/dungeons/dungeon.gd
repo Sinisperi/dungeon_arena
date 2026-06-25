@@ -1,10 +1,8 @@
 @tool
 
-
 # NOTE there should be something that lets you to deposit money you collect
 # but with a -30% if you know you won't get out because you will loose everything
 # if you die in the dungeon
-
 
 class_name Dungeon extends Node3D
 
@@ -22,30 +20,30 @@ signal dungeon_loading_complete
 @export var enemy_container: Node3D
 
 @export_tool_button("Generate", "") var gen = generate
-@export_tool_button("Crash Editor", "") var gen_crash = func() -> void:
-	for i in range(11):
-		generate()
 
 var gen_attempts: int = 0
 
 var enemies: int = 0
+
+var seals_activated: int = 0
+
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	Globals.active_dungeon = self
 	generate()
-	SignalBus.crash_game.connect(func() -> void:
-			print(SignalBus.enemies))
+	SignalBus.crash_game.connect(func() -> void: print(SignalBus.enemies))
 	await get_tree().process_frame
 	#navigaion_region.bake_navigation_mesh(true)
 	#await navigaion_region.bake_finished
 	print("bake finished")
 	SignalBus.dungeon.navigation_bake_finished.emit()
+	SignalBus.dungeon.boss_spawned.connect(_on_boss_spawned)
 
 	dungeon_loading_complete.emit()
 	shrine_of_time.activated.connect(_on_shrine_of_time_activated)
-	
+
 
 func generate() -> void:
 	gen_attempts += 1
@@ -74,7 +72,6 @@ func generate() -> void:
 		return
 
 
-
 func attempt_generation() -> bool:
 	for sub_d in sub_dungeons:
 		sub_d.init_socket_queue()
@@ -95,12 +92,15 @@ func get_player_spawn_position() -> Vector3:
 
 
 var door_tween: Tween = null
+
+
 func open_doors() -> Signal:
 	if door_tween:
 		door_tween.kill()
 	door_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	door_tween.tween_property(doors_pivot, "position:y", 8.0, 3.0)
 	return door_tween.finished
+
 
 func close_doors() -> void:
 	if door_tween:
@@ -109,7 +109,10 @@ func close_doors() -> void:
 	door_tween.tween_property(doors_pivot, "position:y", 0.0, 0.4)
 
 
-
 func _on_shrine_of_time_activated() -> void:
 	await open_doors()
 	shrine_of_time.start_count_down()
+
+
+func _on_boss_spawned() -> void:
+	close_doors()

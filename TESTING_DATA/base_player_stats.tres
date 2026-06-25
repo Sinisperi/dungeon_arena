@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://gd370pkdbmk0"]
+
+[ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://shared_resources/character_stats/character_stats.gd" id="1_ui5fe"]
+
+[resource]
+script = ExtResource("1_ui5fe")
+health = 2000.0
+damage = 25.0
+metadata/_custom_type_script = "uid://btpolbdqnteo7"

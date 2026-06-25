@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ntlupxnnwwo2"]
+
+[ext_resource type="Script" uid="uid://bkjkrlsvrdilu" path="res://scenes/dungeons/dungeon_gen/seal/seal_pillar/seal_pillar.gd" id="1_c0gcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21dm7"]
+albedo_color = Color(0.4955613, 0.52699465, 0.58518434, 1)
+roughness = 0.59
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idpja"]
+transparency = 4
+albedo_color = Color(12.837791, 9.477112, 6.1164308, 0.654902)
+emission = Color(2.5032542, 1.8606594, 1.2180649, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hkegc"]
+material = SubResource("StandardMaterial3D_idpja")
+top_radius = 0.351
+bottom_radius = 0.219
+height = 0.868
+radial_segments = 6
+rings = 0
+
+[node name="SealPillar" type="Node3D" unique_id=1016031208 node_paths=PackedStringArray("fire")]
+script = ExtResource("1_c0gcw")
+fire = NodePath("Fire")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1854397351]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.49061775, 0)
+use_collision = true
+radius = 0.23828125
+height = 0.32702637
+material = SubResource("StandardMaterial3D_21dm7")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=1287242739]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.4076276, 0)
+radius = 0.045410156
+height = 0.96829224
+material = SubResource("StandardMaterial3D_21dm7")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=652085262]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.6938255, 0)
+radius = 0.06591797
+height = 0.087402344
+material = SubResource("StandardMaterial3D_21dm7")
+
+[node name="Fire" type="CSGMesh3D" parent="." unique_id=1481121783]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 10.486315, 0)
+visible = false
+mesh = SubResource("CylinderMesh_hkegc")

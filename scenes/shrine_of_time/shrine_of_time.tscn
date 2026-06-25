@@ -21,6 +21,7 @@ height = 4.086914
 radius = 2.7441406
 
 [node name="ShrineOfTime" unique_id=336967293 node_paths=PackedStringArray("beam") instance=ExtResource("1_cc2jx")]
+collision_mask = 8
 script = ExtResource("1_osu01")
 beam = NodePath("CSGCylinder3D2")
 interaction_text = "spend essence of time"

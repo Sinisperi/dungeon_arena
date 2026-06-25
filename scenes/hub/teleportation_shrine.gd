@@ -6,6 +6,7 @@ var player_count: int = 0
 
 
 func _ready() -> void:
+	super._ready()
 	player_counter_area.body_entered.connect(_on_player_entered)
 	player_counter_area.body_exited.connect(_on_player_exited)
 	SignalBus.game.dungeon_loaded.connect(_on_dungeon_loaded)

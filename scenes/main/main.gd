@@ -5,6 +5,7 @@ var _current_dungeon: Dungeon = null
 
 
 func _ready() -> void:
+	seed(69)
 	DungeonLoader.dungeon_scene_loaded.connect(_on_dungeon_scene_loaded)
 
 

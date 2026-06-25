@@ -1,6 +1,6 @@
 class_name MultiplayerPlayerSpawner extends Node
 
-@export var players_container: Node
+#@export var players_container: Node
 @export var player_scene: PackedScene
 @export var player_spawn_area: EntitySpawnArea
 
@@ -11,9 +11,17 @@ func _ready() -> void:
 
 
 # everywhere
-func _on_scene_loaded(peer_id: int, _current_scene: Node) -> void:
-	await get_tree().process_frame
-	_request_player_spawn.rpc_id(1, peer_id)
+func _on_scene_loaded(peer_id: int, current_scene: Node) -> void:
+	if !is_inside_tree():
+		await tree_entered
+
+	#await Engine.get_main_loop().process_frame
+
+	if is_inside_tree():
+		_request_player_spawn.rpc_id(1, peer_id)
+	else:
+		if current_scene && current_scene.is_inside_tree():
+			_request_player_spawn.rpc_id(1, peer_id)
 
 
 # on the host
@@ -61,7 +69,9 @@ func _client_spawn_finished() -> void:
 	for peer in PlayerManager.active_players.keys():
 		var peer_player: Player = PlayerManager.active_players[peer].player_ref
 		peer_player.multiplayer_synchronizer.set_visibility_for(new_peer_id, true)
-	_update_active_peers.rpc(multiplayer.get_remote_sender_id())
+		if peer <= 1:
+			continue
+		_update_active_peers.rpc_id(peer, multiplayer.get_remote_sender_id())
 
 
 # on the client
@@ -75,12 +85,12 @@ func _update_active_peers(new_peer_id: int) -> void:
 
 
 func _create_player(peer_id, data: Dictionary = {}) -> Player:
-	if players_container.has_node("./" + str(peer_id)):
+	if has_node("./" + str(peer_id)):
 		return null
 	var player: Player = player_scene.instantiate()
 	player.name = str(peer_id)
 	player.set_multiplayer_authority(peer_id)
-	players_container.add_child(player, true)
+	add_child(player, true)
 	if !data.is_empty():
 		player.global_position = Vector3(data.position.x, data.position.y, data.position.z)
 	else:
@@ -92,10 +102,10 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 func _on_peer_disconnected(peer_id: int, _player_id: int) -> void:
 	if multiplayer.is_server():
 		var player: Player = PlayerManager.remove_player_from_active(peer_id)
-		players_container.remove_child(player)
+		remove_child(player)
 		player.queue_free()
 	else:
-		var player: Player = players_container.get_node_or_null("./" + str(peer_id))
+		var player: Player = get_node_or_null("./" + str(peer_id))
 		if player:
-			players_container.remove_child(player)
+			remove_child(player)
 			player.queue_free()

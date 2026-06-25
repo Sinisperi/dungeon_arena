@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ba45qyvnw7mge"]
+
+[ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_s80so"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hujxm"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyfjg"]
+atlas = SubResource("CompressedTexture2D_hujxm")
+region = Rect2(192, 64, 64, 64)
+
+[resource]
+script = ExtResource("1_s80so")
+item_name = "Shimrongodong"
+texture = SubResource("AtlasTexture_yyfjg")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://db77kfjs0xdbc"]
+
+[ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_g6s3m"]
+[ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="2_0huxh"]
+[ext_resource type="Resource" uid="uid://bbojl4j3p21kc" path="res://shared_resources/items/consumables/llol.tres" id="2_ggu8n"]
+[ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/player/resource/player_data.gd" id="3_sykvd"]
+[ext_resource type="Resource" uid="uid://o0qxdy8fyfge" path="res://shared_resources/items/weapons/huge_swordingaasdf.tres" id="4_5ryp6"]
+[ext_resource type="Resource" uid="uid://gd370pkdbmk0" path="res://TESTING_DATA/base_player_stats.tres" id="4_ggu8n"]
+[ext_resource type="Resource" uid="uid://b43dgrb085mb0" path="res://shared_resources/items/weapons/some_sort_of_weapon.tres" id="5_fmrso"]
+
+[sub_resource type="Resource" id="Resource_egvq4"]
+script = ExtResource("2_0huxh")
+weapons = Array[ExtResource("1_g6s3m")]([ExtResource("4_5ryp6"), ExtResource("5_fmrso"), null, null, null, null, null, null])
+consumables = Array[ExtResource("1_g6s3m")]([ExtResource("2_ggu8n"), null, null, null])
+metadata/_custom_type_script = "uid://3vx4vrdqof7i"
+
+[resource]
+script = ExtResource("3_sykvd")
+inventory = SubResource("Resource_egvq4")
+stats = ExtResource("4_ggu8n")
+metadata/_custom_type_script = "uid://dmoygo3s3qxue"

@@ -11,11 +11,9 @@ var current: bool:
 
 
 func get_interaction_ray_hit() -> Dictionary:
-	var res: Dictionary = {"position": Vector3.ZERO, "normal": Vector3.ZERO}
+	var res: Dictionary = {}
 	if interaction_ray.is_colliding():
 		res.position = interaction_ray.get_collision_point()
 		res.normal = interaction_ray.get_collision_normal()
-	else:
-		print("NOT COLLIDIING CANNOT PLACE MARKER")
-
+		res.up = camera.global_transform.basis.y
 	return res

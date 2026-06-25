@@ -26,6 +26,7 @@ navigation_mesh = SubResource("NavigationMesh_hxupy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 0.125)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(16, 6.75, 0.25)
 material = SubResource("StandardMaterial3D_70ts2")
 
@@ -33,6 +34,7 @@ material = SubResource("StandardMaterial3D_70ts2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.375, 7.875)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(16, 6.75, 0.25)
 material = SubResource("StandardMaterial3D_70ts2")
 
@@ -40,6 +42,7 @@ material = SubResource("StandardMaterial3D_70ts2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 4)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(16, 1, 8)
 material = SubResource("StandardMaterial3D_70ts2")
 
@@ -47,6 +50,7 @@ material = SubResource("StandardMaterial3D_70ts2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.875, 4)
 layers = 3
 use_collision = true
+collision_layer = 257
 size = Vector3(16, 0.25, 8)
 material = SubResource("StandardMaterial3D_70ts2")
 

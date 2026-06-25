@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DungeonArena"
 run/main_scene="uid://bda1xy3kvgf5k"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,15 +24,28 @@ SteamManager="*uid://vab35jgbhmkt"
 SceneLoader="*uid://bwv3bfvtedn0w"
 PlayerManager="*uid://ce3aaefserfbh"
 DungeonLoader="*uid://d02vsykunmd6"
+ItemDb="*uid://cyhemmlxwgt4d"
 
 [debug]
 
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_signal=0
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godotsteam/plugin.cfg")
+
+[global_group]
+
+draggable_item=""
 
 [input]
 
@@ -75,6 +88,7 @@ ui_down={
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="Interactible"
+3d_physics/layer_9="PathMarkPlacable"
 3d_physics/layer_32="DungeonRoomBoundary"
 
 [navigation]
@@ -84,10 +98,6 @@ ui_down={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-
-[rendering]
-
-rendering_device/driver.windows="d3d12"
 
 [steam]
 

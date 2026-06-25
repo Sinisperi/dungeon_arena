@@ -27,6 +27,7 @@ var since_last_update: float = essence_value
 
 
 func _ready() -> void:
+	super._ready()
 	if !is_activated:
 		interaction_text = "to activate The Shrine Of time"
 

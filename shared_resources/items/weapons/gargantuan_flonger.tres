@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cfqs2657kujpd"]
+
+[ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_ek3kc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yyfjg"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1x3f"]
+atlas = SubResource("CompressedTexture2D_yyfjg")
+region = Rect2(0, 0, 192, 128)
+
+[resource]
+script = ExtResource("1_ek3kc")
+item_name = "Gargantuan flonger"
+texture = SubResource("AtlasTexture_b1x3f")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"

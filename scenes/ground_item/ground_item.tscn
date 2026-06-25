@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://besuple7ahgpa"]
+
+[ext_resource type="Script" uid="uid://c6og3od8yojum" path="res://scenes/ground_item/ground_item.gd" id="1_7rf74"]
+[ext_resource type="PackedScene" uid="uid://bovghlop6shot" path="res://scenes/ground_item/ground_item_info_popup/ground_item_info_popup.tscn" id="2_npmtj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hkegc"]
+radius = 0.21200216
+
+[sub_resource type="Gradient" id="Gradient_npmtj"]
+offsets = PackedFloat32Array(0.3022599, 0.519774)
+colors = PackedColorArray(0.69143724, 1.1291975, 1.0343494, 0.24705882, 1.6852883, 1.6852883, 1.6852883, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkegc"]
+gradient = SubResource("Gradient_npmtj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="GroundItem" type="Area3D" unique_id=556674397]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_7rf74")
+info_popup_scene = ExtResource("2_npmtj")
+interaction_text = "Pick Up"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1826569001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3311743, 0)
+shape = SubResource("SphereShape3D_hkegc")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1501675844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3272034, 0)
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+billboard = 1
+texture = SubResource("GradientTexture2D_hkegc")

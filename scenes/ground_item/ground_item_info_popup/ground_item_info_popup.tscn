@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bovghlop6shot"]
+
+[ext_resource type="Script" uid="uid://3hhtbmjuxoxr" path="res://scenes/ground_item/ground_item_info_popup/ground_item_info_popup.gd" id="1_ds8gq"]
+[ext_resource type="PackedScene" uid="uid://ble0pbix5ivf1" path="res://scenes/ui/game_ui/inventory/item_info/item_info.tscn" id="1_hs77q"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cxo7w"]
+viewport_path = NodePath("SubViewport")
+
+[node name="GroundItemInfoPopup" type="Node3D" unique_id=1156954715 node_paths=PackedStringArray("item_info")]
+script = ExtResource("1_ds8gq")
+item_info = NodePath("SubViewport/Control/ItemDetails")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1680132687]
+transparent_bg = true
+size = Vector2i(512, 256)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=188704029]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDetails" parent="SubViewport/Control" unique_id=1636414058 instance=ExtResource("1_hs77q")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -160.0
+offset_right = 232.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1748331946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5631797, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_cxo7w")

@@ -2,16 +2,53 @@
 
 [ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_g6s3m"]
 [ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="2_0huxh"]
-[ext_resource type="Resource" uid="uid://bbojl4j3p21kc" path="res://shared_resources/items/consumables/llol.tres" id="2_ggu8n"]
 [ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/player/resource/player_data.gd" id="3_sykvd"]
-[ext_resource type="Resource" uid="uid://o0qxdy8fyfge" path="res://shared_resources/items/weapons/huge_swordingaasdf.tres" id="4_5ryp6"]
 [ext_resource type="Resource" uid="uid://gd370pkdbmk0" path="res://TESTING_DATA/base_player_stats.tres" id="4_ggu8n"]
-[ext_resource type="Resource" uid="uid://b43dgrb085mb0" path="res://shared_resources/items/weapons/some_sort_of_weapon.tres" id="5_fmrso"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g6s3m"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0huxh"]
+atlas = SubResource("CompressedTexture2D_g6s3m")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_sykvd"]
+script = ExtResource("1_g6s3m")
+type = 1
+item_name = "llol"
+texture = SubResource("AtlasTexture_0huxh")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ggu8n"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ryp6"]
+atlas = SubResource("CompressedTexture2D_ggu8n")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="Resource" id="Resource_fmrso"]
+script = ExtResource("1_g6s3m")
+item_name = "Huge Swordinasf"
+texture = SubResource("AtlasTexture_5ryp6")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0ia62"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82js4"]
+atlas = SubResource("CompressedTexture2D_0ia62")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_1sr76"]
+script = ExtResource("1_g6s3m")
+item_name = "Some sort of weapon"
+texture = SubResource("AtlasTexture_82js4")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
 
 [sub_resource type="Resource" id="Resource_egvq4"]
 script = ExtResource("2_0huxh")
-weapons = Array[ExtResource("1_g6s3m")]([ExtResource("4_5ryp6"), ExtResource("5_fmrso"), null, null, null, null, null, null])
-consumables = Array[ExtResource("1_g6s3m")]([ExtResource("2_ggu8n"), null, null, null])
+weapons = Array[ExtResource("1_g6s3m")]([SubResource("Resource_fmrso"), SubResource("Resource_1sr76"), null, null, null, null, null, null])
+consumables = Array[ExtResource("1_g6s3m")]([SubResource("Resource_sykvd"), null, null, null])
 metadata/_custom_type_script = "uid://3vx4vrdqof7i"
 
 [resource]

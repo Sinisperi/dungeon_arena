@@ -25,3 +25,4 @@ class GameSignals:
 	signal dungeon_loaded(player_spawn_position)
 	signal item_dropped(item_data: ItemData)
 	signal item_picked_up(item_uuid: String)
+	signal player_died(peer_id: int)

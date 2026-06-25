@@ -16,11 +16,14 @@ var current_interactible: Area3D = null
 
 
 func _ready() -> void:
+	data = data.duplicate(true)
 	if is_multiplayer_authority():
 		_enable()
 	else:
 		_disable()
 
+	if weapon:
+		weapon.area_entered.connect(_on_weapon_enemy_hit)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -66,8 +69,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_weapon_enemy_hit(area: Area3D) -> void:
 	print_rich("[color=yellow]hit an enemy[/color]")
-	var enemy: Enemy = area.get_parent()
-	enemy.take_damage(data.stats.damage, self)
+	var enemy: Node = area.get_parent()
+	if enemy is Enemy:
+		enemy.take_damage(data.stats.damage, self)
+	else:
+		print_debug("player hit a player for 1mil dmg")
+		enemy.take_damage(1000000.0)
 	print("hit the guy")
 
 
@@ -76,18 +83,43 @@ func change_time_essence_by(amount: int) -> void:
 	Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)
 
 
+func change_xp_by(amount: int) -> void:
+	data.xp += amount
+
+
 func attack() -> void:
 	#visuals.rotation.y = camera_rig.rotation.y
 	animation_player.play("attack")
 
 
 func take_damage(amount: float) -> void:
+	if !multiplayer.is_server():
+		return
+	prints(name, data.stats.health)
+
 	data.stats.health -= amount
-	Globals.game_ui.hud.health_bar.update(data.stats.health)
-	print("Player took ", amount, " of damage; hp ", data.stats.health)
+	_send_ui_update.rpc_id(int(name), data.stats.health)
+	print("Player ", name, " took ", amount, " of damage; hp ", data.stats.health)
 	if data.stats.health <= 0:
-		queue_free()
+		_die_request.rpc_id(int(name))
 		print_rich("[color=red][b]GAME OVER[/b][/color]")
+
+
+@rpc("any_peer", "call_local")
+func _die_request(peer_id: int) -> void:
+	Globals.player_spawner._on_player_died(peer_id)
+	_notify_player_died.rpc(peer_id)
+
+
+@rpc("any_peer", "call_local")
+func _notify_player_died(peer_id: int) -> void:
+	if !multiplayer.is_server():
+		Globals.player_spawner._on_player_died(peer_id)
+
+
+@rpc("any_peer", "call_local")
+func _send_ui_update(hp: float) -> void:
+	Globals.game_ui.hud.health_bar.update(hp)
 
 
 func _on_interaction_area_entered(area: Interactible) -> void:
@@ -126,8 +158,6 @@ func _disable() -> void:
 func _enable() -> void:
 	Globals.player = self
 	camera_rig.current = true
-	if weapon:
-		weapon.area_entered.connect(_on_weapon_enemy_hit)
 	if data.stats:
 		Globals.game_ui.hud.health_bar.init(data.stats.health, data.stats.health)
 		Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)

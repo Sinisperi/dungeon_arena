@@ -16,6 +16,9 @@ func add_player_to_active(peer_id: int, player_ref: Player) -> void:
 
 
 
+func get_peer_ref(peer_id: int) -> Player:
+	if !active_players.has(peer_id): return null
+	return active_players[peer_id].player_ref
 
 
 func remove_player_from_active(peer_id: int) -> Player:

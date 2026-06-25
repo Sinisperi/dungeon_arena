@@ -1,8 +1,70 @@
 [gd_scene format=3 uid="uid://dsslq058jskbn"]
 
 [ext_resource type="Script" uid="uid://bm8ttysxp6235" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Resource" uid="uid://db77kfjs0xdbc" path="res://TESTING_DATA/base_player_data.tres" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="2_75vfm"]
 [ext_resource type="PackedScene" uid="uid://0mg04ktwnetm" path="res://scenes/player/camera_rig/camera_rig.tscn" id="2_lvxji"]
+[ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="3_0owmy"]
+[ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/player/resource/player_data.gd" id="4_qek5x"]
+[ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://shared_resources/character_stats/character_stats.gd" id="5_5gtgg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h17s1"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = SubResource("CompressedTexture2D_h17s1")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_fm80t"]
+script = ExtResource("2_75vfm")
+type = 1
+item_name = "llol"
+texture = SubResource("AtlasTexture_je7p5")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gx1jg"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = SubResource("CompressedTexture2D_gx1jg")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="Resource" id="Resource_fcs02"]
+script = ExtResource("2_75vfm")
+item_name = "Huge Swordinasf"
+texture = SubResource("AtlasTexture_ugbui")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_myrg7"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = SubResource("CompressedTexture2D_myrg7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_uf5tr"]
+script = ExtResource("2_75vfm")
+item_name = "Some sort of weapon"
+texture = SubResource("AtlasTexture_kvlxm")
+metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
+
+[sub_resource type="Resource" id="Resource_lgqa7"]
+script = ExtResource("3_0owmy")
+weapons = Array[ExtResource("2_75vfm")]([SubResource("Resource_fcs02"), SubResource("Resource_uf5tr"), null, null, null, null, null, null])
+consumables = Array[ExtResource("2_75vfm")]([SubResource("Resource_fm80t"), null, null, null])
+metadata/_custom_type_script = "uid://3vx4vrdqof7i"
+
+[sub_resource type="Resource" id="Resource_8ydkj"]
+script = ExtResource("5_5gtgg")
+health = 100.0
+damage = 25.0
+metadata/_custom_type_script = "uid://btpolbdqnteo7"
+
+[sub_resource type="Resource" id="Resource_3j4b4"]
+resource_local_to_scene = true
+script = ExtResource("4_qek5x")
+inventory = SubResource("Resource_lgqa7")
+stats = SubResource("Resource_8ydkj")
+metadata/_custom_type_script = "uid://dmoygo3s3qxue"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
 radius = 0.6689453
@@ -183,7 +245,7 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_8afob")
 weapon = NodePath("Visuals/WeaponHolder/Weapon")
-data = ExtResource("2_gmlin")
+data = SubResource("Resource_3j4b4")
 camera_rig = NodePath("CameraRig")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
 
@@ -230,7 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1754317, 0.9363816, -0.2279
 [node name="Weapon" type="Area3D" parent="Visuals/WeaponHolder" unique_id=1687461796]
 transform = Transform3D(0.46476966, -0.21412374, 0.859151, -0.82704914, -0.451493, 0.33487928, 0.3161951, -0.86620164, -0.38693103, -0.31813908, -0.04101932, 0.051394522)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 6
 monitoring = false
 monitorable = false
 metadata/_edit_group_ = true

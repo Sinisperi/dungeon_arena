@@ -1,13 +1,16 @@
 class_name MultiplayerPlayerSpawner extends Node
 
+signal client_player_cleared
 #@export var players_container: Node
 @export var player_scene: PackedScene
 @export var player_spawn_area: EntitySpawnArea
 
 
 func _ready() -> void:
+	Globals.player_spawner = self
 	SceneLoader.scene_loaded_for_peer.connect(_on_scene_loaded)
 	NetworkManager.peer_disconnected.connect(_on_peer_disconnected)
+	SignalBus.game.player_died.connect(_on_player_died)
 
 
 # everywhere
@@ -103,9 +106,18 @@ func _on_peer_disconnected(peer_id: int, _player_id: int) -> void:
 	if multiplayer.is_server():
 		var player: Player = PlayerManager.remove_player_from_active(peer_id)
 		remove_child(player)
-		player.queue_free()
+		player.queue_free.call_deferred()
 	else:
 		var player: Player = get_node_or_null("./" + str(peer_id))
 		if player:
-			remove_child(player)
-			player.queue_free()
+			player.queue_free.call_deferred()
+
+
+# I DONT NEED TO DELETE THE PLAYER
+# later something else to be able to revivie or something idk
+func _on_player_died(peer_id: int) -> void:
+	respawn()
+
+
+func respawn() -> void:
+	print_rich("[color=red]You died[/color]")

@@ -82,7 +82,6 @@ func _on_player_detected(area: Area3D) -> void:
 	nav_agent.avoidance_enabled = true
 	await get_tree().process_frame
 	nav_agent.target_position = player_ref.global_position
-	print(player_ref.global_position, global_position)
 	current_state = State.CHASING
 	print("player detected starting chase")
 
@@ -131,7 +130,6 @@ func do_state() -> void:
 					attack_timer.start()
 				return
 			if velocity.length():
-				print(velocity)
 				var look_target = Vector3(
 					player_ref.global_position.x, 0, player_ref.global_position.z
 				)
@@ -176,11 +174,11 @@ func _on_attack_timer_timeout() -> void:
 
 
 func take_damage(amount: float, from_whomst: Node = null) -> void:
-	stats.health -= amount
-	health_bar.update(stats.health)
 	if !multiplayer.is_server():
 		return
+	stats.health -= amount
 
+	_sync_hp.rpc(stats.health)
 	print("ENEMY took ", amount, " of damage; hp ", stats.health)
 	if stats.health <= 0:
 		_die.rpc()
@@ -188,6 +186,11 @@ func take_damage(amount: float, from_whomst: Node = null) -> void:
 		if from_whomst is Player:
 			from_whomst.change_time_essence_by(stats.time_essence)
 	pass
+
+
+@rpc("any_peer", "call_local")
+func _sync_hp(hp: float) -> void:
+	health_bar.update(hp)
 
 
 @rpc("any_peer", "call_local")

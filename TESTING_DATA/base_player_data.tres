@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_g6s3m"]
 [ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="2_0huxh"]
-[ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/player/resource/player_data.gd" id="3_sykvd"]
+[ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/character/player/resource/player_data.gd" id="3_sykvd"]
 [ext_resource type="Resource" uid="uid://gd370pkdbmk0" path="res://TESTING_DATA/base_player_stats.tres" id="4_ggu8n"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g6s3m"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0mg04ktwnetm"]
 
-[ext_resource type="Script" uid="uid://b6x6y7532qro" path="res://scenes/player/camera_rig/camera_rig.gd" id="1_873is"]
+[ext_resource type="Script" uid="uid://b6x6y7532qro" path="res://scenes/character/player/camera_rig/camera_rig.gd" id="1_873is"]
 
 [node name="CameraRig" type="Node3D" unique_id=792375586 node_paths=PackedStringArray("camera", "arm", "interaction_ray")]
 transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 0, 0)

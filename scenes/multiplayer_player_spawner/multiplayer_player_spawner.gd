@@ -116,8 +116,10 @@ func _on_peer_disconnected(peer_id: int, _player_id: int) -> void:
 # I DONT NEED TO DELETE THE PLAYER
 # later something else to be able to revivie or something idk
 func _on_player_died(peer_id: int) -> void:
-	respawn()
+	respawn(peer_id)
 
 
-func respawn() -> void:
-	print_rich("[color=red]You died[/color]")
+func respawn(peer_id: int) -> void:
+	var player: Player = get_node_or_null("./" + str(peer_id))
+	if player:
+		player.global_position = player_spawn_area.get_spawn_position()

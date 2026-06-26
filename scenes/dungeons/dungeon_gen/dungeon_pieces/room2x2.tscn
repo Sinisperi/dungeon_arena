@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ctx4t5nqfa6so" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/room.gd" id="1_8fs5l"]
 [ext_resource type="Script" uid="uid://cdtofv6q003e1" path="res://scenes/dungeons/dungeon_gen/dungeon_pieces/socket.gd" id="2_58ryt"]
 [ext_resource type="PackedScene" uid="uid://b8nxwxq3yj1o1" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_spawner.tscn" id="3_23xao"]
-[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="4_sqahs"]
+[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/character/enemy/enemy.tscn" id="4_sqahs"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_23xao"]
 vertices = PackedVector3Array(0, 9, -0.125, 0, 9, 16.125, 16.25, 8.75, 15.875, 16, 9, -0.125, 0, 0.5, 6.875, 0, 0.5, 9.875, 1.25, 0.5, 9.875, 1.25, 0.5, 6.875, 8.5, 0.5, 14.875, 11.75, 0.5, 14.875, 8.5, 0.5, 16.125, 11.75, 0.5, 16.125, 11.75, 0.5, 1.125, 15.75, 0.5, 14.875, 15.75, 0.5, 1.125, 11.75, 0.5, -0.125, 8.5, 0.5, -0.125, 8.5, 0.5, 1.125, 1.25, 0.5, 14.875, 1.25, 0.5, 1.125, 0.25, 0.5, 0.125, 0.25, 0.5, 0.875, 1, 0.5, 0.875, 1, 0.5, 0.125, 1.25, 0.5, 0.125, 1.25, 0.5, 0.875, 8.25, 0.5, 0.875, 8.25, 0.5, 0.125, 12, 0.5, 0.125, 12, 0.5, 0.875, 15.75, 0.5, 0.875, 15.75, 0.5, 0.125, 0.25, 0.5, 1.125, 0.25, 0.5, 6.625, 1, 0.5, 6.625, 1, 0.5, 1.125, 0.25, 0.5, 10.125, 0.25, 0.5, 14.875, 1, 0.5, 14.875, 1, 0.5, 10.125, 0.25, 0.5, 15.125, 0.25, 0.5, 15.875, 1, 0.5, 15.875, 1, 0.5, 15.125, 1.25, 0.5, 15.125, 1.25, 0.5, 15.875, 8.25, 0.5, 15.875, 8.25, 0.5, 15.125, 12, 0.5, 15.125, 12, 0.5, 15.875, 15.75, 0.5, 15.875, 15.75, 0.5, 15.125)

@@ -1,39 +1,30 @@
-class_name Player extends CharacterBody3D
+class_name Player extends Character
 
-@onready var visuals: Node3D = %Visuals
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-#@onready var hud: HUD = %HUD
 @onready var interaction_area: Area3D = %InteractionArea
 
-@export var weapon: Area3D
-@export var data: PlayerData
 @export var camera_rig: CameraRig
-
-@export_category("Multiplayer")
-@export var multiplayer_synchronizer: MultiplayerSynchronizer
+# NOTE remove
+@export var weapon: Area3D
 
 var current_interactible: Area3D = null
 
+# NOTE on weapons keep the aniation and then do that
+#animation_player.get_animation_library("").add_animation("attack", anim)
+
 
 func _ready() -> void:
-	data = data.duplicate(true)
 	if is_multiplayer_authority():
 		_enable()
 	else:
-		_disable()
+		_disable_logic()
 
 	if weapon:
 		weapon.area_entered.connect(_on_weapon_enemy_hit)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	health_changed.connect(_on_health_changed)
+	character_died.connect(_on_character_died)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		camera_rig.rotation.y -= event.relative.x * 0.004
-		camera_rig.rotation.y = wrapf(camera_rig.rotation.y, 0.0, TAU)
-
-		camera_rig.rotation.x -= event.relative.y * 0.004
-		camera_rig.rotation.x = clampf(camera_rig.rotation.x, -PI / 2.5, PI / 2.5)
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
@@ -88,33 +79,21 @@ func change_xp_by(amount: int) -> void:
 
 
 func attack() -> void:
-	#visuals.rotation.y = camera_rig.rotation.y
 	animation_player.play("attack")
 
 
-func take_damage(amount: float) -> void:
-	if !multiplayer.is_server():
-		return
-	prints(name, data.stats.health)
+func _on_health_changed(new_health: float) -> void:
+	_send_ui_update.rpc_id(int(name), new_health)
 
-	data.stats.health -= amount
-	_send_ui_update.rpc_id(int(name), data.stats.health)
-	print("Player ", name, " took ", amount, " of damage; hp ", data.stats.health)
-	if data.stats.health <= 0:
-		_die_request.rpc_id(int(name))
-		print_rich("[color=red][b]GAME OVER[/b][/color]")
+
+func _on_character_died() -> void:
+	#play death animation or something
+	_die_request.rpc(int(name))
 
 
 @rpc("any_peer", "call_local")
 func _die_request(peer_id: int) -> void:
 	Globals.player_spawner._on_player_died(peer_id)
-	_notify_player_died.rpc(peer_id)
-
-
-@rpc("any_peer", "call_local")
-func _notify_player_died(peer_id: int) -> void:
-	if !multiplayer.is_server():
-		Globals.player_spawner._on_player_died(peer_id)
 
 
 @rpc("any_peer", "call_local")
@@ -123,19 +102,14 @@ func _send_ui_update(hp: float) -> void:
 
 
 func _on_interaction_area_entered(area: Interactible) -> void:
-	#area.interact()
 	current_interactible = area
 
 
 func _on_interaction_area_exited(_area: Interactible) -> void:
-	#Globals.game_ui.hud.hide_interact_label()
 	current_interactible = null
 
 
 func place_path_mark() -> void:
-	# position of ray hitting the thing
-	# normal of that surface
-	# texture of the mark
 	var position_data: Dictionary = camera_rig.get_interaction_ray_hit()
 	print(position_data)
 	_request_path_mark_placement.rpc(position_data, 0)
@@ -146,13 +120,10 @@ func _request_path_mark_placement(position_data: Dictionary, tex_id: int) -> voi
 	SignalBus.dungeon.path_mark_placed.emit(position_data, tex_id)
 
 
-func _disable() -> void:
+func _disable_logic() -> void:
+	super._disable_logic()
 	interaction_area.monitoring = false
 	interaction_area.monitorable = false
-	set_physics_process(false)
-	set_process_input(false)
-	set_process_unhandled_input(false)
-	set_process_unhandled_key_input(false)
 
 
 func _enable() -> void:

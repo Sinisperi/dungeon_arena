@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://gd370pkdbmk0"]
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://gd370pkdbmk0"]
 
-[ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://shared_resources/character_stats/character_stats.gd" id="1_ui5fe"]
+[ext_resource type="Script" uid="uid://o47kejpp512y" path="res://scenes/character/player/resource/player_stats.gd" id="1_ttn8t"]
+[ext_resource type="Script" uid="uid://bgkvcqwasawak" path="res://scenes/character/resource/stat.gd" id="2_8n013"]
+
+[sub_resource type="Resource" id="Resource_i0j1t"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [resource]
-script = ExtResource("1_ui5fe")
-health = 100.0
-damage = 25.0
-metadata/_custom_type_script = "uid://btpolbdqnteo7"
+script = ExtResource("1_ttn8t")
+vitality = SubResource("Resource_i0j1t")

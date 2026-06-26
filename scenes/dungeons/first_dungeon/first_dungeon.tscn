@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drgjxqead28hd" path="res://scenes/dungeons/dungeon_gen/dungeon_generator.tscn" id="2_18m4l"]
 [ext_resource type="PackedScene" uid="uid://bhepw82ifw6e7" path="res://scenes/dungeons/dungeon_gen/boss_spawner/boss_spawner.tscn" id="2_fwn5x"]
 [ext_resource type="PackedScene" uid="uid://b8nxwxq3yj1o1" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_spawner.tscn" id="4_or50v"]
-[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/enemy/enemy.tscn" id="5_6fasc"]
+[ext_resource type="PackedScene" uid="uid://rs2cda7s84ox" path="res://scenes/character/enemy/enemy.tscn" id="5_6fasc"]
 [ext_resource type="Script" uid="uid://cmcdkneef7b4n" path="res://scenes/entity_spawn_area/entity_spawn_area.gd" id="6_6fasc"]
 [ext_resource type="PackedScene" uid="uid://c0u1wrcdolv2e" path="res://scenes/path_mark/path_mark_placer.tscn" id="7_n3upp"]
 [ext_resource type="PackedScene" uid="uid://dy65c7od18v5e" path="res://scenes/dungeons/dungeon_gen/seal/seal.tscn" id="9_fwn5x"]

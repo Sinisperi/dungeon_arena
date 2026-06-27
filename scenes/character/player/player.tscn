@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://gd370pkdbmk0" path="res://TESTING_DATA/base_player_stats.tres" id="5_v051h"]
 [ext_resource type="Animation" uid="uid://ytnevs8auyh3" path="res://TESTING_DATA/attack_anim.res" id="6_hixpj"]
 [ext_resource type="Animation" uid="uid://cqohwgkchcgjy" path="res://TESTING_DATA/filp_anim.res" id="6_v051h"]
+[ext_resource type="PackedScene" uid="uid://cmi1egcuwd30s" path="res://scenes/character/hitbox/hitbox.tscn" id="7_68dt2"]
+[ext_resource type="PackedScene" uid="uid://btf83jl35v52o" path="res://scenes/character/equipment_component/equipment_component.tscn" id="9_i0j1t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h17s1"]
 load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
@@ -58,8 +60,8 @@ metadata/_custom_type_script = "uid://3vx4vrdqof7i"
 [sub_resource type="Resource" id="Resource_3j4b4"]
 resource_local_to_scene = true
 script = ExtResource("4_qek5x")
-inventory = SubResource("Resource_lgqa7")
 stats = ExtResource("5_v051h")
+inventory = SubResource("Resource_lgqa7")
 metadata/_custom_type_script = "uid://dmoygo3s3qxue"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
@@ -67,6 +69,10 @@ radius = 0.6689453
 height = 2.1235352
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dovo2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
+radius = 0.33642578
+height = 2.098877
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tabfc"]
 radius = 0.60009766
@@ -85,16 +91,12 @@ material = SubResource("StandardMaterial3D_8afob")
 radius = 0.14
 height = 0.81
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gmlin"]
-radius = 0.33642578
-height = 2.098877
-
 [sub_resource type="Animation" id="Animation_lvxji"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,7 +120,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/WeaponHolder/Weapon:monitoring")
+tracks/2/path = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -130,7 +132,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals/WeaponHolder/Weapon:monitorable")
+tracks/3/path = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon:monitorable")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -142,7 +144,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Visuals/WeaponHolder/Weapon/CollisionShape3D:disabled")
+tracks/4/path = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon/CollisionShape3D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -184,48 +186,78 @@ _data = {
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lvxji"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath(".:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
+properties/1/path = NodePath("Visuals:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Visuals:rotation")
+properties/2/path = NodePath("AnimationPlayer:current_animation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("AnimationPlayer:current_animation")
-properties/3/spawn = true
-properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("camera_rig", "weapon", "visuals", "animation_player", "multiplayer_synchronizer")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_8afob")
 camera_rig = NodePath("CameraRig")
-weapon = NodePath("Visuals/WeaponHolder/Weapon")
+weapon = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon")
 visuals = NodePath("Visuals")
 animation_player = NodePath("AnimationPlayer")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
 data = SubResource("Resource_3j4b4")
 
-[node name="CameraRig" parent="." unique_id=792375586 instance=ExtResource("2_lvxji")]
-transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 1.6651385, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1065164579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0617676, 0)
 shape = SubResource("CapsuleShape3D_8afob")
 
-[node name="DamageDetector" type="Area3D" parent="." unique_id=1627515446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageDetector" unique_id=1921868173]
-shape = SubResource("CapsuleShape3D_dovo2")
-debug_color = Color(0.9244165, 4.8997106e-05, 0.6820252, 0.41960785)
+[node name="CameraRig" parent="." unique_id=792375586 instance=ExtResource("2_lvxji")]
+transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.8640377, 0, 1.6651385, 0)
 
 [node name="Visuals" type="Node3D" parent="." unique_id=2019204038]
 unique_name_in_owner = true
+
+[node name="Hitbox" parent="Visuals" unique_id=1408306589 node_paths=PackedStringArray("character_ref") instance=ExtResource("7_68dt2")]
+collision_layer = 0
+collision_mask = 16
+character_ref = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/Hitbox" unique_id=1921868173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dovo2")
+debug_color = Color(0.9244165, 4.8997106e-05, 0.6820252, 0.41960785)
+
+[node name="EquipmentComponent" parent="Visuals" unique_id=404924840 node_paths=PackedStringArray("left_hand_marker", "right_hand_marker", "character_ref") instance=ExtResource("9_i0j1t")]
+left_hand_marker = NodePath("LH_Marker")
+right_hand_marker = NodePath("RH_Marker")
+character_ref = NodePath("../..")
+
+[node name="RH_Marker" type="Marker3D" parent="Visuals/EquipmentComponent" unique_id=1027816394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1754317, 0.9363816, -0.22794658)
+
+[node name="Weapon" type="Area3D" parent="Visuals/EquipmentComponent/RH_Marker" unique_id=1687461796]
+transform = Transform3D(0.46476966, -0.21412374, 0.859151, -0.82704914, -0.451493, 0.33487928, 0.3161951, -0.86620164, -0.38693103, -0.31813908, -0.04101932, 0.051394522)
+collision_layer = 0
+collision_mask = 6
+monitoring = false
+monitorable = false
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/EquipmentComponent/RH_Marker/Weapon" unique_id=1726507668]
+transform = Transform3D(1, -5.9604645e-08, 2.9802322e-08, 0, 1, -2.9802322e-08, -2.9802322e-08, 0, 1, 2.9802322e-08, 0.5877686, 1.1920929e-07)
+shape = SubResource("CapsuleShape3D_gmlin")
+disabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/EquipmentComponent/RH_Marker/Weapon" unique_id=1964884570]
+transform = Transform3D(0.92725116, -0.37432992, -0.00906992, 0.0014585853, 0.027833432, -0.9996115, 0.37443665, 0.9268776, 0.02635461, 0, 0, 0)
+size = Vector3(0.6425781, 0.10437012, 0.118896484)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/EquipmentComponent/RH_Marker/Weapon/CSGBox3D" unique_id=235637823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01493907, -0.0034617782, -0.5697967)
+size = Vector3(0.13305664, 0.055541992, 1.8115234)
+
+[node name="LH_Marker" type="Marker3D" parent="Visuals/EquipmentComponent" unique_id=937497665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82453585, 1.0587977, 0)
 
 [node name="InteractionArea" type="Area3D" parent="Visuals" unique_id=457598464]
 unique_name_in_owner = true
@@ -244,30 +276,6 @@ mesh = SubResource("CapsuleMesh_x7p2l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals/MeshInstance3D" unique_id=650761731]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.6015179, -0.5268117)
 mesh = SubResource("CapsuleMesh_dovo2")
-
-[node name="WeaponHolder" type="Node3D" parent="Visuals" unique_id=1209560710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1754317, 0.9363816, -0.22794658)
-
-[node name="Weapon" type="Area3D" parent="Visuals/WeaponHolder" unique_id=1687461796]
-transform = Transform3D(0.46476966, -0.21412374, 0.859151, -0.82704914, -0.451493, 0.33487928, 0.3161951, -0.86620164, -0.38693103, -0.31813908, -0.04101932, 0.051394522)
-collision_layer = 0
-collision_mask = 6
-monitoring = false
-monitorable = false
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/WeaponHolder/Weapon" unique_id=1726507668]
-transform = Transform3D(1, -5.9604645e-08, 2.9802322e-08, 0, 1, -2.9802322e-08, -2.9802322e-08, 0, 1, 2.9802322e-08, 0.5877686, 1.1920929e-07)
-shape = SubResource("CapsuleShape3D_gmlin")
-disabled = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/WeaponHolder/Weapon" unique_id=1964884570]
-transform = Transform3D(0.92725116, -0.37432992, -0.00906992, 0.0014585853, 0.027833432, -0.9996115, 0.37443665, 0.9268776, 0.02635461, 0, 0, 0)
-size = Vector3(0.6425781, 0.10437012, 0.118896484)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Visuals/WeaponHolder/Weapon/CSGBox3D" unique_id=235637823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01493907, -0.0034617782, -0.5697967)
-size = Vector3(0.13305664, 0.055541992, 1.8115234)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508820323]
 libraries/ = SubResource("AnimationLibrary_75vfm")

@@ -1,17 +1,13 @@
-class_name Enemy extends CharacterBody3D
+class_name Enemy extends Character
 
 signal died
-@onready var visuals: Node3D = $Visuals
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var hit_box: Area3D = %Hitbox
 @onready var player_detector: Area3D = %PlayerDetector
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_bar: PBar = %HealthBar
 @export var weapon: Area3D
 
-@export var base_stats: CharacterStats
-var stats: CharacterStats
 var player_ref: Player = null
 
 var target_nav_position: Vector3 = Vector3.ZERO
@@ -27,8 +23,7 @@ var current_state: State = State.IDLE
 
 
 func _ready() -> void:
-	stats = base_stats.duplicate()
-	health_bar.init(stats.health, stats.health)
+	health_bar.init(data.stats.health.value, data.stats.health.max_value)
 	if !multiplayer.is_server():
 		set_process(false)
 		set_physics_process(false)
@@ -173,20 +168,19 @@ func _on_attack_timer_timeout() -> void:
 	animation_player.play("attack")
 
 
-func take_damage(amount: float, from_whomst: Node = null) -> void:
-	if !multiplayer.is_server():
-		return
-	stats.health -= amount
-
-	_sync_hp.rpc(stats.health)
-	print("ENEMY took ", amount, " of damage; hp ", stats.health)
-	if stats.health <= 0:
-		_die.rpc()
-
-		if from_whomst is Player:
-			from_whomst.change_time_essence_by(stats.time_essence)
-	pass
-
+#func take_damage(amount: float, from_whomst: Node = null) -> void:
+#	if !multiplayer.is_server():
+#		return
+#	stats.health -= amount
+#
+#	_sync_hp.rpc(stats.health)
+#	print("ENEMY took ", amount, " of damage; hp ", stats.health)
+#	if stats.health <= 0:
+#		_die.rpc()
+#
+#		if from_whomst is Player:
+#			from_whomst.change_time_essence_by(stats.time_essence)
+#	pass
 
 @rpc("any_peer", "call_local")
 func _sync_hp(hp: float) -> void:
@@ -201,9 +195,10 @@ func _die() -> void:
 
 
 func _on_weapon_enemy_hit(area: Area3D) -> void:
-	if !multiplayer.is_server():
-		return
-	var enemy: Node = area.get_parent()
-	if enemy:
-		print("asdfasdfasdf")
-		enemy.take_damage(stats.damage)
+	pass
+#	if !multiplayer.is_server():
+#		return
+#	var enemy: Node = area.get_parent()
+#	if enemy:
+#		print("asdfasdfasdf")
+#		enemy.take_damage(stats.damage)

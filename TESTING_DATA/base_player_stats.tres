@@ -3,10 +3,37 @@
 [ext_resource type="Script" uid="uid://o47kejpp512y" path="res://scenes/character/player/resource/player_stats.gd" id="1_ttn8t"]
 [ext_resource type="Script" uid="uid://bgkvcqwasawak" path="res://scenes/character/resource/stat.gd" id="2_8n013"]
 
-[sub_resource type="Resource" id="Resource_i0j1t"]
+[sub_resource type="Resource" id="Resource_8n013"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_v051h"]
+script = ExtResource("2_8n013")
+value = 100.0
+base_max_value = 100.0
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_in2if"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_ng602"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_68dt2"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_ttn8t"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [resource]
 script = ExtResource("1_ttn8t")
-vitality = SubResource("Resource_i0j1t")
+vitality = SubResource("Resource_ttn8t")
+endurance = SubResource("Resource_8n013")
+skill = SubResource("Resource_ng602")
+health = SubResource("Resource_v051h")
+stamina = SubResource("Resource_68dt2")
+mana = SubResource("Resource_in2if")

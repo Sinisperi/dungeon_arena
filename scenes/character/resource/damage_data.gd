@@ -1,0 +1,1 @@
+class_name DamageData extends Resource

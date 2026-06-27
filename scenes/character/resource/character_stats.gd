@@ -2,11 +2,15 @@ class_name CharacterStats extends Resource
 
 signal buff_added(buff: Buff)
 signal buff_removed(buff: Buff)
+signal ailment_inflicted(ailment: Ailment)
+signal ailment_cured(ailment: Ailment)
 signal health_changed(value: float)
 signal stamina_changed(value: float)
 signal mana_changed(value: float)
 
-@export_category("Vitals")
+
+
+@export_group("Vitals")
 
 @export var health: Stat
 
@@ -24,8 +28,34 @@ signal mana_changed(value: float)
 		return damage
 
 #=======================================================
-var _active_buffs: Dictionary[String, Buff] = {}
+#=======AILMENTS================================
+enum Ailment {
+	NONE = 0,
+	POISONED = 1 << 0,
+	BURNING = 1 << 1,
+	# while stunned you have a delay in input for like a 3 sec
+	# and maybe screen is a bit hazy
+	STUNNED = 1 << 2
+}
 
+var current_ailment: int = Ailment.NONE
+
+func has_ailment(ailment: Ailment) -> bool:
+	return current_ailment & ailment
+
+
+func add_ailment(ailment: Ailment) -> void:
+	current_ailment |= ailment
+	ailment_inflicted.emit(ailment)
+
+
+func remove_ailment(ailment: Ailment) -> void:
+	current_ailment &= ~ailment
+	ailment_cured.emit(ailment)
+var _active_buffs: Dictionary[String, Buff] = {}
+#=======AILMENTS================================
+
+#========BUFFS==================================
 func update_buffs(delta: float) -> void:
 	if !_active_buffs.size():
 		return
@@ -51,3 +81,7 @@ func remove_buff(buff: Buff) -> void:
 	buff.remove(self)
 	buff.expired.disconnect(_on_buff_expired)
 	buff_removed.emit(buff)
+#========BUFFS==================================
+
+func init() -> void:
+	pass

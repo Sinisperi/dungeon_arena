@@ -13,6 +13,7 @@ var current_interactible: Area3D = null
 
 
 func _ready() -> void:
+	super._ready()
 	if is_multiplayer_authority():
 		_enable()
 	else:
@@ -62,10 +63,11 @@ func _on_weapon_enemy_hit(area: Area3D) -> void:
 	print_rich("[color=yellow]hit an enemy[/color]")
 	var enemy: Node = area.get_parent()
 	if enemy is Enemy:
-		enemy.take_damage(data.stats.damage, self)
+		#enemy.take_damage({"raw_damage": 10.0})
+		pass
 	else:
 		print_debug("player hit a player for 1mil dmg")
-		enemy.take_damage(1000000.0)
+		#enemy.take_damage(1000000.0)
 	print("hit the guy")
 
 
@@ -130,8 +132,8 @@ func _enable() -> void:
 	Globals.player = self
 	camera_rig.current = true
 	if data.stats:
-		Globals.game_ui.hud.health_bar.init(data.stats.health, data.stats.health)
-		Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)
+		Globals.game_ui.hud.health_bar.init(data.stats.health.value, data.stats.health.max_value)
+		Globals.game_ui.hud.update_time_essence_label(data.time_essence)
 		Globals.game_ui.inventory.init()
 
 	interaction_area.area_entered.connect(_on_interaction_area_entered)

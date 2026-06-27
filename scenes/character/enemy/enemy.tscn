@@ -1,8 +1,36 @@
 [gd_scene format=3 uid="uid://rs2cda7s84ox"]
 
 [ext_resource type="Script" uid="uid://b0lxqqxbir4pa" path="res://scenes/character/enemy/enemy.gd" id="1_735o0"]
-[ext_resource type="Resource" uid="uid://pb0hmwbie2ts" path="res://scenes/dungeons/dungeon_gen/enemy_spawner/enemy_stats.tres" id="2_4kjq8"]
+[ext_resource type="Script" uid="uid://hh1tyam4ay41" path="res://scenes/character/resource/character_data.gd" id="2_bnw2t"]
 [ext_resource type="PackedScene" uid="uid://b0potvvdu5p3v" path="res://scenes/ui/components/progress_bar/progress_bar.tscn" id="3_bnw2t"]
+[ext_resource type="Script" uid="uid://bgkvcqwasawak" path="res://scenes/character/resource/stat.gd" id="3_uscpi"]
+[ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://scenes/character/resource/character_stats.gd" id="4_0fbgq"]
+
+[sub_resource type="Resource" id="Resource_bnw2t"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_uscpi"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_0fbgq"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_ygshw"]
+resource_local_to_scene = true
+script = ExtResource("4_0fbgq")
+health = SubResource("Resource_bnw2t")
+stamina = SubResource("Resource_0fbgq")
+mana = SubResource("Resource_uscpi")
+metadata/_custom_type_script = "uid://btpolbdqnteo7"
+
+[sub_resource type="Resource" id="Resource_50x5m"]
+resource_local_to_scene = true
+script = ExtResource("2_bnw2t")
+stats = SubResource("Resource_ygshw")
+metadata/_custom_type_script = "uid://hh1tyam4ay41"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tjssy"]
 
@@ -184,12 +212,15 @@ properties/2/path = NodePath("AnimationPlayer:current_animation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1544341509 node_paths=PackedStringArray("weapon")]
+[node name="Enemy" type="CharacterBody3D" unique_id=1544341509 node_paths=PackedStringArray("weapon", "visuals", "animation_player", "multiplayer_synchronizer")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_735o0")
 weapon = NodePath("Visuals/WeaponHolder/Weapon")
-base_stats = ExtResource("2_4kjq8")
+visuals = NodePath("Visuals")
+animation_player = NodePath("AnimationPlayer")
+multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
+data = SubResource("Resource_50x5m")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=254134573]
 unique_name_in_owner = true
@@ -264,7 +295,7 @@ libraries/ = SubResource("AnimationLibrary_gl05p")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1659292018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.187546, 0)
-billboard = 2
+billboard = 1
 texture = SubResource("ViewportTexture_tjssy")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1594780751]

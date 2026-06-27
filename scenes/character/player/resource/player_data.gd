@@ -8,4 +8,3 @@ signal time_essence_changed(value: int)
 		time_essence_changed.emit(time_essence)
 @export var currency: int = 0
 @export var xp: int = 0
-@export var inventory: InventoryData

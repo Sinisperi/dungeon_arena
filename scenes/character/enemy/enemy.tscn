@@ -2,18 +2,125 @@
 
 [ext_resource type="Script" uid="uid://b0lxqqxbir4pa" path="res://scenes/character/enemy/enemy.gd" id="1_735o0"]
 [ext_resource type="Script" uid="uid://hh1tyam4ay41" path="res://scenes/character/resource/character_data.gd" id="2_bnw2t"]
+[ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="2_psdov"]
+[ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="3_2y0uf"]
 [ext_resource type="PackedScene" uid="uid://b0potvvdu5p3v" path="res://scenes/ui/components/progress_bar/progress_bar.tscn" id="3_bnw2t"]
+[ext_resource type="Script" uid="uid://bgkvcqwasawak" path="res://scenes/character/resource/stat.gd" id="3_uscpi"]
 [ext_resource type="Script" uid="uid://btpolbdqnteo7" path="res://scenes/character/resource/character_stats.gd" id="4_0fbgq"]
+[ext_resource type="Script" uid="uid://kahh6h1lyubw" path="res://scenes/character/resource/ailments_data.gd" id="6_wh4ri"]
+[ext_resource type="Script" uid="uid://cxch8tyrmd8di" path="res://scenes/character/resource/resistances.gd" id="7_6qr7e"]
+[ext_resource type="Script" uid="uid://i23cq0qekp3q" path="res://scenes/character/resource/vitals.gd" id="9_apnye"]
+[ext_resource type="Script" uid="uid://bnhdd6j1jipds" path="res://scenes/character/hitbox/hitbox.gd" id="10_2y0uf"]
+
+[sub_resource type="Resource" id="Resource_xexbx"]
+script = ExtResource("3_2y0uf")
+metadata/_custom_type_script = "uid://3vx4vrdqof7i"
+
+[sub_resource type="Resource" id="Resource_vkr8p"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_su7nu"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_fqqer"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_vxsi6"]
+script = ExtResource("6_wh4ri")
+poison_buildup = SubResource("Resource_su7nu")
+ignite_buildup = SubResource("Resource_vkr8p")
+stun_buildup = SubResource("Resource_fqqer")
+metadata/_custom_type_script = "uid://kahh6h1lyubw"
+
+[sub_resource type="Resource" id="Resource_cbpi8"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_ouq0q"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_gbvmr"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_5pq8a"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_6nnc4"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_c44l6"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_rkhd5"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_sbiso"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_dbqnh"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_pbhnh"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_tihxb"]
+script = ExtResource("7_6qr7e")
+res_blunt = SubResource("Resource_cbpi8")
+res_cut = SubResource("Resource_gbvmr")
+res_pierce = SubResource("Resource_rkhd5")
+res_slah = SubResource("Resource_dbqnh")
+res_cold = SubResource("Resource_ouq0q")
+res_lightning = SubResource("Resource_c44l6")
+res_fire = SubResource("Resource_5pq8a")
+res_poison = SubResource("Resource_sbiso")
+res_stun = SubResource("Resource_pbhnh")
+res_ignite = SubResource("Resource_6nnc4")
+metadata/_custom_type_script = "uid://cxch8tyrmd8di"
+
+[sub_resource type="Resource" id="Resource_ix36e"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_l6okk"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_nehqy"]
+script = ExtResource("3_uscpi")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_fs307"]
+script = ExtResource("9_apnye")
+health = SubResource("Resource_ix36e")
+stamina = SubResource("Resource_nehqy")
+mana = SubResource("Resource_l6okk")
+metadata/_custom_type_script = "uid://i23cq0qekp3q"
 
 [sub_resource type="Resource" id="Resource_ygshw"]
 resource_local_to_scene = true
 script = ExtResource("4_0fbgq")
+vitals = SubResource("Resource_fs307")
+resistances = SubResource("Resource_tihxb")
+ailment_status = SubResource("Resource_vxsi6")
 metadata/_custom_type_script = "uid://btpolbdqnteo7"
 
 [sub_resource type="Resource" id="Resource_50x5m"]
 resource_local_to_scene = true
 script = ExtResource("2_bnw2t")
 stats = SubResource("Resource_ygshw")
+inventory = SubResource("Resource_xexbx")
 metadata/_custom_type_script = "uid://hh1tyam4ay41"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tjssy"]
@@ -206,10 +313,12 @@ animation_player = NodePath("AnimationPlayer")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
 data = SubResource("Resource_50x5m")
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=254134573]
+[node name="Hitbox" type="Area3D" parent="." unique_id=254134573 node_paths=PackedStringArray("character_ref")]
 unique_name_in_owner = true
 collision_layer = 128
 collision_mask = 32
+script = ExtResource("10_2y0uf")
+character_ref = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1823195204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

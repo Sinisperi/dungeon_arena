@@ -20,12 +20,13 @@ func _ready() -> void:
 	if !data.stats:
 		push_error("No stats were provided to character data in", name)
 	data.stats.init()
-	data.stats.health.depleted.connect(_on_health_depleted)
+	data.inventory.init()
+	data.stats.vitals.health.depleted.connect(_on_health_depleted)
 
 
 func _process(delta: float) -> void:
 	if multiplayer.is_server():
-		data.stats.update_buffs(delta)
+		data.stats.update(delta)
 
 
 # used in npcs only
@@ -38,9 +39,8 @@ func equip_weapon(_weapon_data: Resource) -> void:
 func take_damage(damage_data: Resource) -> void:
 	if !multiplayer.is_server():
 		return
-	var raw_damage: float = damage_data.get("raw_damage")
-	if raw_damage:
-		data.stats.health.value -= raw_damage
+	print(damage_data)
+	pass
 
 
 func _on_health_depleted() -> void:

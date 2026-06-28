@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://i8vl5ft5hikt"]
+
+[ext_resource type="Script" uid="uid://5yaw6h2quwpc" path="res://scenes/character/resource/damage_data.gd" id="1_jml3j"]
+[ext_resource type="Script" uid="uid://557m5rhocbnv" path="res://scenes/character/resource/status_effect.gd" id="2_p1i4k"]
+[ext_resource type="PackedScene" uid="uid://d1lvndinmyvmt" path="res://scenes/weapons/weapons/straight_sword/straight_sword.tscn" id="3_3x83r"]
+[ext_resource type="Script" uid="uid://curkxe3caikd2" path="res://scenes/weapons/weapons/weapon_data.gd" id="4_ine4q"]
+[ext_resource type="Texture2D" uid="uid://o06ugw6l7bqa" path="res://assets/temp/test_item_atlas.png" id="5_p1i4k"]
+
+[sub_resource type="Resource" id="Resource_hmweh"]
+script = ExtResource("1_jml3j")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs307"]
+atlas = ExtResource("5_p1i4k")
+region = Rect2(0, 0, 320, 128)
+
+[resource]
+script = ExtResource("4_ine4q")
+scene = ExtResource("3_3x83r")
+damage_data = SubResource("Resource_hmweh")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_fs307")
+metadata/_custom_type_script = "uid://curkxe3caikd2"

@@ -1,16 +1,5 @@
 class_name Inventory extends Control
 
-# needs to be small and quick to navigate
-# separate things for weapons and consumables
-# no armor
-# slot for a sigil placer pathfinder mark thing
-# slot for a time essence cointainer, bottle, flask
-# slot for hp and mana flasks
-
-# slot 4 types ( weapon, consumable)
-# item data for those types
-# draggable item
-
 @export var weapon_grid: GridContainer
 
 @export var consumables_grid: GridContainer
@@ -81,6 +70,9 @@ func _init_grid(grid: GridContainer, type: ItemData.Type) -> void:
 		if type == ItemData.Type.WEAPON:
 			if i == inventory.rh_equipped_index || i == inventory.lh_equipped_index:
 				slot.equip()
+		elif type == ItemData.Type.CONSUMABLE:
+			if i == inventory.equipped_consumable_index:
+				slot.equip()
 
 
 func _on_slot_selected(slot: InventorySlot) -> void:
@@ -137,12 +129,13 @@ func _equip_selected_item() -> void:
 	if item_type == ItemData.Type.CONSUMABLE:
 		grid = consumables_grid
 	var item_index: int = _current_selected_slot.index
-
 	var previous_equipped_index: int = inventory.change_equipment(item_index, item_type)
-	var previous_equipped_slot: InventorySlot = grid.get_child(previous_equipped_index)
-	previous_equipped_slot.unequip()
+	if previous_equipped_index >= 0:
+		var previous_equipped_slot: InventorySlot = grid.get_child(previous_equipped_index)
+		previous_equipped_slot.unequip()
 
-	_current_selected_slot.equip()
+	if item_index != previous_equipped_index:
+		_current_selected_slot.equip()
 
 
 func _refresh_state() -> void:

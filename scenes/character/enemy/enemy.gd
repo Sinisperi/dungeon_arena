@@ -23,7 +23,7 @@ var current_state: State = State.IDLE
 
 
 func _ready() -> void:
-	health_bar.init(data.stats.health.value, data.stats.health.max_value)
+	health_bar.init(data.stats.vitals.health.value, data.stats.vitals.health.max_value)
 	if !multiplayer.is_server():
 		set_process(false)
 		set_physics_process(false)

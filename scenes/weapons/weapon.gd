@@ -21,12 +21,14 @@ func init(weapon_data: WeaponData, weapon_weilder: Character) -> void:
 
 
 func _on_target_hit(area: Area3D) -> void:
+	print("target hit")
 	_calculate_damage(area)
 
 
 func _calculate_damage(area: Area3D) -> void:
 	shapecast.force_shapecast_update()
 	if !shapecast.is_colliding():
+		print("not colliding")
 		return
 	if area is Hitbox:
 		var damage_data: DamageData = data.damage_data.duplicate()
@@ -36,3 +38,5 @@ func _calculate_damage(area: Area3D) -> void:
 		damage_data.attacker_ref = weilder
 
 		area.relay_damage(damage_data)
+	else:
+		print("it is not a hitbox ", area.name)

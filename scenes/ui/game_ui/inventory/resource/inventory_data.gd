@@ -1,6 +1,6 @@
 class_name InventoryData extends Resource
-signal right_hand_weapon_equipped(weapon_data: ItemData)
-signal left_hand_weapon_equipped(weapon_data: ItemData)
+signal right_hand_weapon_equipped(weapon_data: WeaponData)
+signal left_hand_weapon_equipped(weapon_data: WeaponData)
 signal consumable_equipped(item_data: ItemData)
 
 @export var weapons: Array[ItemData] = [null, null, null, null, null, null, null, null]
@@ -9,17 +9,27 @@ signal consumable_equipped(item_data: ItemData)
 var rh_equipped_index: int = 0:
 	set(value):
 		rh_equipped_index = value
-		right_hand_weapon_equipped.emit(weapons[rh_equipped_index])
+		var item: ItemData = null
+		if rh_equipped_index != -1:
+			item = weapons[rh_equipped_index]
+		right_hand_weapon_equipped.emit(item)
 
+# needs to be set according to wether there is something in the 4 slot
 var lh_equipped_index: int = 4:
 	set(value):
 		lh_equipped_index = value
-		left_hand_weapon_equipped.emit(weapons[lh_equipped_index])
+		var item: ItemData = null
+		if lh_equipped_index != -1:
+			item = weapons[lh_equipped_index]
+		left_hand_weapon_equipped.emit(item)
 
 var equipped_consumable_index: int = 0:
 	set(value):
 		equipped_consumable_index = value
-		consumable_equipped.emit(consumables[equipped_consumable_index])
+		var item: ItemData = null
+		if equipped_consumable_index != -1:
+			item = consumables[equipped_consumable_index]
+		consumable_equipped.emit(item)
 
 
 func get_inv(type: ItemData.Type) -> Array[ItemData]:
@@ -43,11 +53,23 @@ func set_inv(type: ItemData.Type, inv: Array[ItemData]) -> void:
 func change_equipment(ind: int, type: ItemData.Type) -> int:
 	var temp: int = -1
 	if type == ItemData.Type.CONSUMABLE:
+		if ind == equipped_consumable_index:
+			temp = equipped_consumable_index
+			equipped_consumable_index = -1
+			return temp
 		if ind >= consumables.size() || ind < 0:
 			return temp
 		temp = equipped_consumable_index
 		equipped_consumable_index = ind
 	elif type == ItemData.Type.WEAPON:
+		if ind == lh_equipped_index:
+			temp = lh_equipped_index
+			lh_equipped_index = -1
+			return temp
+		if ind == rh_equipped_index:
+			temp = rh_equipped_index
+			rh_equipped_index = -1
+			return temp
 		if ind >= weapons.size() || ind < 0:
 			return -1
 		if ind < int(weapons.size() / 2.0):
@@ -61,6 +83,8 @@ func change_equipment(ind: int, type: ItemData.Type) -> int:
 
 
 func change_weapon(ind: int) -> int:
+	if ind == lh_equipped_index || ind == rh_equipped_index:
+		return -1
 	var temp: int = 0
 	if ind >= weapons.size() || ind < 0:
 		return -1
@@ -120,9 +144,9 @@ func _check_for_equipment_change(type: ItemData.Type, ind: int) -> void:
 	var inv: Array = get_inv(type)
 	if type == ItemData.Type.WEAPON:
 		if ind == rh_equipped_index:
-			right_hand_weapon_equipped.emit(inv[rh_equipped_index])
+			right_hand_weapon_equipped.emit(inv[rh_equipped_index] as WeaponData)
 		if ind == lh_equipped_index:
-			left_hand_weapon_equipped.emit(inv[lh_equipped_index])
+			left_hand_weapon_equipped.emit(inv[lh_equipped_index] as WeaponData)
 	elif type == ItemData.Type.CONSUMABLE:
 		if ind == equipped_consumable_index:
 			consumable_equipped.emit(inv[equipped_consumable_index])
@@ -134,3 +158,19 @@ func get_rh_weapon() -> ItemData:
 
 func get_lh_weapon() -> ItemData:
 	return weapons[lh_equipped_index]
+
+
+func is_equipped(ind: int, type: ItemData.Type) -> bool:
+	if type == ItemData.Type.WEAPON:
+		return ind == rh_equipped_index || ind == lh_equipped_index
+	else:
+		return ind == equipped_consumable_index
+
+
+func init() -> void:
+	if lh_equipped_index >= 0 && weapons[lh_equipped_index] == null:
+		lh_equipped_index = -1
+	if rh_equipped_index >= 0 && weapons[rh_equipped_index] == null:
+		rh_equipped_index = -1
+	if equipped_consumable_index >= 0 && consumables[equipped_consumable_index] == null:
+		equipped_consumable_index = -1

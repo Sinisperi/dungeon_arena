@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://btpb7xsy86lag"]
 
+[ext_resource type="Script" uid="uid://4pqb3b5fjxli" path="res://scenes/weapons/weapon.gd" id="1_nqevj"]
+
 [node name="Weapon" type="Area3D" unique_id=79057331]
 collision_layer = 0
 collision_mask = 32
+script = ExtResource("1_nqevj")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=2027355361]
 enabled = false
 target_position = Vector3(0.015, 0.65, -0.005)
-collision_mask = 0
+collision_mask = 193

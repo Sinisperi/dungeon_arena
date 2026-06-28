@@ -4,7 +4,6 @@ class_name Player extends Character
 
 @export var camera_rig: CameraRig
 # NOTE remove
-@export var weapon: Area3D
 
 var current_interactible: Area3D = null
 
@@ -19,8 +18,6 @@ func _ready() -> void:
 	else:
 		_disable_logic()
 
-	if weapon:
-		weapon.area_entered.connect(_on_weapon_enemy_hit)
 	health_changed.connect(_on_health_changed)
 	character_died.connect(_on_character_died)
 
@@ -132,7 +129,9 @@ func _enable() -> void:
 	Globals.player = self
 	camera_rig.current = true
 	if data.stats:
-		Globals.game_ui.hud.health_bar.init(data.stats.health.value, data.stats.health.max_value)
+		Globals.game_ui.hud.health_bar.init(
+			data.stats.vitals.health.value, data.stats.vitals.health.max_value
+		)
 		Globals.game_ui.hud.update_time_essence_label(data.time_essence)
 		Globals.game_ui.inventory.init()
 

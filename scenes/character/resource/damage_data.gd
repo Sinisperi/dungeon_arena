@@ -18,3 +18,12 @@ enum PhysicalType { BLUNT, CUT, PIERCE, SLASH }
 var attacker_ref: Character
 var collision_point: Vector3
 var collision_normal: Vector3
+
+
+func _to_string() -> String:
+	var res: Dictionary = {}
+	#res["attacker"] = attacker_ref.name
+	res["collision_point"] = collision_point
+	res["collision_normal"] = collision_normal
+	res["physical_damage_amount"] = physical_damage_amount
+	return str(res)

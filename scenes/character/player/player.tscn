@@ -196,7 +196,7 @@ properties/2/path = NodePath("AnimationPlayer:current_animation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("camera_rig", "weapon", "visuals", "animation_player", "multiplayer_synchronizer")]
+[node name="Player" type="CharacterBody3D" unique_id=1487335681 node_paths=PackedStringArray("camera_rig", "weapon", "visuals", "animation_player", "equipment_component", "multiplayer_synchronizer")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_8afob")
@@ -204,6 +204,7 @@ camera_rig = NodePath("CameraRig")
 weapon = NodePath("Visuals/EquipmentComponent/RH_Marker/Weapon")
 visuals = NodePath("Visuals")
 animation_player = NodePath("AnimationPlayer")
+equipment_component = NodePath("Visuals/EquipmentComponent")
 multiplayer_synchronizer = NodePath("MultiplayerSynchronizer")
 data = SubResource("Resource_3j4b4")
 
@@ -218,7 +219,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8640377, 0.50342715, 0, -0.50342715, 0.864
 unique_name_in_owner = true
 
 [node name="Hitbox" parent="Visuals" unique_id=1408306589 node_paths=PackedStringArray("character_ref") instance=ExtResource("7_68dt2")]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 16
 character_ref = NodePath("../..")
 

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d1lvndinmyvmt"]
+
+[ext_resource type="PackedScene" uid="uid://btpb7xsy86lag" path="res://scenes/weapons/weapon.tscn" id="1_fs307"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_idpja"]
+radius = 0.044
+height = 0.825
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkegc"]
+albedo_color = Color(0.22, 0.10340001, 0.10340001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idpja"]
+albedo_color = Color(0.55295557, 0.55295557, 0.55295545, 1)
+metallic = 1.0
+roughness = 0.41
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55k4w"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+metallic = 1.0
+roughness = 0.77
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hkegc"]
+radius = 0.04736328
+height = 0.9361572
+
+[node name="StraightSword" unique_id=79057331 instance=ExtResource("1_fs307")]
+
+[node name="ShapeCast3D" parent="." index="0" unique_id=2027355361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0)
+enabled = true
+shape = SubResource("CapsuleShape3D_idpja")
+target_position = Vector3(0.009, 0.65, 0)
+collision_mask = 192
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="1" unique_id=496649600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0)
+size = Vector3(0.05, 0.15, 0.05)
+material = SubResource("StandardMaterial3D_hkegc")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" index="0" unique_id=447086946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57500005, -0.0008148197)
+size = Vector3(0.05, 0.90000004, 0.01338501)
+material = SubResource("StandardMaterial3D_idpja")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" index="1" unique_id=1126353051]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0)
+size = Vector3(0.05, 0.25, 0.05)
+material = SubResource("StandardMaterial3D_55k4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1277146802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6109009, 0)
+shape = SubResource("CapsuleShape3D_hkegc")

@@ -16,4 +16,5 @@ enum PhysicalType { BLUNT, CUT, PIERCE, SLASH }
 @export var stun_buildup: float
 
 var attacker_ref: Character
-var origin_position: Vector3
+var collision_point: Vector3
+var collision_normal: Vector3

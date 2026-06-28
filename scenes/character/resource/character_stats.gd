@@ -8,18 +8,11 @@ signal mana_changed(value: float)
 
 
 
-@export_group("Vitals")
 
-@export var health: Stat
+@export var vitals: Vitals
 
-@export var stamina: Stat
-
-@export var mana: Stat
-
-@export_category("Resistances")
 @export var resistances: Resistances
 
-@export_category("Ailments")
 @export var ailment_status: AilmentStatus
 
 #========BUFFS==================================
@@ -58,4 +51,7 @@ func update(delta) -> void:
 	ailment_status.process_ailments_decay(delta, resistances)
 
 func init() -> void:
+	vitals.health.value_changed.connect(func(value: float) -> void: health_changed.emit(value))
+	vitals.stamina.value_changed.connect(func(value: float) -> void: stamina_changed.emit(value))
+	vitals.mana.value_changed.connect(func(value: float) -> void: mana_changed.emit(value))
 	ailment_status.init()

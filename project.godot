@@ -90,6 +90,8 @@ ui_down={
 3d_physics/layer_4="Interactible"
 3d_physics/layer_5="PlayerDamageSource"
 3d_physics/layer_6="EnemyDamageSource"
+3d_physics/layer_7="PlayerHitbox"
+3d_physics/layer_8="EnemyHitbox"
 3d_physics/layer_9="PathMarkPlacable"
 3d_physics/layer_32="DungeonRoomBoundary"
 

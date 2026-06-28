@@ -1,5 +1,6 @@
 class_name EquipmentComponent extends Node3D
 
+## Responsible for instantiating weapon scenes
 @export var left_hand_marker: Marker3D
 @export var right_hand_marker: Marker3D
 

@@ -1,9 +1,7 @@
 class_name CharacterStats extends Resource
 
-signal buff_added(buff: Buff)
-signal buff_removed(buff: Buff)
-signal ailment_inflicted(ailment: Ailment)
-signal ailment_cured(ailment: Ailment)
+signal status_effect_added(status_effect: StatusEffect)
+signal status_effect_removed(status_effect: StatusEffect)
 signal health_changed(value: float)
 signal stamina_changed(value: float)
 signal mana_changed(value: float)
@@ -18,70 +16,46 @@ signal mana_changed(value: float)
 
 @export var mana: Stat
 
-@export_group("Resistances")
-#=======================================================
-@export_category("Temp")
+@export_category("Resistances")
+@export var resistances: Resistances
 
-@export var damage: float:
-	get():
-		push_warning("Damage should be a thing that is calculated instead of just a stat")
-		return damage
-
-#=======================================================
-#=======AILMENTS================================
-enum Ailment {
-	NONE = 0,
-	POISONED = 1 << 0,
-	BURNING = 1 << 1,
-	# while stunned you have a delay in input for like a 3 sec
-	# and maybe screen is a bit hazy
-	STUNNED = 1 << 2
-}
-
-var current_ailment: int = Ailment.NONE
-
-func has_ailment(ailment: Ailment) -> bool:
-	return current_ailment & ailment
-
-
-func add_ailment(ailment: Ailment) -> void:
-	current_ailment |= ailment
-	ailment_inflicted.emit(ailment)
-
-
-func remove_ailment(ailment: Ailment) -> void:
-	current_ailment &= ~ailment
-	ailment_cured.emit(ailment)
-var _active_buffs: Dictionary[String, Buff] = {}
-#=======AILMENTS================================
+@export_category("Ailments")
+@export var ailment_status: AilmentStatus
 
 #========BUFFS==================================
-func update_buffs(delta: float) -> void:
-	if !_active_buffs.size():
+
+
+
+var _active_status_effects: Dictionary[String, StatusEffect] = {}
+func process_status_effects(delta: float) -> void:
+	if !_active_status_effects.size():
 		return
-	for buff_id: String in _active_buffs.keys().duplicate():
-		_active_buffs[buff_id].update(self, delta)
+	for status_effect_id: String in _active_status_effects.keys().duplicate():
+		_active_status_effects[status_effect_id].update(self, delta)
 
 
-func add_buff(buff: Buff) -> void:
-	var buff_dup: Buff = buff.duplicate()
-	buff_dup.apply(self)
-	_active_buffs[buff.id] = buff_dup
-	buff_dup.expired.connect(_on_buff_expired)
-	buff_added.emit(buff_dup)
+func add_status_effect(status_effect: StatusEffect) -> void:
+	var status_effect_dup: StatusEffect = status_effect.duplicate()
+	status_effect_dup.apply(self)
+	_active_status_effects[status_effect.id] = status_effect_dup
+	status_effect_dup.expired.connect(_on_status_effect_expired)
+	status_effect_added.emit(status_effect_dup)
 
 
+func _on_status_effect_expired(status_effect: StatusEffect) -> void:
+	remove_status_effect(status_effect)
 
-func _on_buff_expired(buff: Buff) -> void:
-	remove_buff(buff)
 
-
-func remove_buff(buff: Buff) -> void:
-	_active_buffs.erase(buff.id)
-	buff.remove(self)
-	buff.expired.disconnect(_on_buff_expired)
-	buff_removed.emit(buff)
+func remove_status_effect(status_effect: StatusEffect) -> void:
+	_active_status_effects.erase(status_effect.id)
+	status_effect.remove(self)
+	status_effect.expired.disconnect(_on_status_effect_expired)
+	status_effect_removed.emit(status_effect)
 #========BUFFS==================================
+
+func update(delta) -> void:
+	process_status_effects(delta)
+	ailment_status.process_ailments_decay(delta, resistances)
 
 func init() -> void:
-	pass
+	ailment_status.init()

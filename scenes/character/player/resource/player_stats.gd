@@ -7,6 +7,7 @@ class_name PlayerStats extends CharacterStats
 
 
 func init() -> void:
+	super.init()
 	vitality.max_value_changed.connect(_on_vitality_changed)
 	endurance.max_value_changed.connect(_on_endurance_changed)
 	skill.max_value_changed.connect(_on_skill_changed)

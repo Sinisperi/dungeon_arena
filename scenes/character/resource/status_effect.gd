@@ -1,6 +1,6 @@
-class_name Buff extends Resource
+class_name StatusEffect extends Resource
 
-signal expired(buff: Buff)
+signal expired(status_effect: StatusEffect)
 @export var name: String
 @export var icon: Texture2D
 @export var duration: float

@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://bnhdd6j1jipds" path="res://scenes/character/hitbox/hitbox.gd" id="1_s38gy"]
 
 [node name="Hitbox" type="Area3D" unique_id=1408306589]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_s38gy")

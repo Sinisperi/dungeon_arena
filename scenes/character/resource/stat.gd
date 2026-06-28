@@ -2,13 +2,18 @@ class_name Stat extends Resource
 
 signal value_changed(new_value: float)
 signal max_value_changed(new_value: float)
+signal max_value_reached
 signal depleted
 
 # current value
 @export var value: float = 0.0:
 	set(new_value):
+		if value == new_value:
+			return
 		value = clamp(new_value, 0.0, max_value)
 		value_changed.emit(value)
+		if value == max_value:
+			max_value_reached.emit()
 		if value <= 0.0:
 			depleted.emit()
 	get():
@@ -18,6 +23,8 @@ signal depleted
 # gets leveled up
 @export var base_max_value: float = 0.0:
 	set(new_value):
+		if base_max_value == new_value:
+			return
 		base_max_value = max(0.0, new_value)
 		max_value_changed.emit(max_value)
 	get():

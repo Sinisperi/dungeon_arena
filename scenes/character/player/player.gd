@@ -12,8 +12,8 @@ var current_interactible: Area3D = null
 
 
 func _ready() -> void:
-	super._ready()
 	if is_multiplayer_authority():
+		super._ready()
 		_enable()
 	else:
 		_disable_logic()
@@ -55,18 +55,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_weapon_enemy_hit(area: Area3D) -> void:
-	print_rich("[color=yellow]hit an enemy[/color]")
-	var enemy: Node = area.get_parent()
-	if enemy is Enemy:
-		#enemy.take_damage({"raw_damage": 10.0})
-		pass
-	else:
-		print_debug("player hit a player for 1mil dmg")
-		#enemy.take_damage(1000000.0)
-	print("hit the guy")
-
-
 func change_time_essence_by(amount: int) -> void:
 	data.stats.time_essence += amount
 	Globals.game_ui.hud.update_time_essence_label(data.stats.time_essence)
@@ -77,7 +65,7 @@ func change_xp_by(amount: int) -> void:
 
 
 func attack() -> void:
-	animation_player.play("attack")
+	animation_player.play("weapon/attack_r1")
 
 
 func _on_character_died() -> void:

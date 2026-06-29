@@ -50,8 +50,16 @@ func update(delta) -> void:
 	process_status_effects(delta)
 	ailment_status.process_ailments_decay(delta, resistances)
 
-func init() -> void:
-	vitals.health.value_changed.connect(func(value: float) -> void: health_changed.emit(value))
-	vitals.stamina.value_changed.connect(func(value: float) -> void: stamina_changed.emit(value))
-	vitals.mana.value_changed.connect(func(value: float) -> void: mana_changed.emit(value))
+func init(player_name: String) -> void:
+	vitals.health.value_changed.connect(_on_health_changed)
+	vitals.stamina.value_changed.connect(_on_stamina_changed)
+	vitals.mana.value_changed.connect(_on_mana_changed)
 	ailment_status.init()
+
+
+func _on_health_changed(value: float) -> void:
+	health_changed.emit(value)
+func _on_stamina_changed(value: float) -> void:
+	stamina_changed.emit(value)
+func _on_mana_changed(value: float) -> void:
+	mana_changed.emit(value)

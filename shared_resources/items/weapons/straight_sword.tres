@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://i8vl5ft5hikt"]
 
+[ext_resource type="AnimationLibrary" uid="uid://jwisrkoul8nn" path="res://TESTING_DATA/straight_sword_lib.res" id="1_3x83r"]
 [ext_resource type="Script" uid="uid://5yaw6h2quwpc" path="res://scenes/character/resource/damage_data.gd" id="1_jml3j"]
 [ext_resource type="Script" uid="uid://557m5rhocbnv" path="res://scenes/character/resource/status_effect.gd" id="2_p1i4k"]
 [ext_resource type="PackedScene" uid="uid://d1lvndinmyvmt" path="res://scenes/weapons/weapons/straight_sword/straight_sword.tscn" id="3_3x83r"]
@@ -22,6 +23,7 @@ region = Rect2(0, 0, 320, 128)
 script = ExtResource("4_ine4q")
 scene = ExtResource("3_3x83r")
 damage_data = SubResource("Resource_hmweh")
+animation_set = ExtResource("1_3x83r")
 item_name = "Straight Sword"
 texture = SubResource("AtlasTexture_fs307")
 metadata/_custom_type_script = "uid://curkxe3caikd2"

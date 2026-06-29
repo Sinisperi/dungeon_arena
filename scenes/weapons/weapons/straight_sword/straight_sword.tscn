@@ -3,16 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://btpb7xsy86lag" path="res://scenes/weapons/weapon.tscn" id="1_fs307"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_idpja"]
-radius = 0.044
-height = 1.75
+margin = 0.097
+radius = 0.114
+height = 1.273
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkegc"]
 albedo_color = Color(0.22, 0.10340001, 0.10340001, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idpja"]
-albedo_color = Color(0.55295557, 0.55295557, 0.55295545, 1)
+albedo_color = Color(0.73300546, 0.73300546, 0.7330052, 1)
 metallic = 1.0
-roughness = 0.41
+roughness = 0.45
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55k4w"]
 albedo_color = Color(0.44, 0.44, 0.44, 1)
@@ -20,34 +21,34 @@ metallic = 1.0
 roughness = 0.77
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hkegc"]
-radius = 0.04736328
-height = 1.748352
+radius = 0.06347656
+height = 1.3679962
 
 [node name="StraightSword" unique_id=79057331 node_paths=PackedStringArray("shapecast") instance=ExtResource("1_fs307")]
 shapecast = NodePath("ShapeCast3D")
 
 [node name="ShapeCast3D" parent="." index="0" unique_id=2027355361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0)
-enabled = true
 shape = SubResource("CapsuleShape3D_idpja")
-target_position = Vector3(0.009, 1.02, 0)
-collide_with_areas = true
+target_position = Vector3(0.009, 0.83, 0)
+collision_mask = 0
+debug_shape_custom_color = Color(0.23333335, 1, 0, 1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="1" unique_id=496649600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0)
-size = Vector3(0.05, 0.15, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022961408, 0)
+size = Vector3(0.05, 0.33083495, 0.05)
 material = SubResource("StandardMaterial3D_hkegc")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" index="0" unique_id=447086946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197)
-size = Vector3(0.05, 1.7410157, 0.01338501)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014892584, 0.76874995, -0.0008148197)
+size = Vector3(0.10551758, 1.2875, 0.01338501)
 material = SubResource("StandardMaterial3D_idpja")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" index="1" unique_id=1126353051]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0)
-size = Vector3(0.05, 0.25, 0.05)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.004455581, 0.106828295, 0)
+size = Vector3(0.039212037, 0.29089355, 0.05)
 material = SubResource("StandardMaterial3D_55k4w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1277146802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7807541, 0)
 shape = SubResource("CapsuleShape3D_hkegc")

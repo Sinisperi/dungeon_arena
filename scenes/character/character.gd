@@ -18,8 +18,10 @@ func _ready() -> void:
 		push_error("No data was provided to ", name)
 	if !data.stats:
 		push_error("No stats were provided to character data in", name)
-	data.stats.init()
+	data = data.duplicate(true)
+	data.stats.init(name)
 	data.inventory.init()
+	equipment_component.init()
 	data.stats.vitals.health.depleted.connect(_on_health_depleted)
 
 

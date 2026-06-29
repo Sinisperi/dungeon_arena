@@ -92,6 +92,9 @@ func _create_player(peer_id, data: Dictionary = {}) -> Player:
 		return null
 	var player: Player = player_scene.instantiate()
 	player.name = str(peer_id)
+	player.data = load("uid://db77kfjs0xdbc").duplicate_deep(
+		Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL
+	)
 	player.set_multiplayer_authority(peer_id)
 	add_child(player, true)
 	if !data.is_empty():

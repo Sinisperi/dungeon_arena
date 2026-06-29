@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cu2lvqhvonopd"]
 
+[ext_resource type="AnimationLibrary" uid="uid://jwisrkoul8nn" path="res://TESTING_DATA/straight_sword_lib.res" id="1_hfjdu"]
 [ext_resource type="Script" uid="uid://5yaw6h2quwpc" path="res://scenes/character/resource/damage_data.gd" id="1_rdc5i"]
 [ext_resource type="Script" uid="uid://curkxe3caikd2" path="res://scenes/weapons/weapons/weapon_data.gd" id="1_vkanm"]
 [ext_resource type="Script" uid="uid://557m5rhocbnv" path="res://scenes/character/resource/status_effect.gd" id="2_ahlpu"]
@@ -20,6 +21,7 @@ region = Rect2(256, 64, 64, 64)
 script = ExtResource("1_vkanm")
 scene = ExtResource("3_hfjdu")
 damage_data = SubResource("Resource_g4ai0")
+animation_set = ExtResource("1_hfjdu")
 item_name = "Great Hammer"
 texture = SubResource("AtlasTexture_82js4")
 metadata/_custom_type_script = "uid://curkxe3caikd2"

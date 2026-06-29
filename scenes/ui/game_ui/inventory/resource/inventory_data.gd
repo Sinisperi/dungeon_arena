@@ -13,6 +13,7 @@ var rh_equipped_index: int = 0:
 		if rh_equipped_index != -1:
 			item = weapons[rh_equipped_index]
 		right_hand_weapon_equipped.emit(item)
+		print("rh_equipped_index", rh_equipped_index)
 
 # needs to be set according to wether there is something in the 4 slot
 var lh_equipped_index: int = 4:
@@ -22,6 +23,7 @@ var lh_equipped_index: int = 4:
 		if lh_equipped_index != -1:
 			item = weapons[lh_equipped_index]
 		left_hand_weapon_equipped.emit(item)
+		print("lh_equipped_index", lh_equipped_index)
 
 var equipped_consumable_index: int = 0:
 	set(value):

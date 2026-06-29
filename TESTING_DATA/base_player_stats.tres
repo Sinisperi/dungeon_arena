@@ -7,24 +7,29 @@
 [ext_resource type="Script" uid="uid://cxch8tyrmd8di" path="res://scenes/character/resource/resistances.gd" id="4_q37v7"]
 [ext_resource type="Script" uid="uid://i23cq0qekp3q" path="res://scenes/character/resource/vitals.gd" id="6_kf6yf"]
 
-[sub_resource type="Resource" id="Resource_rw5mv"]
+[sub_resource type="Resource" id="Resource_o4p3a"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_4m0ew"]
+[sub_resource type="Resource" id="Resource_3swl0"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_r4gog"]
+[sub_resource type="Resource" id="Resource_q37v7"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_5oqij"]
+[sub_resource type="Resource" id="Resource_kf6yf"]
+resource_local_to_scene = true
 script = ExtResource("2_o4p3a")
-poison_buildup = SubResource("Resource_4m0ew")
-ignite_buildup = SubResource("Resource_rw5mv")
-stun_buildup = SubResource("Resource_r4gog")
+poison_buildup = SubResource("Resource_3swl0")
+ignite_buildup = SubResource("Resource_o4p3a")
+stun_buildup = SubResource("Resource_q37v7")
 metadata/_custom_type_script = "uid://kahh6h1lyubw"
+
+[sub_resource type="Resource" id="Resource_tqg5g"]
+script = ExtResource("2_8n013")
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="Resource" id="Resource_78r3s"]
 script = ExtResource("2_8n013")
@@ -34,91 +39,91 @@ metadata/_custom_type_script = "uid://bgkvcqwasawak"
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_tqg5g"]
-script = ExtResource("2_8n013")
-metadata/_custom_type_script = "uid://bgkvcqwasawak"
-
-[sub_resource type="Resource" id="Resource_yi78p"]
+[sub_resource type="Resource" id="Resource_usjh4"]
+resource_local_to_scene = true
 script = ExtResource("3_3swl0")
-vitality = SubResource("Resource_tqg5g")
-endurance = SubResource("Resource_78r3s")
-skill = SubResource("Resource_wh26i")
+vitality = SubResource("Resource_wh26i")
+endurance = SubResource("Resource_tqg5g")
+skill = SubResource("Resource_78r3s")
 metadata/_custom_type_script = "uid://vt46sduq4yf3"
 
-[sub_resource type="Resource" id="Resource_2il7d"]
+[sub_resource type="Resource" id="Resource_6rdo8"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_a7h0m"]
+[sub_resource type="Resource" id="Resource_4utdg"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_v4jmu"]
+[sub_resource type="Resource" id="Resource_2hrm3"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_uc4w5"]
+[sub_resource type="Resource" id="Resource_m3uo0"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_82221"]
+[sub_resource type="Resource" id="Resource_f5sqy"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_6wfst"]
+[sub_resource type="Resource" id="Resource_y17h5"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_bqy4b"]
+[sub_resource type="Resource" id="Resource_ppvdd"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_2c04d"]
+[sub_resource type="Resource" id="Resource_o73b1"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_yby6v"]
+[sub_resource type="Resource" id="Resource_xyae0"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_8b8mb"]
+[sub_resource type="Resource" id="Resource_bkqjk"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_weva2"]
+[sub_resource type="Resource" id="Resource_ec0iq"]
+resource_local_to_scene = true
 script = ExtResource("4_q37v7")
-res_blunt = SubResource("Resource_2il7d")
-res_cut = SubResource("Resource_v4jmu")
-res_pierce = SubResource("Resource_bqy4b")
-res_slah = SubResource("Resource_yby6v")
-res_cold = SubResource("Resource_a7h0m")
-res_lightning = SubResource("Resource_6wfst")
-res_fire = SubResource("Resource_uc4w5")
-res_poison = SubResource("Resource_2c04d")
-res_stun = SubResource("Resource_8b8mb")
-res_ignite = SubResource("Resource_82221")
+res_blunt = SubResource("Resource_6rdo8")
+res_cut = SubResource("Resource_2hrm3")
+res_pierce = SubResource("Resource_ppvdd")
+res_slah = SubResource("Resource_xyae0")
+res_cold = SubResource("Resource_4utdg")
+res_lightning = SubResource("Resource_y17h5")
+res_fire = SubResource("Resource_m3uo0")
+res_poison = SubResource("Resource_o73b1")
+res_stun = SubResource("Resource_bkqjk")
+res_ignite = SubResource("Resource_f5sqy")
 
-[sub_resource type="Resource" id="Resource_1khks"]
+[sub_resource type="Resource" id="Resource_m6pcx"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_16fi6"]
+[sub_resource type="Resource" id="Resource_74r7e"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_tq4cl"]
+[sub_resource type="Resource" id="Resource_43m60"]
 script = ExtResource("2_8n013")
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
-[sub_resource type="Resource" id="Resource_fspdy"]
+[sub_resource type="Resource" id="Resource_hc4tc"]
+resource_local_to_scene = true
 script = ExtResource("6_kf6yf")
-health = SubResource("Resource_1khks")
-stamina = SubResource("Resource_tq4cl")
-mana = SubResource("Resource_16fi6")
+health = SubResource("Resource_m6pcx")
+stamina = SubResource("Resource_43m60")
+mana = SubResource("Resource_74r7e")
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_ttn8t")
-attributes = SubResource("Resource_yi78p")
-vitals = SubResource("Resource_fspdy")
-resistances = SubResource("Resource_weva2")
-ailment_status = SubResource("Resource_5oqij")
+attributes = SubResource("Resource_usjh4")
+vitals = SubResource("Resource_hc4tc")
+resistances = SubResource("Resource_ec0iq")
+ailment_status = SubResource("Resource_kf6yf")

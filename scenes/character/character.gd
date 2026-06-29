@@ -1,6 +1,5 @@
 class_name Character extends CharacterBody3D
 
-signal health_changed(new_health)
 signal character_died
 
 @export_category("Visuals")

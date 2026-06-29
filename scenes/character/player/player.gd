@@ -18,7 +18,6 @@ func _ready() -> void:
 	else:
 		_disable_logic()
 
-	health_changed.connect(_on_health_changed)
 	character_died.connect(_on_character_died)
 
 
@@ -79,10 +78,6 @@ func change_xp_by(amount: int) -> void:
 
 func attack() -> void:
 	animation_player.play("attack")
-
-
-func _on_health_changed(new_health: float) -> void:
-	_send_ui_update.rpc_id(int(name), new_health)
 
 
 func _on_character_died() -> void:

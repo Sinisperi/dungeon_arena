@@ -1,4 +1,6 @@
 class_name Inventory extends Control
+signal open_requested
+signal close_requested
 
 @export var weapon_grid: GridContainer
 
@@ -6,6 +8,8 @@ class_name Inventory extends Control
 
 var _current_selected_slot: InventorySlot = null
 var _is_in_swap_mode: bool = false
+var _is_in_replace_mode: bool = false
+var _item_to_replace_with: ItemData = null
 
 
 func _ready() -> void:
@@ -41,12 +45,17 @@ func _unhandled_input(event: InputEvent) -> void:
 func add_item(item_data: ItemData) -> bool:
 	var inv: InventoryData = Globals.player.data.inventory
 	var index: int = inv.add_item(item_data)
+	var grid: GridContainer = weapon_grid
+	if item_data.type == ItemData.Type.CONSUMABLE:
+		grid = consumables_grid
 	if index >= 0:
-		var grid: GridContainer = weapon_grid
-		if item_data.type == ItemData.Type.CONSUMABLE:
-			grid = consumables_grid
 		_add_item_to_grid(grid, item_data, index)
 		return true
+	elif index == -1:
+		open_requested.emit()
+		_is_in_replace_mode = true
+		_item_to_replace_with = item_data
+		pass
 	print("Not enough space in inventory, need to display the inventory and\
 			also put it in a swap mode that lets you choose which one to swap")
 	return false
@@ -81,7 +90,21 @@ func _on_slot_selected(slot: InventorySlot) -> void:
 			_switch_items(slot, _current_selected_slot)
 			_current_selected_slot.display_item_placed()
 			_is_in_swap_mode = false
+		elif _is_in_replace_mode:
+			var discarded_item: ItemData = null
+			if _current_selected_slot.index == slot.index:
+				var inv: InventoryData = Globals.player.data.inventory
+				discarded_item = inv.replace_item(slot.index, _item_to_replace_with)
+				_current_selected_slot.display_item(_item_to_replace_with)
+				
+				if discarded_item:
+					SignalBus.game.item_dropped.emit(discarded_item)
+				close_requested.emit()
+				return
+
 		_current_selected_slot.get_deselected()
+
+	
 
 	_current_selected_slot = slot
 	_current_selected_slot.get_selected()
@@ -151,3 +174,5 @@ func _refresh_state() -> void:
 		_current_selected_slot.display_item_placed()
 		_current_selected_slot = null
 	_is_in_swap_mode = false
+	_is_in_replace_mode = false
+	_item_to_replace_with = null

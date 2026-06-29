@@ -140,6 +140,16 @@ func remove_item(type: ItemData.Type, ind: int) -> ItemData:
 	return res
 
 
+func replace_item(ind: int, item_data: ItemData) -> ItemData:
+	var inv: Array = get_inv(item_data.type)
+	var item: ItemData = null
+	if ind >= 0 && ind < inv.size():
+		item = inv[ind]
+		inv[ind] = item_data
+	_check_for_equipment_change(item_data.type, ind)
+	return item
+
+
 func _check_for_equipment_change(type: ItemData.Type, ind: int) -> void:
 	var inv: Array = get_inv(type)
 	if type == ItemData.Type.WEAPON:

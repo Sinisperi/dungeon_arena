@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dn465yjjsea34"]
+
+[ext_resource type="PackedScene" uid="uid://btpb7xsy86lag" path="res://scenes/weapons/weapon.tscn" id="1_luetp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55k4w"]
+radius = 0.183
+height = 0.971
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbocl"]
+albedo_color = Color(0.22, 0.10340001, 0.10340001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nhln"]
+albedo_color = Color(0.55295557, 0.55295557, 0.55295545, 1)
+metallic = 1.0
+roughness = 0.41
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuf85"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+metallic = 1.0
+roughness = 0.77
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5rmv7"]
+radius = 0.045410156
+height = 1.0298615
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01g28"]
+radius = 0.1328125
+height = 0.4316759
+
+[node name="GreatHammer" unique_id=79057331 node_paths=PackedStringArray("shapecast") instance=ExtResource("1_luetp")]
+shapecast = NodePath("ShapeCast3D")
+
+[node name="ShapeCast3D" parent="." index="0" unique_id=2027355361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024089783, 0, 0)
+enabled = true
+shape = SubResource("CapsuleShape3D_55k4w")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="1" unique_id=430826154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0)
+size = Vector3(0.05, 0.15, 0.05)
+material = SubResource("StandardMaterial3D_pbocl")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" index="0" unique_id=1629309962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61071765, -0.0008148197)
+size = Vector3(0.05, 1.0887207, 0.01338501)
+material = SubResource("StandardMaterial3D_2nhln")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" index="1" unique_id=1474676734]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0018005483, 1.0438745, -0.0016845725)
+size = Vector3(0.18601075, 0.3529663, 0.18510742)
+material = SubResource("StandardMaterial3D_tuf85")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=377593123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657753, 0)
+shape = SubResource("CapsuleShape3D_5rmv7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="3" unique_id=1834243318]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.0008883476, 1.0716648, -3.8831063e-11)
+shape = SubResource("CapsuleShape3D_01g28")

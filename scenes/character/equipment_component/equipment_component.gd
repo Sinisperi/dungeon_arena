@@ -29,7 +29,7 @@ func _on_right_hand_weapon_equipped(weapon_data: WeaponData) -> void:
 		return
 	rh_weapon = weapon_data.scene.instantiate()
 	rh_weapon.init(weapon_data, character_ref)
-	right_hand_marker.add_child(rh_weapon)
+	right_hand_marker.add_child(rh_weapon, true)
 
 
 func _on_left_hand_weapon_equipped(weapon_data: WeaponData) -> void:
@@ -43,7 +43,7 @@ func _on_left_hand_weapon_equipped(weapon_data: WeaponData) -> void:
 	lh_weapon = weapon_data.scene.instantiate()
 
 	lh_weapon.init(weapon_data, character_ref)
-	left_hand_marker.add_child(lh_weapon)
+	left_hand_marker.add_child(lh_weapon, true)
 
 
 func _on_consumable_equippped(consumable: ItemData) -> void:
@@ -56,8 +56,9 @@ func init_eqiupment() -> void:
 	var rh_weapon_data: WeaponData = inventory.get_rh_weapon()
 	if rh_weapon_data:
 		rh_weapon = rh_weapon_data.scene.instantiate()
-		right_hand_marker.add_child(rh_weapon)
+		right_hand_marker.add_child(rh_weapon, true)
+
 	var lh_weapon_data: WeaponData = inventory.get_lh_weapon()
 	if lh_weapon_data:
 		lh_weapon = lh_weapon_data.scene.instantiate()
-		left_hand_marker.add_child(rh_weapon)
+		left_hand_marker.add_child(lh_weapon, true)

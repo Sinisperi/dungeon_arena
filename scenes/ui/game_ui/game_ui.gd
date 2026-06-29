@@ -12,6 +12,8 @@ var current_ui_display: int = HUD
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Globals.game_ui = self
+	inventory.open_requested.connect(_on_inventory_open_requested)
+	inventory.close_requested.connect(_on_inventory_close_requested)
 
 
 func _input(event: InputEvent) -> void:
@@ -33,5 +35,23 @@ func toggle_ui_display(ui_display: int) -> void:
 	_update()
 
 
+func open_ui_display(ui_display: int) -> void:
+	current_ui_display |= ui_display
+	_update()
+
+
+func close_ui_display(ui_display: int) -> void:
+	current_ui_display &= ~ui_display
+	_update()
+
+
 func _is_current(ui_display: int) -> bool:
 	return current_ui_display & ui_display
+
+
+func _on_inventory_open_requested() -> void:
+	open_ui_display(INVENTORY)
+
+
+func _on_inventory_close_requested() -> void:
+	close_ui_display(INVENTORY)

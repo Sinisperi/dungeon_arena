@@ -4,7 +4,12 @@
 [ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="2_0huxh"]
 [ext_resource type="Resource" uid="uid://i8vl5ft5hikt" path="res://shared_resources/items/weapons/straight_sword.tres" id="3_0huxh"]
 [ext_resource type="Script" uid="uid://dmoygo3s3qxue" path="res://scenes/character/player/resource/player_data.gd" id="3_sykvd"]
+[ext_resource type="Script" uid="uid://5yaw6h2quwpc" path="res://scenes/character/resource/damage_data.gd" id="4_fmrso"]
 [ext_resource type="Resource" uid="uid://gd370pkdbmk0" path="res://TESTING_DATA/base_player_stats.tres" id="4_ggu8n"]
+[ext_resource type="Script" uid="uid://557m5rhocbnv" path="res://scenes/character/resource/status_effect.gd" id="5_0ia62"]
+[ext_resource type="PackedScene" uid="uid://btpb7xsy86lag" path="res://scenes/weapons/weapon.tscn" id="6_82js4"]
+[ext_resource type="Script" uid="uid://curkxe3caikd2" path="res://scenes/weapons/weapons/weapon_data.gd" id="7_1sr76"]
+[ext_resource type="Resource" uid="uid://cu2lvqhvonopd" path="res://shared_resources/items/weapons/great_hammer.tres" id="8_0ia62"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g6s3m"]
 load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
@@ -20,13 +25,231 @@ item_name = "llol"
 texture = SubResource("AtlasTexture_0huxh")
 metadata/_custom_type_script = "uid://c6x6dgsa3pxbr"
 
+[sub_resource type="Resource" id="Resource_8ec3m"]
+script = ExtResource("4_fmrso")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_idpja"]
+radius = 0.044
+height = 1.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkegc"]
+albedo_color = Color(0.22, 0.10340001, 0.10340001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idpja"]
+albedo_color = Color(0.55295557, 0.55295557, 0.55295545, 1)
+metallic = 1.0
+roughness = 0.41
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55k4w"]
+albedo_color = Color(0.44, 0.44, 0.44, 1)
+metallic = 1.0
+roughness = 0.77
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hkegc"]
+radius = 0.04736328
+height = 1.748352
+
+[sub_resource type="PackedScene" id="PackedScene_x3nov"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("StraightSword", "shapecast", "ShapeCast3D", "transform", "enabled", "shape", "target_position", "collide_with_areas", "CSGBox3D", "CSGBox3D", "transform", "size", "material", "CSGBox3D3", "CSGBox3D", "transform", "size", "material", "CSGBox3D2", "CSGBox3D", "transform", "size", "material", "CollisionShape3D", "CollisionShape3D", "transform", "shape"),
+"node_count": 6,
+"node_ids": PackedInt32Array(79057331, 2027355361, 496649600, 447086946, 1126353051, 1277146802),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./CSGBox3D"), NodePath("./CSGBox3D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 1, 1073741825, 1, 0, 1073741824, -1, 2147483647, 262146, -1, 5, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 1073741825, 0, 9, 524296, -1, 3, 10, 7, 11, 8, 12, 9, 0, 1073741826, 0, 14, 262157, -1, 3, 15, 10, 16, 11, 17, 12, 0, 1073741827, 0, 19, 524306, -1, 3, 20, 13, 21, 14, 22, 15, 0, 1073741828, 0, 24, 786455, -1, 2, 25, 16, 26, 17, 0),
+"variants": [ExtResource("6_82js4"), NodePath("ShapeCast3D"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0), true, SubResource("CapsuleShape3D_idpja"), Vector3(0.009, 1.02, 0), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0), Vector3(0.05, 0.15, 0.05), SubResource("StandardMaterial3D_hkegc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197), Vector3(0.05, 1.7410157, 0.01338501), SubResource("StandardMaterial3D_idpja"), Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0), Vector3(0.05, 0.25, 0.05), SubResource("StandardMaterial3D_55k4w"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0), SubResource("CapsuleShape3D_hkegc")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmvc3"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfeal"]
+atlas = SubResource("CompressedTexture2D_dmvc3")
+region = Rect2(0, 0, 320, 128)
+
+[sub_resource type="Resource" id="Resource_ttb2i"]
+script = ExtResource("7_1sr76")
+scene = SubResource("PackedScene_x3nov")
+damage_data = SubResource("Resource_8ec3m")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_wfeal")
+metadata/_custom_type_script = "uid://curkxe3caikd2"
+
+[sub_resource type="Resource" id="Resource_5283s"]
+script = ExtResource("4_fmrso")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="PackedScene" id="PackedScene_jh13t"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("StraightSword", "shapecast", "ShapeCast3D", "transform", "enabled", "shape", "target_position", "collide_with_areas", "CSGBox3D", "CSGBox3D", "transform", "size", "material", "CSGBox3D3", "CSGBox3D", "transform", "size", "material", "CSGBox3D2", "CSGBox3D", "transform", "size", "material", "CollisionShape3D", "CollisionShape3D", "transform", "shape"),
+"node_count": 6,
+"node_ids": PackedInt32Array(79057331, 2027355361, 496649600, 447086946, 1126353051, 1277146802),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./CSGBox3D"), NodePath("./CSGBox3D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 1, 1073741825, 1, 0, 1073741824, -1, 2147483647, 262146, -1, 5, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 1073741825, 0, 9, 524296, -1, 3, 10, 7, 11, 8, 12, 9, 0, 1073741826, 0, 14, 262157, -1, 3, 15, 10, 16, 11, 17, 12, 0, 1073741827, 0, 19, 524306, -1, 3, 20, 13, 21, 14, 22, 15, 0, 1073741828, 0, 24, 786455, -1, 2, 25, 16, 26, 17, 0),
+"variants": [ExtResource("6_82js4"), NodePath("ShapeCast3D"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0), true, SubResource("CapsuleShape3D_idpja"), Vector3(0.009, 1.02, 0), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0), Vector3(0.05, 0.15, 0.05), SubResource("StandardMaterial3D_hkegc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197), Vector3(0.05, 1.7410157, 0.01338501), SubResource("StandardMaterial3D_idpja"), Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0), Vector3(0.05, 0.25, 0.05), SubResource("StandardMaterial3D_55k4w"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0), SubResource("CapsuleShape3D_hkegc")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k4y53"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15lt0"]
+atlas = SubResource("CompressedTexture2D_k4y53")
+region = Rect2(0, 0, 320, 128)
+
+[sub_resource type="Resource" id="Resource_st44i"]
+script = ExtResource("7_1sr76")
+scene = SubResource("PackedScene_jh13t")
+damage_data = SubResource("Resource_5283s")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_15lt0")
+metadata/_custom_type_script = "uid://curkxe3caikd2"
+
+[sub_resource type="Resource" id="Resource_q1cyy"]
+script = ExtResource("4_fmrso")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="PackedScene" id="PackedScene_4he61"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("StraightSword", "shapecast", "ShapeCast3D", "transform", "enabled", "shape", "target_position", "collide_with_areas", "CSGBox3D", "CSGBox3D", "transform", "size", "material", "CSGBox3D3", "CSGBox3D", "transform", "size", "material", "CSGBox3D2", "CSGBox3D", "transform", "size", "material", "CollisionShape3D", "CollisionShape3D", "transform", "shape"),
+"node_count": 6,
+"node_ids": PackedInt32Array(79057331, 2027355361, 496649600, 447086946, 1126353051, 1277146802),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./CSGBox3D"), NodePath("./CSGBox3D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 1, 1073741825, 1, 0, 1073741824, -1, 2147483647, 262146, -1, 5, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 1073741825, 0, 9, 524296, -1, 3, 10, 7, 11, 8, 12, 9, 0, 1073741826, 0, 14, 262157, -1, 3, 15, 10, 16, 11, 17, 12, 0, 1073741827, 0, 19, 524306, -1, 3, 20, 13, 21, 14, 22, 15, 0, 1073741828, 0, 24, 786455, -1, 2, 25, 16, 26, 17, 0),
+"variants": [ExtResource("6_82js4"), NodePath("ShapeCast3D"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0), true, SubResource("CapsuleShape3D_idpja"), Vector3(0.009, 1.02, 0), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0), Vector3(0.05, 0.15, 0.05), SubResource("StandardMaterial3D_hkegc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197), Vector3(0.05, 1.7410157, 0.01338501), SubResource("StandardMaterial3D_idpja"), Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0), Vector3(0.05, 0.25, 0.05), SubResource("StandardMaterial3D_55k4w"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0), SubResource("CapsuleShape3D_hkegc")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjdrb"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j5t0"]
+atlas = SubResource("CompressedTexture2D_yjdrb")
+region = Rect2(0, 0, 320, 128)
+
+[sub_resource type="Resource" id="Resource_fs8yt"]
+script = ExtResource("7_1sr76")
+scene = SubResource("PackedScene_4he61")
+damage_data = SubResource("Resource_q1cyy")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_2j5t0")
+metadata/_custom_type_script = "uid://curkxe3caikd2"
+
+[sub_resource type="Resource" id="Resource_rcfan"]
+script = ExtResource("4_fmrso")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="PackedScene" id="PackedScene_ie63a"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("StraightSword", "shapecast", "ShapeCast3D", "transform", "enabled", "shape", "target_position", "collide_with_areas", "CSGBox3D", "CSGBox3D", "transform", "size", "material", "CSGBox3D3", "CSGBox3D", "transform", "size", "material", "CSGBox3D2", "CSGBox3D", "transform", "size", "material", "CollisionShape3D", "CollisionShape3D", "transform", "shape"),
+"node_count": 6,
+"node_ids": PackedInt32Array(79057331, 2027355361, 496649600, 447086946, 1126353051, 1277146802),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./CSGBox3D"), NodePath("./CSGBox3D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 1, 1073741825, 1, 0, 1073741824, -1, 2147483647, 262146, -1, 5, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 1073741825, 0, 9, 524296, -1, 3, 10, 7, 11, 8, 12, 9, 0, 1073741826, 0, 14, 262157, -1, 3, 15, 10, 16, 11, 17, 12, 0, 1073741827, 0, 19, 524306, -1, 3, 20, 13, 21, 14, 22, 15, 0, 1073741828, 0, 24, 786455, -1, 2, 25, 16, 26, 17, 0),
+"variants": [ExtResource("6_82js4"), NodePath("ShapeCast3D"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0), true, SubResource("CapsuleShape3D_idpja"), Vector3(0.009, 1.02, 0), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0), Vector3(0.05, 0.15, 0.05), SubResource("StandardMaterial3D_hkegc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197), Vector3(0.05, 1.7410157, 0.01338501), SubResource("StandardMaterial3D_idpja"), Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0), Vector3(0.05, 0.25, 0.05), SubResource("StandardMaterial3D_55k4w"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0), SubResource("CapsuleShape3D_hkegc")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0km6l"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txqi3"]
+atlas = SubResource("CompressedTexture2D_0km6l")
+region = Rect2(0, 0, 320, 128)
+
+[sub_resource type="Resource" id="Resource_b5u0l"]
+script = ExtResource("7_1sr76")
+scene = SubResource("PackedScene_ie63a")
+damage_data = SubResource("Resource_rcfan")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_txqi3")
+metadata/_custom_type_script = "uid://curkxe3caikd2"
+
+[sub_resource type="Resource" id="Resource_ntl6c"]
+script = ExtResource("4_fmrso")
+physical_damage_type = 1
+physical_damage_amount = 23.0
+ignite_buildup = 4.0
+stun_buildup = 1.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="PackedScene" id="PackedScene_cjiea"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("StraightSword", "shapecast", "ShapeCast3D", "transform", "enabled", "shape", "target_position", "collide_with_areas", "CSGBox3D", "CSGBox3D", "transform", "size", "material", "CSGBox3D3", "CSGBox3D", "transform", "size", "material", "CSGBox3D2", "CSGBox3D", "transform", "size", "material", "CollisionShape3D", "CollisionShape3D", "transform", "shape"),
+"node_count": 6,
+"node_ids": PackedInt32Array(79057331, 2027355361, 496649600, 447086946, 1126353051, 1277146802),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./CSGBox3D"), NodePath("./CSGBox3D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 1, 1073741825, 1, 0, 1073741824, -1, 2147483647, 262146, -1, 5, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 1073741825, 0, 9, 524296, -1, 3, 10, 7, 11, 8, 12, 9, 0, 1073741826, 0, 14, 262157, -1, 3, 15, 10, 16, 11, 17, 12, 0, 1073741827, 0, 19, 524306, -1, 3, 20, 13, 21, 14, 22, 15, 0, 1073741828, 0, 24, 786455, -1, 2, 25, 16, 26, 17, 0),
+"variants": [ExtResource("6_82js4"), NodePath("ShapeCast3D"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070521533, 0, 0), true, SubResource("CapsuleShape3D_idpja"), Vector3(0.009, 1.02, 0), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000006, 0), Vector3(0.05, 0.15, 0.05), SubResource("StandardMaterial3D_hkegc"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99550784, -0.0008148197), Vector3(0.05, 1.7410157, 0.01338501), SubResource("StandardMaterial3D_idpja"), Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.4901161e-08, 0.09999999, 0), Vector3(0.05, 0.25, 0.05), SubResource("StandardMaterial3D_55k4w"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0169983, 0), SubResource("CapsuleShape3D_hkegc")],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xa1og"]
+load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih41q"]
+atlas = SubResource("CompressedTexture2D_xa1og")
+region = Rect2(0, 0, 320, 128)
+
+[sub_resource type="Resource" id="Resource_rcc7v"]
+script = ExtResource("7_1sr76")
+scene = SubResource("PackedScene_cjiea")
+damage_data = SubResource("Resource_ntl6c")
+item_name = "Straight Sword"
+texture = SubResource("AtlasTexture_ih41q")
+metadata/_custom_type_script = "uid://curkxe3caikd2"
+
 [sub_resource type="Resource" id="Resource_egvq4"]
+resource_local_to_scene = true
 script = ExtResource("2_0huxh")
-weapons = Array[ExtResource("1_g6s3m")]([ExtResource("3_0huxh"), null, null, null, null, null, null, null])
+weapons = Array[ExtResource("1_g6s3m")]([ExtResource("3_0huxh"), SubResource("Resource_ttb2i"), ExtResource("3_0huxh"), SubResource("Resource_st44i"), SubResource("Resource_fs8yt"), ExtResource("8_0ia62"), SubResource("Resource_b5u0l"), SubResource("Resource_rcc7v")])
 consumables = Array[ExtResource("1_g6s3m")]([null, SubResource("Resource_0huxh"), null, null])
 metadata/_custom_type_script = "uid://3vx4vrdqof7i"
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("3_sykvd")
 stats = ExtResource("4_ggu8n")
 inventory = SubResource("Resource_egvq4")

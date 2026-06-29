@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cu2lvqhvonopd"]
+
+[ext_resource type="Script" uid="uid://5yaw6h2quwpc" path="res://scenes/character/resource/damage_data.gd" id="1_rdc5i"]
+[ext_resource type="Script" uid="uid://curkxe3caikd2" path="res://scenes/weapons/weapons/weapon_data.gd" id="1_vkanm"]
+[ext_resource type="Script" uid="uid://557m5rhocbnv" path="res://scenes/character/resource/status_effect.gd" id="2_ahlpu"]
+[ext_resource type="PackedScene" uid="uid://dn465yjjsea34" path="res://scenes/weapons/weapons/great_hammer/great_hammer.tscn" id="3_hfjdu"]
+[ext_resource type="Texture2D" uid="uid://o06ugw6l7bqa" path="res://assets/temp/test_item_atlas.png" id="5_ahlpu"]
+
+[sub_resource type="Resource" id="Resource_g4ai0"]
+script = ExtResource("1_rdc5i")
+physical_damage_amount = 50.0
+stun_buildup = 3.0
+metadata/_custom_type_script = "uid://5yaw6h2quwpc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82js4"]
+atlas = ExtResource("5_ahlpu")
+region = Rect2(256, 64, 64, 64)
+
+[resource]
+script = ExtResource("1_vkanm")
+scene = ExtResource("3_hfjdu")
+damage_data = SubResource("Resource_g4ai0")
+item_name = "Great Hammer"
+texture = SubResource("AtlasTexture_82js4")
+metadata/_custom_type_script = "uid://curkxe3caikd2"

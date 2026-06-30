@@ -7,6 +7,8 @@ signal died
 @onready var player_detector: Area3D = %PlayerDetector
 @onready var health_bar: PBar = %HealthBar
 
+@export var state_machine: Node
+
 var player_ref: Player = null
 
 var target_nav_position: Vector3 = Vector3.ZERO
@@ -24,10 +26,6 @@ var current_state: State = State.IDLE
 func _ready() -> void:
 	super._ready()
 	health_bar.init(data.stats.vitals.health.value, data.stats.vitals.health.max_value)
-	set_process(false)
-	set_physics_process(false)
-	player_detector.monitoring = false
-	player_detector.monitorable = false
 	player_detector.area_entered.connect(_on_player_detected)
 	player_detector.area_exited.connect(_on_player_exited)
 
@@ -66,11 +64,14 @@ func _on_velocity_computed(target_velocity: Vector3) -> void:
 
 
 func _on_player_detected(area: Area3D) -> void:
-	if !multiplayer.is_server():
+	if !is_multiplayer_authority():
+		return
+	if area is Hitbox:
+		player_ref = area.character_ref
+	else:
 		return
 	nav_agent.process_mode = Node.PROCESS_MODE_INHERIT
 	chase_timer.stop()
-	player_ref = area.get_parent()
 	nav_agent.avoidance_enabled = true
 	await get_tree().process_frame
 	nav_agent.target_position = player_ref.global_position
@@ -162,42 +163,29 @@ func _on_attack_timer_timeout() -> void:
 	if animation_player.is_playing():
 		return
 	print("attacking shit")
-	animation_player.play("attack")
+	animation_player.play("weapon/attack_r1")
 
 
-#func take_damage(amount: float, from_whomst: Node = null) -> void:
-#	if !multiplayer.is_server():
-#		return
-#	stats.health -= amount
-#
-#	_sync_hp.rpc(stats.health)
-#	print("ENEMY took ", amount, " of damage; hp ", stats.health)
-#	if stats.health <= 0:
-#		_die.rpc()
-#
-#		if from_whomst is Player:
-#			from_whomst.change_time_essence_by(stats.time_essence)
-#	pass
+func take_damage(damage_data: DamageData) -> void:
+	super.take_damage(damage_data)
+	var player_id: int = int(damage_data.attacker_ref.name)
+	if multiplayer.is_server():
+		if data.stats.vitals.health.value <= 0:
+			if damage_data.attacker_ref is Player:
+				_notify_enemy_killed.rpc_id(player_id, 10.0, 13.0)
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _notify_enemy_killed(time_essence_amount: float, xp_amount: float) -> void:
+	Globals.player.data.xp.value += xp_amount
+	Globals.player.data.time_essence.value += time_essence_amount
+
+
 func _on_health_changed(new_value: float) -> void:
 	health_bar.update(new_value)
 
 
-@rpc("any_peer", "call_local")
-func _sync_hp(hp: float) -> void:
-	health_bar.update(hp)
-
-
-@rpc("any_peer", "call_local")
-func _die() -> void:
+func _on_health_depleted() -> void:
 	current_state = State.DEAD
 	died.emit()
 	call_deferred("queue_free")
-
-#func _on_weapon_enemy_hit(area: Area3D) -> void:
-#	pass
-#	if !multiplayer.is_server():
-#		return
-#	var enemy: Node = area.get_parent()
-#	if enemy:
-#		print("asdfasdfasdf")
-#		enemy.take_damage(stats.damage)

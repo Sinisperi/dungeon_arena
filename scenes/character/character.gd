@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if multiplayer.is_server():
+	if is_multiplayer_authority():
 		data.stats.update(delta)
 
 
@@ -37,23 +37,12 @@ func equip_weapon(_weapon_data: Resource) -> void:
 
 
 func take_damage(damage_data: DamageData) -> void:
-	if is_multiplayer_authority():
-		_notify_take_damage.rpc(damage_data.to_dict())
+	_notify_take_damage.rpc(damage_data.to_dict())
 
 
 @rpc("any_peer", "call_local", "reliable")
 func _notify_take_damage(damage_data: Dictionary) -> void:
 	data.stats.vitals.health.value -= damage_data.physical_damage_amount
-	print_debug(
-		name,
-		" took ",
-		damage_data.physical_damage_amount,
-		" damage\n",
-		"HP: ",
-		data.stats.vitals.health.value,
-		" running on ",
-		multiplayer.get_unique_id()
-	)
 
 
 func _on_health_depleted() -> void:

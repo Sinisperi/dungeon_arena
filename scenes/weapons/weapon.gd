@@ -26,6 +26,8 @@ func init(weapon_data: WeaponData, weapon_weilder: Character) -> void:
 
 
 func _calculate_damage(area: Area3D, collider_ind: int) -> void:
+	if !is_multiplayer_authority():
+		return
 	if area is Hitbox:
 		var damage_data: DamageData = data.damage_data.duplicate()
 		# add stuff to damage data if you have buffs and also scaling and stuff

@@ -109,14 +109,12 @@ func _disable_logic() -> void:
 
 
 func _enable() -> void:
+	print_debug("AUTHORITY PLAYER ENABLE ", name)
 	Globals.player = self
 	camera_rig.current = true
 	if data.stats:
-		Globals.game_ui.hud.health_bar.init(
-			data.stats.vitals.health.value, data.stats.vitals.health.max_value
-		)
-		Globals.game_ui.hud.update_time_essence_label(data.time_essence)
 		Globals.game_ui.inventory.init()
+		Globals.game_ui.hud.init()
 
 	interaction_area.area_entered.connect(_on_interaction_area_entered)
 	interaction_area.area_exited.connect(_on_interaction_area_exited)

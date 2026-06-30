@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://db77kfjs0xdbc"]
 
+[ext_resource type="Script" uid="uid://bgkvcqwasawak" path="res://scenes/character/resource/stat.gd" id="1_82js4"]
 [ext_resource type="Script" uid="uid://c6x6dgsa3pxbr" path="res://shared_resources/items/item_data.gd" id="1_g6s3m"]
 [ext_resource type="Script" uid="uid://3vx4vrdqof7i" path="res://scenes/ui/game_ui/inventory/resource/inventory_data.gd" id="2_0huxh"]
 [ext_resource type="Resource" uid="uid://i8vl5ft5hikt" path="res://shared_resources/items/weapons/straight_sword.tres" id="3_0huxh"]
@@ -10,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://btpb7xsy86lag" path="res://scenes/weapons/weapon.tscn" id="6_82js4"]
 [ext_resource type="Script" uid="uid://curkxe3caikd2" path="res://scenes/weapons/weapons/weapon_data.gd" id="7_1sr76"]
 [ext_resource type="Resource" uid="uid://cu2lvqhvonopd" path="res://shared_resources/items/weapons/great_hammer.tres" id="8_0ia62"]
+
+[sub_resource type="Resource" id="Resource_w4g0g"]
+script = ExtResource("1_82js4")
+base_max_value = 999999999.0
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g6s3m"]
 load_path = "res://.godot/imported/test_item_atlas.png-68a9384ff5e0de8eff38ddfe876edcde.ctex"
@@ -248,9 +254,22 @@ weapons = Array[ExtResource("1_g6s3m")]([ExtResource("3_0huxh"), SubResource("Re
 consumables = Array[ExtResource("1_g6s3m")]([null, SubResource("Resource_0huxh"), null, null])
 metadata/_custom_type_script = "uid://3vx4vrdqof7i"
 
+[sub_resource type="Resource" id="Resource_c54h2"]
+script = ExtResource("1_82js4")
+base_max_value = 999999999.0
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
+[sub_resource type="Resource" id="Resource_imc1b"]
+script = ExtResource("1_82js4")
+base_max_value = 999999999.0
+metadata/_custom_type_script = "uid://bgkvcqwasawak"
+
 [resource]
 resource_local_to_scene = true
 script = ExtResource("3_sykvd")
+time_essence = SubResource("Resource_c54h2")
+currency = SubResource("Resource_w4g0g")
+xp = SubResource("Resource_imc1b")
 stats = ExtResource("4_ggu8n")
 inventory = SubResource("Resource_egvq4")
 metadata/_custom_type_script = "uid://dmoygo3s3qxue"

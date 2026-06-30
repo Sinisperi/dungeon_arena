@@ -223,8 +223,8 @@ metadata/_custom_type_script = "uid://cxch8tyrmd8di"
 
 [sub_resource type="Resource" id="Resource_s1fhe"]
 script = ExtResource("3_uscpi")
-value = 100.0
 base_max_value = 100.0
+value = 100.0
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="Resource" id="Resource_fodny"]
@@ -354,7 +354,7 @@ mesh = SubResource("CapsuleMesh_40wdo")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038323402, 0, -3.2948666)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/PlayerDetector" unique_id=450092023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258873, 0)

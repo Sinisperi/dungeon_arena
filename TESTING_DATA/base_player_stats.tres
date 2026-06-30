@@ -103,14 +103,20 @@ res_ignite = SubResource("Resource_f5sqy")
 
 [sub_resource type="Resource" id="Resource_m6pcx"]
 script = ExtResource("2_8n013")
+value = 100.0
+base_max_value = 101.0
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="Resource" id="Resource_74r7e"]
 script = ExtResource("2_8n013")
+value = 100.0
+base_max_value = 103.0
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="Resource" id="Resource_43m60"]
 script = ExtResource("2_8n013")
+value = 100.0
+base_max_value = 102.0
 metadata/_custom_type_script = "uid://bgkvcqwasawak"
 
 [sub_resource type="Resource" id="Resource_hc4tc"]

@@ -4,5 +4,4 @@ class_name Hitbox extends Area3D
 
 
 func relay_damage(damage_packet: Resource) -> void:
-	print("relaying damage")
 	character_ref.take_damage(damage_packet)

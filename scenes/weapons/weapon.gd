@@ -32,7 +32,6 @@ func _calculate_damage(area: Area3D, collider_ind: int) -> void:
 		damage_data.collision_point = shapecast.get_collision_point(collider_ind)
 		damage_data.collision_normal = shapecast.get_collision_normal(collider_ind)
 		damage_data.attacker_ref = weilder
-		print(area.character_ref.name, " took damage", "\nmask ", shapecast.collision_mask)
 
 		area.relay_damage(damage_data)
 	else:

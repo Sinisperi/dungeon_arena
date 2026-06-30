@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bm8ttysxp6235" path="res://scenes/character/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://0mg04ktwnetm" path="res://scenes/character/player/camera_rig/camera_rig.tscn" id="2_lvxji"]
-[ext_resource type="PackedScene" uid="uid://d1lvndinmyvmt" path="res://scenes/weapons/weapons/straight_sword/straight_sword.tscn" id="5_hixpj"]
 [ext_resource type="Animation" uid="uid://ytnevs8auyh3" path="res://TESTING_DATA/attack_anim.res" id="6_hixpj"]
 [ext_resource type="Animation" uid="uid://cqohwgkchcgjy" path="res://TESTING_DATA/filp_anim.res" id="6_v051h"]
 [ext_resource type="PackedScene" uid="uid://cmi1egcuwd30s" path="res://scenes/character/hitbox/hitbox.tscn" id="7_68dt2"]
@@ -150,8 +149,6 @@ character_ref = NodePath("../..")
 [node name="RH_Marker" type="Marker3D" parent="Visuals/EquipmentComponent" unique_id=1027816394]
 transform = Transform3D(-0.115893, -0.13963272, 0.9833974, -0.7694877, 0.63866186, 0, -0.6280593, -0.75671196, -0.18146196, 0.75, 0.75, -0.3)
 metadata/_edit_group_ = true
-
-[node name="StraightSword" parent="Visuals/EquipmentComponent/RH_Marker" unique_id=79057331 instance=ExtResource("5_hixpj")]
 
 [node name="LH_Marker" type="Marker3D" parent="Visuals/EquipmentComponent" unique_id=937497665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.74, -0.3)

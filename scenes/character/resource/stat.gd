@@ -10,7 +10,10 @@ signal depleted
 	set(new_value):
 		if value == new_value:
 			return
-		value = clamp(new_value, 0.0, max_value)
+		if max_value > 0:
+			value = clamp(new_value, 0.0, max_value)
+		else:
+			value = new_value
 		value_changed.emit(value)
 		if value == max_value:
 			max_value_reached.emit()

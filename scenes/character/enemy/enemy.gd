@@ -6,7 +6,6 @@ signal died
 @onready var hit_box: Area3D = %Hitbox
 @onready var player_detector: Area3D = %PlayerDetector
 @onready var health_bar: PBar = %HealthBar
-@export var weapon: Area3D
 
 var player_ref: Player = null
 
@@ -23,17 +22,14 @@ var current_state: State = State.IDLE
 
 
 func _ready() -> void:
+	super._ready()
 	health_bar.init(data.stats.vitals.health.value, data.stats.vitals.health.max_value)
-	if !multiplayer.is_server():
-		set_process(false)
-		set_physics_process(false)
-		player_detector.monitoring = false
-		player_detector.monitorable = false
-		return
+	set_process(false)
+	set_physics_process(false)
+	player_detector.monitoring = false
+	player_detector.monitorable = false
 	player_detector.area_entered.connect(_on_player_detected)
 	player_detector.area_exited.connect(_on_player_exited)
-
-	weapon.area_entered.connect(_on_weapon_enemy_hit)
 
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 
@@ -49,6 +45,7 @@ func _ready() -> void:
 
 	#==========================
 	SignalBus.enemies += 1
+	data.stats.vitals.health.value_changed.connect(_on_health_changed)
 
 
 func _physics_process(delta: float) -> void:
@@ -181,6 +178,9 @@ func _on_attack_timer_timeout() -> void:
 #		if from_whomst is Player:
 #			from_whomst.change_time_essence_by(stats.time_essence)
 #	pass
+func _on_health_changed(new_value: float) -> void:
+	health_bar.update(new_value)
+
 
 @rpc("any_peer", "call_local")
 func _sync_hp(hp: float) -> void:
@@ -193,9 +193,8 @@ func _die() -> void:
 	died.emit()
 	call_deferred("queue_free")
 
-
-func _on_weapon_enemy_hit(area: Area3D) -> void:
-	pass
+#func _on_weapon_enemy_hit(area: Area3D) -> void:
+#	pass
 #	if !multiplayer.is_server():
 #		return
 #	var enemy: Node = area.get_parent()

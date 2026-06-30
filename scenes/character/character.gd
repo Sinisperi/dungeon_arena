@@ -18,11 +18,12 @@ func _ready() -> void:
 		push_error("No data was provided to ", name)
 	if !data.stats:
 		push_error("No stats were provided to character data in", name)
-	data = data.duplicate(true)
+	data = data.duplicate_deep(Resource.DeepDuplicateMode.DEEP_DUPLICATE_ALL)
 	data.stats.init(name)
 	data.inventory.init()
 	equipment_component.init()
 	data.stats.vitals.health.depleted.connect(_on_health_depleted)
+	print_debug("Character ", name, " has ", data.stats.vitals.stamina.value, " hp")
 
 
 func _process(delta: float) -> void:
@@ -32,16 +33,27 @@ func _process(delta: float) -> void:
 
 # used in npcs only
 func equip_weapon(_weapon_data: Resource) -> void:
-	# var weapon = weapon_scene.instantiate()
-	#_equipped_weapon = weapon
 	pass
 
 
-func take_damage(damage_data: Resource) -> void:
-	if !multiplayer.is_server():
-		return
-	print(damage_data)
-	pass
+func take_damage(damage_data: DamageData) -> void:
+	if is_multiplayer_authority():
+		_notify_take_damage.rpc(damage_data.to_dict())
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _notify_take_damage(damage_data: Dictionary) -> void:
+	data.stats.vitals.health.value -= damage_data.physical_damage_amount
+	print_debug(
+		name,
+		" took ",
+		damage_data.physical_damage_amount,
+		" damage\n",
+		"HP: ",
+		data.stats.vitals.health.value,
+		" running on ",
+		multiplayer.get_unique_id()
+	)
 
 
 func _on_health_depleted() -> void:

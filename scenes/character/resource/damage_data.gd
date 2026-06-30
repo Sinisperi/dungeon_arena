@@ -20,10 +20,13 @@ var collision_point: Vector3
 var collision_normal: Vector3
 
 
-func _to_string() -> String:
+func to_dict() -> Dictionary:
 	var res: Dictionary = {}
-	#res["attacker"] = attacker_ref.name
-	res["collision_point"] = collision_point
-	res["collision_normal"] = collision_normal
-	res["physical_damage_amount"] = physical_damage_amount
-	return str(res)
+	for property in get_property_list():
+		if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
+			res[property.name] = get(property.name)
+	return res
+
+
+func _to_string() -> String:
+	return str(to_dict())

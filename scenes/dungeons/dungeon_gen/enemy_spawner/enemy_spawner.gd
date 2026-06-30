@@ -17,6 +17,7 @@ func _on_navigation_bake_finished() -> void:
 			var enemy: Enemy = e.instantiate()
 			enemy.position = global_position + pick_random_point()
 			Globals.active_dungeon.enemy_container.add_child(enemy, true)
+			print_debug(enemy.data.stats.vitals.health.value)
 
 
 func pick_random_point() -> Vector3:

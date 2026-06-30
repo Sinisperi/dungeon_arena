@@ -95,9 +95,12 @@ func _on_consumable_equippped(consumable: ItemData) -> void:
 func _sync_equipment() -> void:
 	var inventory: InventoryData = character_ref.data.inventory
 	var rh_weapon_data: WeaponData = inventory.get_rh_weapon()
-	rh_weapon = _equip_weapon(rh_weapon_data.id, rh_weapon, right_hand_marker)
+	if rh_weapon_data:
+		rh_weapon = _equip_weapon(rh_weapon_data.id, rh_weapon, right_hand_marker)
+
 	var lh_weapon_data: WeaponData = inventory.get_lh_weapon()
-	lh_weapon = _equip_weapon(lh_weapon_data.id, lh_weapon, left_hand_marker)
+	if lh_weapon_data:
+		lh_weapon = _equip_weapon(lh_weapon_data.id, lh_weapon, left_hand_marker)
 
 
 func init_eqiupment() -> void:
